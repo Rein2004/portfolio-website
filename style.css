@@ -1450,3 +1450,140 @@ section.show{
     background:#35ecff;
 
 }
+/* ==========================
+   MOBILE RESPONSIVE
+========================== */
+
+@media (max-width: 900px) {
+
+    /* Navbar */
+    nav{
+        padding:20px 5%;
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+    .logo{
+        font-size:1.5rem;
+    }
+
+    /* Hero */
+    .hero-container{
+        flex-direction:column-reverse;
+        text-align:center;
+        gap:40px;
+    }
+
+    .hero-text{
+        text-align:center;
+    }
+
+    .hero-image{
+        justify-content:center;
+    }
+
+    .profile-wrapper{
+        width:250px;
+        height:250px;
+    }
+
+    .name{
+        font-size:2.5rem;
+        white-space:normal;
+    }
+
+    .title{
+        font-size:1.1rem;
+    }
+
+    .hero-about{
+        text-align:center;
+    }
+
+    /* Buttons */
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .book-btn{
+        width:100%;
+        max-width:300px;
+        text-align:center;
+    }
+
+    /* About Page */
+    .about-page{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .about-image{
+        order:-1;
+        margin-top:0;
+    }
+
+    .about-photo{
+        max-width:300px;
+    }
+
+    /* Sections */
+    section{
+        padding:60px 5%;
+    }
+
+    section h2{
+        font-size:2rem;
+        text-align:center;
+    }
+
+    /* Cards */
+    .project-grid,
+    .tech-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project-card,
+    .card{
+        width:100%;
+    }
+
+    /* Why Work With Me */
+    #why-me .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    /* Contact */
+    .contact-container{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .contact-info{
+        max-width:100%;
+        padding-right:0;
+    }
+
+    .input-row{
+        grid-template-columns:1fr;
+    }
+
+    /* Projects Page */
+    .projects-content h1{
+        font-size:2.8rem;
+    }
+
+    .projects-content p{
+        font-size:1rem;
+    }
+
+    .back-btn{
+        width:45px;
+        height:45px;
+        font-size:1.3rem;
+    }
+
+}
