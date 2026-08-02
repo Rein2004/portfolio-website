@@ -1,44 +1,789 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Projects | Reinold Leonida</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            background:#050816;
+            color:#ffffff;
+            font-family:Arial, Helvetica, sans-serif;
+            overflow-x:hidden;
+        }
+
+
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        .grid-bg{
+            position:fixed;
+            inset:0;
+
+            z-index:-2;
+
+            background-image:
+                linear-gradient(
+                    rgba(0,229,255,.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0,229,255,.035) 1px,
+                    transparent 1px
+                );
+
+            background-size:40px 40px;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .top-nav{
+
+            width:100%;
+
+            padding:22px 7%;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:space-between;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.06);
+
+            background:
+                rgba(5,8,22,.8);
+
+            backdrop-filter:blur(15px);
+
+            position:sticky;
+
+            top:0;
+
+            z-index:100;
+        }
+
+        .logo{
+
+            font-size:1.25rem;
+
+            font-weight:800;
+
+            color:#ffffff;
+
+            text-decoration:none;
+        }
+
+        .logo span{
+            color:#00e5ff;
+        }
+
+        .nav-back{
+
+            color:#94a3b8;
+
+            text-decoration:none;
+
+            font-size:.8rem;
+
+            transition:.3s ease;
+        }
+
+        .nav-back:hover{
+            color:#00e5ff;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .projects-header{
+
+            text-align:center;
+
+            max-width:700px;
+
+            margin:0 auto;
+
+            padding:75px 20px 50px;
+        }
+
+        .projects-label{
+
+            display:inline-block;
+
+            font-size:.65rem;
+
+            font-weight:700;
+
+            letter-spacing:2px;
+
+            text-transform:uppercase;
+
+            color:#00e5ff;
+
+            margin-bottom:12px;
+        }
+
+        .projects-header h1{
+
+            font-size:3rem;
+
+            line-height:1.15;
+
+            margin-bottom:15px;
+
+            letter-spacing:-1px;
+        }
+
+        .projects-header p{
+
+            color:#94a3b8;
+
+            font-size:.9rem;
+
+            line-height:1.7;
+
+            max-width:600px;
+
+            margin:auto;
+        }
+
+
+        /* =========================
+           PROJECT GRID
+        ========================= */
+
+        .projects{
+
+            width:90%;
+
+            max-width:1150px;
+
+            margin:0 auto;
+
+            padding-bottom:90px;
+        }
+
+        .project-grid{
+
+            display:grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:22px;
+        }
+
+
+        /* =========================
+           PROJECT CARD
+        ========================= */
+
+        .project-card{
+
+            background:
+                rgba(255,255,255,.025);
+
+            border:
+                1px solid rgba(255,255,255,.09);
+
+            border-radius:14px;
+
+            overflow:hidden;
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .project-card:hover{
+
+            transform:translateY(-6px);
+
+            border-color:
+                rgba(0,229,255,.4);
+
+            box-shadow:
+                0 18px 45px
+                rgba(0,0,0,.3);
+        }
+
+
+        /* =========================
+           PROJECT IMAGE
+        ========================= */
+
+        .project-image{
+
+            width:100%;
+
+            height:175px;
+
+            padding:10px;
+
+            background:#090d1d;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.07);
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            overflow:hidden;
+        }
+
+        .project-image img{
+
+            width:100%;
+
+            height:100%;
+
+            object-fit:contain;
+
+            border-radius:8px;
+
+            display:block;
+
+            transition:
+                transform .3s ease;
+        }
+
+        .project-card:hover
+        .project-image img{
+
+            transform:scale(1.025);
+        }
+
+
+        /* =========================
+           CARD CONTENT
+        ========================= */
+
+        .project-info{
+
+            padding:20px;
+        }
+
+        .project-type{
+
+            display:block;
+
+            color:#00e5ff;
+
+            font-size:.6rem;
+
+            font-weight:700;
+
+            letter-spacing:1.5px;
+
+            margin-bottom:9px;
+        }
+
+        .project-info h2{
+
+            font-size:1.05rem;
+
+            line-height:1.4;
+
+            margin-bottom:10px;
+
+            color:#ffffff;
+        }
+
+        .project-info p{
+
+            color:#94a3b8;
+
+            font-size:.78rem;
+
+            line-height:1.7;
+        }
+
+
+        /* =========================
+           TOOLS
+        ========================= */
+
+        .tools{
+
+            display:flex;
+
+            flex-wrap:wrap;
+
+            gap:6px;
+
+            margin-top:17px;
+        }
+
+        .tools span{
+
+            font-size:.6rem;
+
+            color:#aab4c4;
+
+            padding:5px 8px;
+
+            border-radius:5px;
+
+            background:
+                rgba(0,229,255,.035);
+
+            border:
+                1px solid
+                rgba(0,229,255,.13);
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta{
+
+            text-align:center;
+
+            padding:70px 20px;
+
+            border-top:
+                1px solid rgba(255,255,255,.06);
+
+            background:
+                rgba(0,229,255,.015);
+        }
+
+        .cta-small{
+
+            color:#00e5ff;
+
+            font-size:.65rem;
+
+            font-weight:700;
+
+            letter-spacing:2px;
+
+            text-transform:uppercase;
+
+            margin-bottom:12px;
+        }
+
+        .cta h2{
+
+            font-size:2rem;
+
+            margin-bottom:12px;
+        }
+
+        .cta p{
+
+            max-width:550px;
+
+            margin:0 auto 25px;
+
+            color:#94a3b8;
+
+            font-size:.85rem;
+
+            line-height:1.7;
+        }
+
+        .cta-button{
+
+            display:inline-block;
+
+            padding:11px 20px;
+
+            border-radius:8px;
+
+            background:#00e5ff;
+
+            color:#050816;
+
+            text-decoration:none;
+
+            font-size:.75rem;
+
+            font-weight:700;
+
+            transition:.3s ease;
+        }
+
+        .cta-button:hover{
+
+            transform:translateY(-2px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0,229,255,.2);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer{
+
+            padding:25px;
+
+            text-align:center;
+
+            border-top:
+                1px solid rgba(255,255,255,.05);
+
+            color:#64748b;
+
+            font-size:.65rem;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media(max-width:950px){
+
+            .project-grid{
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:650px){
+
+            .top-nav{
+
+                padding:18px 5%;
+
+            }
+
+            .projects-header{
+
+                padding:
+                    60px 20px 40px;
+
+            }
+
+            .projects-header h1{
+
+                font-size:2.3rem;
+
+            }
+
+            .project-grid{
+
+                grid-template-columns:1fr;
+
+            }
+
+            .projects{
+
+                width:90%;
+
+            }
+
+            .project-image{
+
+                height:190px;
+
+            }
+
+            .cta h2{
+
+                font-size:1.6rem;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
-    
+
 <div class="grid-bg"></div>
 
-<a href="about.html#projects" class="back-btn">
-    ←
-</a>
 
-<section class="projects-hero">
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    <div class="hero-glow"></div>
+<nav class="top-nav">
 
-    <div class="projects-content">
+    <a href="index.html" class="logo">
+        Reinold<span>Leonida</span>
+    </a>
 
-        <span class="projects-tag">
-            Portfolio
-        </span>
+    <a href="about.html#projects" class="nav-back">
+        ← Back to Portfolio
+    </a>
 
-        <h1>
-            My Projects
-        </h1>
+</nav>
 
-        <p>
-            A collection of AI automation, CRM management, workflow optimization,
-            and business system projects designed to improve productivity,
-            eliminate repetitive tasks, and help businesses scale efficiently.
-        </p>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="projects-header">
+
+    <span class="projects-label">
+        Automation Portfolio
+    </span>
+
+    <h1>
+        My Projects
+    </h1>
+
+    <p>
+        A selection of automation systems designed to reduce repetitive work,
+        connect business tools, organize processes, and improve operational
+        efficiency.
+    </p>
+
+</header>
+
+
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<main class="projects">
+
+    <div class="project-grid">
+
+
+        <!-- =====================
+             PROJECT 01
+        ====================== -->
+
+        <article class="project-card">
+
+            <div class="project-image">
+
+                <img
+                    src="clientonboarding.png"
+                    alt="Client Onboarding Automation workflow"
+                >
+
+            </div>
+
+
+            <div class="project-info">
+
+                <span class="project-type">
+                    CLIENT OPERATIONS
+                </span>
+
+                <h2>
+                    Client Onboarding Automation
+                </h2>
+
+                <p>
+                    Automates repetitive onboarding tasks and connects
+                    business tools to create a more organized client
+                    experience while reducing manual administrative work.
+                </p>
+
+
+                <div class="tools">
+
+                    <span>n8n</span>
+
+                    <span>APIs</span>
+
+                    <span>Business Tools</span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =====================
+             PROJECT 02
+        ====================== -->
+
+        <article class="project-card">
+
+            <div class="project-image">
+
+                <img
+                    src="Leadfollowup.png"
+                    alt="Sales and Follow-Up Automation workflow"
+                >
+
+            </div>
+
+
+            <div class="project-info">
+
+                <span class="project-type">
+                    SALES AUTOMATION
+                </span>
+
+                <h2>
+                    Sales & Follow-Up Automation
+                </h2>
+
+                <p>
+                    Streamlines repetitive sales and follow-up activities,
+                    helping businesses keep leads organized, maintain
+                    consistent follow-ups, and reduce manual tracking.
+                </p>
+
+
+                <div class="tools">
+
+                    <span>n8n</span>
+
+                    <span>APIs</span>
+
+                    <span>Business Tools</span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =====================
+             PROJECT 03
+        ====================== -->
+
+        <article class="project-card">
+
+            <div class="project-image">
+
+                <img
+                    src="weeklysalesreport.png"
+                    alt="Weekly Sales Reporting and Order Management Automation workflow"
+                >
+
+            </div>
+
+
+            <div class="project-info">
+
+                <span class="project-type">
+                    REPORTING & OPERATIONS
+                </span>
+
+                <h2>
+                    Weekly Sales Reporting & Order Management
+                </h2>
+
+                <p>
+                    Automates sales data collection, order organization,
+                    and weekly reporting to reduce manual processing and
+                    make business updates easier to manage.
+                </p>
+
+
+                <div class="tools">
+
+                    <span>n8n</span>
+
+                    <span>APIs</span>
+
+                    <span>Business Tools</span>
+
+                </div>
+
+            </div>
+
+        </article>
+
 
     </div>
 
+</main>
+
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta">
+
+    <div class="cta-small">
+        Need Automation?
+    </div>
+
+    <h2>
+        Turn Repetitive Work Into Smart Workflows.
+    </h2>
+
+    <p>
+        I build practical automation systems that help businesses
+        save time, stay organized, and operate more efficiently.
+    </p>
+
+    <a
+        href="about.html#contact"
+        class="cta-button">
+
+        Let's Work Together →
+
+    </a>
+
 </section>
+
+
+
+<footer>
+
+    © 2026 Reinold Leonida. All Rights Reserved.
+
+</footer>
+
 
 </body>
 </html>
