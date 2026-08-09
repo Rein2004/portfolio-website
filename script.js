@@ -345,3 +345,9 @@ document.addEventListener("DOMContentLoaded", () => {
     animate3D();
 
 });
+element.style.transform = `
+    perspective(1000px)
+    rotateX(${rotateX}deg)
+    rotateY(${rotateY}deg)
+    translateZ(8px)
+`;
