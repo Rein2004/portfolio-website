@@ -102,18 +102,18 @@ sections.forEach((section) => {
     observer.observe(section);
 });
 const navLinks =
-document.querySelectorAll("nav a");
+document.querySelectorAll(".nav-link");
 
-window.addEventListener("scroll", ()=>{
+window.addEventListener("scroll", () => {
 
     let current = "";
 
     sections.forEach(section => {
 
         const sectionTop =
-        section.offsetTop - 200;
+            section.offsetTop - 200;
 
-        if(scrollY >= sectionTop){
+        if (window.scrollY >= sectionTop) {
             current = section.getAttribute("id");
         }
 
@@ -123,10 +123,18 @@ window.addEventListener("scroll", ()=>{
 
         link.classList.remove("active");
 
-        if(
-            link.getAttribute("href")
-            === "#" + current
-        ){
+        const href = link.getAttribute("href");
+
+        /* Normal sections */
+        if (href === "#" + current) {
+            link.classList.add("active");
+        }
+
+        /* Projects section on about.html */
+        if (
+            current === "projects" &&
+            href === "project.html"
+        ) {
             link.classList.add("active");
         }
 
@@ -196,5 +204,190 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     }
+
+});
+/* =====================================================
+   MOBILE NAVIGATION
+===================================================== */
+
+const menuToggle =
+    document.querySelector(".menu-toggle");
+
+const navMenu =
+    document.querySelector(".nav-menu");
+
+
+if (menuToggle && navMenu) {
+
+    menuToggle.addEventListener("click", () => {
+
+        menuToggle.classList.toggle("open");
+
+        navMenu.classList.toggle("open");
+
+    });
+
+
+    /* Close menu after clicking */
+
+    document.querySelectorAll(".nav-link")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                menuToggle.classList.remove("open");
+
+                navMenu.classList.remove("open");
+
+            });
+
+        });
+
+}
+/* =====================================================
+   GLOBAL 3D MOUSE TILT
+===================================================== */
+
+const tiltElements = document.querySelectorAll(
+".card, .tech-item, .profile-wrapper, .about-photo"
+);
+
+tiltElements.forEach(element => {
+
+    element.addEventListener("mousemove", (e) => {
+
+        const rect = element.getBoundingClientRect();
+
+        const x =
+            e.clientX - rect.left;
+
+        const y =
+            e.clientY - rect.top;
+
+        const centerX =
+            rect.width / 2;
+
+        const centerY =
+            rect.height / 2;
+
+        const rotateY =
+            ((x - centerX) / centerX) * 4;
+
+        const rotateX =
+            ((centerY - y) / centerY) * 4;
+
+
+        element.style.transform = `
+            perspective(1000px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+            translateZ(8px)
+        `;
+
+    });
+
+
+    element.addEventListener("mouseleave", () => {
+
+        element.style.transform = "";
+
+    });
+
+});
+/* =====================================================
+   PROFILE 3D TILT
+===================================================== */
+
+const profile = document.querySelector(".profile-wrapper");
+
+if (profile) {
+
+    profile.addEventListener("mousemove", (e) => {
+
+        const rect =
+            profile.getBoundingClientRect();
+
+        const x =
+            e.clientX - rect.left;
+
+        const y =
+            e.clientY - rect.top;
+
+        const rotateY =
+            ((x / rect.width) - .5) * 12;
+
+        const rotateX =
+            ((y / rect.height) - .5) * -12;
+
+        profile.style.transform = `
+            perspective(800px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+            translateZ(15px)
+        `;
+
+    });
+
+
+    profile.addEventListener("mouseleave", () => {
+
+        profile.style.transform = "";
+
+    });
+
+}
+/* =====================================================
+   3D BACKGROUND MOUSE PARALLAX
+   ===================================================== */
+
+/* =====================================================
+   GLOBAL 3D BACKGROUND PARALLAX
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const background =
+        document.querySelector(".three-d-background");
+
+    if (!background) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let currentX = 0;
+    let currentY = 0;
+
+    document.addEventListener("mousemove", (event) => {
+
+        mouseX =
+            (event.clientX / window.innerWidth - 0.5);
+
+        mouseY =
+            (event.clientY / window.innerHeight - 0.5);
+
+    });
+
+    function animate3D() {
+
+        currentX +=
+            (mouseX - currentX) * 0.04;
+
+        currentY +=
+            (mouseY - currentY) * 0.04;
+
+        const rotateX =
+            currentY * -4;
+
+        const rotateY =
+            currentX * 4;
+
+        background.style.transform =
+            `rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)`;
+
+        requestAnimationFrame(animate3D);
+    }
+
+    animate3D();
 
 });
