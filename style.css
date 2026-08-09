@@ -474,51 +474,51 @@ nav a.active::after{
     opacity:1;
     transform:translateY(0);
 }
-.project-card{
-    position:relative;
-    overflow:hidden;
+/* =========================================
+   PROJECT SECTION ONLY — SHINE EFFECT
+========================================= */
+
+#projects .project-card {
+    position: relative;
+    overflow: hidden;
 }
 
-.project-card::before{
-    content:"";
+#projects .project-card::before {
+    content: "";
 
-    position:absolute;
-    top:-50%;
-    left:-50%;
+    position: absolute;
+    top: -50%;
+    left: -50%;
 
-    width:200%;
-    height:200%;
+    width: 200%;
+    height: 200%;
 
-    background:
-    linear-gradient(
+    background: linear-gradient(
         90deg,
         transparent,
-        rgba(0,229,255,.3),
+        rgba(0, 229, 255, 0.3),
         transparent
     );
 
-    transform:rotate(25deg);
+    transform: translateX(-100%) rotate(25deg);
 
-    opacity:0;
-    transition:.5s;
+    opacity: 0;
+
+    pointer-events: none;
 }
 
-.project-card:hover::before{
-    opacity:1;
-    animation:shine 1s linear;
+#projects .project-card:hover::before {
+    opacity: 1;
+    animation: projectCardShine 1s linear;
 }
 
-@keyframes shine{
-    from{
-        transform:
-        translateX(-100%)
-        rotate(25deg);
+@keyframes projectCardShine {
+    from {
+        transform: translateX(-100%) rotate(25deg);
     }
 
-    to{
-        transform:
-        translateX(100%)
-        rotate(25deg);
+    to {
+        transform: translateX(100%) rotate(25deg);
     }
 }
 .grid-bg{
@@ -638,25 +638,6 @@ nav a.active::after{
     margin:40px auto 0;
     text-align:center;
     color:#94a3b8;
-}
-.tech-item{
-    text-align:center;
-    padding:20px;
-    border-radius:15px;
-
-    background:rgba(39, 28, 28, 0.03);
-    border:1px solid rgba(0,229,255,.2);
-
-    transition:.3s ease;
-}
-
-.tech-item:hover{
-    transform:translateY(-8px);
-
-    box-shadow:
-    0 0 25px rgba(0,229,255,.35);
-
-    border-color:#00e5ff;
 }
 .tech-item{
     position:relative;
