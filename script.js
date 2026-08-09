@@ -248,10 +248,6 @@ if (menuToggle && navMenu) {
    GLOBAL 3D MOUSE TILT
 ===================================================== */
 
-const tiltElements = document.querySelectorAll(
-".card, .tech-item, .profile-wrapper, .about-photo"
-);
-
 tiltElements.forEach(element => {
 
     element.addEventListener("mousemove", (e) => {
