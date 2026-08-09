@@ -31,14 +31,6 @@ body{
     background-size:40px 40px;
 }
 
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:25px 8%;
-}
-
 .logo{
     font-size:2rem;
     font-weight:800;
@@ -396,16 +388,6 @@ footer{
     line-height: 1.9;
     color: #cbd5e1;
     font-size: 1.05rem;
-}
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-
-    backdrop-filter:blur(15px);
-    background:rgba(5,8,22,.7);
 }
 
 nav a{
@@ -2020,8 +2002,7 @@ section.show{
 
 .btn-primary,
 .btn-secondary,
-.book-btn,
-.cta-button {
+.book-btn{
     transform-style: preserve-3d;
 
     transition:
@@ -2032,8 +2013,7 @@ section.show{
 
 .btn-primary:hover,
 .btn-secondary:hover,
-.book-btn:hover,
-.cta-button:hover {
+.book-btn:hover{
     transform:
         perspective(700px)
         translateY(-5px)
@@ -2533,6 +2513,1318 @@ section {
     .brand-logo {
         position: relative;
         z-index: 100001 !important;
+    }
+
+}
+/* =====================================================
+   FINAL MOBILE NAVIGATION FIX
+   ===================================================== */
+
+.main-nav {
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 62px !important;
+
+    padding: 0 6% !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    background: rgba(5, 8, 22, 0.92) !important;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08) !important;
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    z-index: 99999 !important;
+
+    isolation: isolate;
+}
+
+
+/* =========================
+   LOGO
+   ========================= */
+
+.brand-logo {
+    position: relative !important;
+
+    width: 82px !important;
+    height: 50px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    flex-shrink: 0;
+
+    z-index: 100001 !important;
+}
+
+.brand-logo img {
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* =========================
+   DESKTOP MENU
+   ========================= */
+
+.nav-menu {
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 28px;
+
+    list-style: none;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* =========================
+   NAV LINKS
+   ========================= */
+
+.nav-link {
+    position: relative;
+
+    display: inline-block;
+
+    padding: 6px 0;
+
+    color: #aeb9c9;
+
+    text-decoration: none;
+
+    font-size: .72rem;
+
+    font-weight: 600;
+
+    letter-spacing: .4px;
+
+    transition:
+        color .3s ease,
+        transform .25s ease;
+}
+
+.nav-link:hover {
+    color: white;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================
+   ACTIVE / HOVER LINE
+   ========================= */
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: #00e5ff;
+
+    box-shadow:
+        0 0 8px rgba(0,229,255,.7);
+
+    transition:
+        width .3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #00e5ff;
+}
+
+
+/* =========================
+   CONTACT
+   ========================= */
+
+.nav-contact {
+    padding: 7px 14px !important;
+
+    border:
+        1px solid rgba(0,229,255,.35);
+
+    border-radius: 8px;
+
+    color: #00e5ff !important;
+}
+
+.nav-contact::after {
+    display: none;
+}
+
+.nav-contact:hover {
+    background:
+        rgba(0,229,255,.08);
+
+    border-color: #00e5ff;
+
+    box-shadow:
+        0 0 18px rgba(0,229,255,.15);
+}
+
+
+/* =========================
+   MOBILE BUTTON
+   ========================= */
+
+.menu-toggle {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border:
+        1px solid rgba(0,229,255,.25);
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.03);
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    flex-shrink: 0;
+
+    z-index: 100001 !important;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 19px;
+    height: 2px;
+
+    background: #00e5ff;
+
+    border-radius: 10px;
+
+    transition:
+        transform .3s ease,
+        opacity .3s ease;
+}
+
+
+/* =====================================================
+   MOBILE NAVIGATION
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+    .main-nav {
+        height: 60px !important;
+
+        padding:
+            0 5% !important;
+    }
+
+
+    /* SHOW HAMBURGER */
+
+    .menu-toggle {
+        display: flex !important;
+    }
+
+
+    /* HIDE MENU BY DEFAULT */
+
+    .nav-menu {
+
+        position: fixed !important;
+
+        top: 60px !important;
+
+        left: 5% !important;
+        right: 5% !important;
+
+        width: auto !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+
+        gap: 4px !important;
+
+        padding: 12px !important;
+
+        margin: 0 !important;
+
+        background:
+            rgba(5,8,22,.97) !important;
+
+        border:
+            1px solid rgba(255,255,255,.10) !important;
+
+        border-radius: 14px !important;
+
+        box-shadow:
+            0 20px 50px rgba(0,0,0,.45),
+            0 0 25px rgba(0,229,255,.06);
+
+        opacity: 0 !important;
+
+        visibility: hidden !important;
+
+        pointer-events: none !important;
+
+        transform:
+            translateY(-12px) !important;
+
+        transition:
+            opacity .3s ease,
+            transform .3s ease,
+            visibility .3s ease !important;
+
+        z-index: 100000 !important;
+    }
+
+
+    /* OPEN MENU */
+
+    .nav-menu.open {
+
+        opacity: 1 !important;
+
+        visibility: visible !important;
+
+        pointer-events: auto !important;
+
+        transform:
+            translateY(0) !important;
+    }
+
+
+    /* MOBILE LINKS */
+
+    .nav-menu li {
+        width: 100% !important;
+    }
+
+    .nav-link {
+
+        display: block !important;
+
+        width: 100% !important;
+
+        padding:
+            14px 14px !important;
+
+        font-size:
+            .85rem !important;
+
+        border-radius: 8px;
+
+        transform: none !important;
+    }
+
+    .nav-link:hover {
+        background:
+            rgba(0,229,255,.06);
+
+        color: #00e5ff;
+    }
+
+
+    /* MOBILE UNDERLINE */
+
+    .nav-link::after {
+        display: none;
+    }
+
+
+    /* MOBILE CONTACT */
+
+    .nav-contact {
+
+        margin-top: 5px;
+
+        text-align: center;
+
+        padding:
+            12px 14px !important;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+   ===================================================== */
+
+@media (max-width: 400px) {
+
+    .main-nav {
+        padding:
+            0 4% !important;
+    }
+
+    .brand-logo {
+        width: 72px !important;
+        height: 46px !important;
+    }
+
+    .nav-menu {
+        left: 4% !important;
+        right: 4% !important;
+    }
+}
+/* =====================================================
+   FINAL MOBILE NAVIGATION
+===================================================== */
+
+.main-nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 62px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    padding: 0 6% !important;
+
+    background: rgba(5, 8, 22, 0.95) !important;
+
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    z-index: 999999 !important;
+
+    isolation: isolate;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.brand-logo {
+    position: relative !important;
+
+    width: 82px !important;
+    height: 50px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    flex-shrink: 0;
+
+    z-index: 1000001 !important;
+}
+
+.brand-logo img {
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* =========================
+   MENU BUTTON
+========================= */
+
+.menu-toggle {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border: 1px solid rgba(0,229,255,.25);
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,.03);
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    flex-shrink: 0;
+
+    position: relative;
+
+    z-index: 1000002 !important;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 19px;
+    height: 2px;
+
+    background: #00e5ff;
+
+    border-radius: 10px;
+
+    transition: .3s ease;
+}
+
+
+/* =========================
+   DESKTOP MENU
+========================= */
+
+.nav-menu {
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 28px;
+
+    list-style: none;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* =========================
+   NAV LINKS
+========================= */
+
+.nav-link {
+    position: relative;
+
+    display: inline-block;
+
+    padding: 6px 0;
+
+    color: #aeb9c9;
+
+    text-decoration: none;
+
+    font-size: .72rem;
+
+    font-weight: 600;
+
+    letter-spacing: .4px;
+
+    transition:
+        color .3s ease,
+        transform .25s ease;
+}
+
+.nav-link:hover {
+    color: white;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* ACTIVE LINE */
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: #00e5ff;
+
+    box-shadow:
+        0 0 8px rgba(0,229,255,.7);
+
+    transition:
+        width .3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #00e5ff;
+}
+
+
+/* =========================
+   CONTACT BUTTON
+========================= */
+
+.nav-contact {
+    padding: 7px 14px !important;
+
+    border: 1px solid rgba(0,229,255,.35);
+
+    border-radius: 8px;
+
+    color: #00e5ff !important;
+}
+
+.nav-contact::after {
+    display: none;
+}
+
+.nav-contact:hover {
+    background: rgba(0,229,255,.08);
+
+    border-color: #00e5ff;
+
+    box-shadow:
+        0 0 18px rgba(0,229,255,.15);
+}
+
+
+/* =====================================================
+   MOBILE NAVIGATION
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .main-nav {
+        height: 60px !important;
+
+        padding: 0 5% !important;
+    }
+
+
+    /* HAMBURGER */
+
+    .menu-toggle {
+        display: flex !important;
+    }
+
+
+    /* MENU CLOSED */
+
+    .nav-menu {
+        position: fixed !important;
+
+        top: 60px !important;
+
+        left: 5% !important;
+        right: 5% !important;
+
+        width: auto !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+
+        gap: 4px !important;
+
+        padding: 12px !important;
+
+        margin: 0 !important;
+
+        background: rgba(5,8,22,.98) !important;
+
+        border: 1px solid rgba(255,255,255,.10) !important;
+
+        border-radius: 14px !important;
+
+        box-shadow:
+            0 20px 50px rgba(0,0,0,.45),
+            0 0 25px rgba(0,229,255,.08);
+
+        opacity: 0 !important;
+
+        visibility: hidden !important;
+
+        pointer-events: none !important;
+
+        transform: translateY(-12px) !important;
+
+        transition:
+            opacity .3s ease,
+            transform .3s ease,
+            visibility .3s ease !important;
+
+        z-index: 1000000 !important;
+    }
+
+
+    /* MENU OPEN */
+
+    .nav-menu.open {
+        opacity: 1 !important;
+
+        visibility: visible !important;
+
+        pointer-events: auto !important;
+
+        transform: translateY(0) !important;
+    }
+
+
+    /* MENU ITEMS */
+
+    .nav-menu li {
+        width: 100% !important;
+    }
+
+
+    /* LINKS */
+
+    .nav-link {
+        display: block !important;
+
+        width: 100% !important;
+
+        padding: 14px !important;
+
+        font-size: .85rem !important;
+
+        border-radius: 8px;
+
+        transform: none !important;
+    }
+
+
+    .nav-link:hover {
+        background: rgba(0,229,255,.06);
+
+        color: #00e5ff;
+    }
+
+
+    /* REMOVE DESKTOP UNDERLINE */
+
+    .nav-link::after {
+        display: none;
+    }
+
+
+    /* CONTACT */
+
+    .nav-contact {
+        margin-top: 5px;
+
+        text-align: center;
+
+        padding: 12px 14px !important;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+    .main-nav {
+        padding: 0 4% !important;
+    }
+
+    .brand-logo {
+        width: 72px !important;
+        height: 46px !important;
+    }
+
+    .nav-menu {
+        left: 4% !important;
+        right: 4% !important;
+    }
+
+}
+/* =====================================================
+   PROJECT PAGE BACK NAVIGATION
+===================================================== */
+
+.project-back-nav {
+    position: fixed;
+
+    top: 70px;
+    left: 6%;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px 8px;
+
+    color: #94a3b8;
+
+    text-decoration: none;
+
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .2px;
+
+    background: rgba(5, 8, 22, .65);
+
+    border: 1px solid rgba(0, 229, 255, .15);
+
+    border-radius: 6px;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    z-index: 9998;
+
+    transition:
+        color .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+/* Arrow */
+
+.project-back-nav span:first-child {
+    color: #00e5ff;
+
+    font-size: 1rem;
+
+    transition:
+        transform .3s ease;
+}
+
+
+/* Hover */
+
+.project-back-nav:hover {
+
+    color: #ffffff;
+
+    background:
+        rgba(0, 229, 255, .08);
+
+    border-color:
+        rgba(0, 229, 255, .5);
+
+    transform:
+        translateX(-3px);
+
+    box-shadow:
+        0 0 18px
+        rgba(0, 229, 255, .12);
+}
+
+
+.project-back-nav:hover span:first-child {
+
+    transform:
+        translateX(-4px);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .project-back-nav {
+
+        top: 68px;
+
+        left: 5%;
+
+        padding: 7px 11px;
+
+        font-size: .68rem;
+
+        gap: 6px;
+
+        border-radius: 8px;
+    }
+
+    .project-back-nav span:first-child {
+
+        font-size: .95rem;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .project-back-nav {
+
+        left: 4%;
+
+        top: 66px;
+
+        font-size: .65rem;
+
+        padding: 7px 10px;
+    }
+
+}
+/* =====================================================
+   PROJECT PAGE - MOBILE LAYOUT FIX
+===================================================== */
+
+@media (max-width: 650px) {
+
+    /* Prevent horizontal overflow */
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* ---------------------------------
+       PROJECT HEADER
+    --------------------------------- */
+
+    .projects-header {
+        width: 100%;
+        max-width: 100%;
+
+        padding:
+            125px 20px 35px;
+
+        margin: 0;
+    }
+
+    .projects-label {
+        font-size: .6rem;
+        letter-spacing: 1.5px;
+    }
+
+    .projects-header h1 {
+        font-size: 2.25rem;
+        line-height: 1.15;
+
+        margin-bottom: 14px;
+    }
+
+    .projects-header p {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: .82rem;
+        line-height: 1.7;
+
+        padding: 0 5px;
+    }
+
+
+    /* ---------------------------------
+       PROJECT CONTAINER
+    --------------------------------- */
+
+    .projects {
+        width: 100% !important;
+
+        padding:
+            0 18px 40px;
+
+        margin: 0 auto;
+    }
+
+
+    /* ---------------------------------
+       PROJECT GRID
+    --------------------------------- */
+
+    .project-grid {
+        width: 100% !important;
+
+        display: grid !important;
+
+        grid-template-columns: 1fr !important;
+
+        gap: 18px !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+    }
+
+
+    /* ---------------------------------
+       PROJECT CARD
+    --------------------------------- */
+
+    .project-card {
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        min-width: 0 !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        border-radius: 14px;
+
+        overflow: hidden;
+
+        transform: none;
+    }
+
+
+    /* ---------------------------------
+       PROJECT IMAGE
+    --------------------------------- */
+
+    .project-image {
+        width: 100%;
+
+        height: 175px;
+
+        padding: 9px;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+
+        max-width: 100%;
+    }
+
+
+    /* ---------------------------------
+       PROJECT CONTENT
+    --------------------------------- */
+
+    .project-info {
+        width: 100%;
+
+        padding: 18px;
+    }
+
+    .project-type {
+        font-size: .58rem;
+
+        letter-spacing: 1.3px;
+
+        margin-bottom: 8px;
+    }
+
+    .project-info h2 {
+        font-size: 1rem;
+
+        line-height: 1.4;
+
+        margin-bottom: 9px;
+    }
+
+    .project-info p {
+        width: 100%;
+
+        font-size: .76rem;
+
+        line-height: 1.7;
+
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+
+    /* ---------------------------------
+       TOOLS
+    --------------------------------- */
+
+    .tools {
+        width: 100%;
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 6px;
+
+        margin-top: 15px;
+    }
+
+    .tools span {
+        font-size: .58rem;
+
+        padding: 5px 7px;
+    }
+
+
+    /* ---------------------------------
+       FOOTER
+    --------------------------------- */
+
+    footer {
+        width: 100%;
+
+        padding:
+            25px 18px;
+
+        font-size: .62rem;
+    }
+
+}
+/* =========================================
+   MOBILE NAV — TOGGLE ON RIGHT
+========================================= */
+
+@media (max-width: 800px) {
+
+    .main-nav {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+
+    .brand-logo {
+        margin-right: auto !important;
+    }
+
+    .menu-toggle {
+        display: flex !important;
+
+        margin-left: auto !important;
+        margin-right: 0 !important;
+
+        position: relative !important;
+
+        width: 42px;
+        height: 42px;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+@media (max-width: 800px) {
+
+    .main-nav {
+        position: relative !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    .main-nav .brand-logo {
+        position: absolute !important;
+        left: 5% !important;
+    }
+
+    .main-nav .menu-toggle {
+        position: absolute !important;
+        right: 5% !important;
+        left: auto !important;
+
+        margin: 0 !important;
+
+        display: flex !important;
+    }
+
+}
+/* =========================================
+   KEEP HEADER VISIBLE WHILE SCROLLING
+========================================= */
+
+.main-nav {
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 62px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    z-index: 999999 !important;
+
+    transform: translateY(0) !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    transition: background .3s ease,
+                box-shadow .3s ease !important;
+}
+/* =========================================
+   PHONE ONLY — CARD TEXT SPACING FIX
+========================================= */
+
+@media (max-width: 800px) {
+
+    /* ---------------------------------
+       GENERAL CARD SPACING
+    --------------------------------- */
+
+    .project-card,
+    .card {
+        padding: 24px 20px !important;
+        border-radius: 16px;
+    }
+
+
+    /* ---------------------------------
+       SERVICES
+    --------------------------------- */
+
+    #services .project-card {
+        padding: 24px 20px !important;
+    }
+
+    #services .project-card h3 {
+        margin-bottom: 14px;
+        line-height: 1.35;
+    }
+
+    #services .project-card p{
+    font-size:0.9rem;
+    line-height:1.6;
+    text-align:justify;
+    text-justify:inter-word;
+}
+
+    /* ---------------------------------
+       FEATURED PROJECT
+    --------------------------------- */
+
+    #projects .project-card {
+        padding: 26px 20px !important;
+    }
+
+    #projects .project-card h3 {
+        margin-bottom: 14px;
+        line-height: 1.35;
+    }
+
+    #projects .project-card p {
+        font-size:0.9rem;
+    line-height:1.6;
+    text-align:justify;
+    text-justify:inter-word;
+    }
+
+
+    /* ---------------------------------
+       WHY WORK WITH ME
+    --------------------------------- */
+
+    #why-me .project-card {
+        padding: 24px 20px !important;
+    }
+
+    #why-me .project-card h3 {
+        margin-bottom: 14px;
+        line-height: 1.35;
+    }
+
+    #why-me .project-card p {
+        font-size:0.9rem;
+    line-height:1.6;
+    text-align:justify;
+    text-justify:inter-word;
+    }
+
+
+    /* ---------------------------------
+       PROJECT GRID GAP
+    --------------------------------- */
+
+    .project-grid {
+        gap: 24px !important;
+    }
+
+
+    /* ---------------------------------
+       HEADINGS
+    --------------------------------- */
+
+    #services h2,
+    #projects h2,
+    #why-me h2 {
+        line-height: 1.2;
+        margin-bottom: 24px;
+    }
+
+
+    /* ---------------------------------
+       FEATURED PROJECT SPACING
+    --------------------------------- */
+
+    .project-note {
+        line-height: 1.7;
+        padding: 0 10px;
+    }
+
+
+    /* ---------------------------------
+       STAT CARDS
+    --------------------------------- */
+
+    .stat-card {
+        padding: 28px 18px !important;
+    }
+
+    .stat-card h3 {
+        margin-bottom: 10px;
+        line-height: 1.2;
+    }
+
+    .stat-card p {
+        line-height: 1.6;
     }
 
 }

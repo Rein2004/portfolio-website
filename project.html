@@ -284,90 +284,6 @@
                 rgba(0,229,255,.13);
         }
 
-
-        /* =========================
-           CTA
-        ========================= */
-
-        .cta{
-
-            text-align:center;
-
-            padding:40px 20px;
-
-            border-top:
-                1px solid rgba(255,255,255,.06);
-
-            background:
-                rgba(0,229,255,.015);
-        }
-
-        .cta-small{
-
-            color:#00e5ff;
-
-            font-size:.65rem;
-
-            font-weight:700;
-
-            letter-spacing:2px;
-
-            text-transform:uppercase;
-
-            margin-bottom:12px;
-        }
-
-        .cta h2{
-
-            font-size:2rem;
-
-            margin-bottom:12px;
-        }
-
-        .cta p{
-
-            max-width:550px;
-
-            margin:0 auto 25px;
-
-            color:#94a3b8;
-
-            font-size:.85rem;
-
-            line-height:1.7;
-        }
-
-        .cta-button{
-
-            display:inline-block;
-
-            padding:11px 20px;
-
-            border-radius:8px;
-
-            background:#00e5ff;
-
-            color:#050816;
-
-            text-decoration:none;
-
-            font-size:.75rem;
-
-            font-weight:700;
-
-            transition:.3s ease;
-        }
-
-        .cta-button:hover{
-
-            transform:translateY(-2px);
-
-            box-shadow:
-                0 10px 25px
-                rgba(0,229,255,.2);
-        }
-
-
         /* =========================
            FOOTER
         ========================= */
@@ -446,12 +362,6 @@
 
             }
 
-            .cta h2{
-
-                font-size:1.6rem;
-
-            }
-
         }
 
     </style>
@@ -497,6 +407,11 @@
             alt="Reinold Leonida"
         >
     </a>
+    <!-- BACK TO PROJECTS SECTION -->
+<a href="about.html#projects" class="project-back-nav">
+    <span>←</span>
+    <span>Back to Projects</span>
+</a>
 
 
     <!-- MOBILE MENU BUTTON -->
@@ -735,45 +650,49 @@
 
 </main>
 
-
-
-<!-- =========================
-     CTA
-========================= -->
-
-<section class="cta">
-
-    <div class="cta-small">
-        Need Automation?
-    </div>
-
-    <h2>
-        Turn Repetitive Work Into Smart Workflows.
-    </h2>
-
-    <p>
-        I build practical automation systems that help businesses
-        save time, stay organized, and operate more efficiently.
-    </p>
-
-    <a
-        href="about.html#contact"
-        class="cta-button">
-
-        Let's Work Together →
-
-    </a>
-
-</section>
-
-
-
 <footer>
 
     © 2026 Reinold Leonida. All Rights Reserved.
 
 </footer>
 
+<script>
 
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector(".nav-menu");
+const navLinks = document.querySelectorAll(".nav-link");
+
+menuToggle.addEventListener("click", function () {
+
+    navMenu.classList.toggle("open");
+
+    const isOpen = navMenu.classList.contains("open");
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+});
+
+
+// Close menu after selecting a navigation link
+
+navLinks.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        navMenu.classList.remove("open");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    });
+
+});
+
+</script>
 </body>
 </html>
