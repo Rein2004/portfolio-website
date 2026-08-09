@@ -115,52 +115,31 @@
 
 
         /* =========================
-           PROJECT GRID
-        ========================= */
-
-        .projects{
-
-            width:90%;
-
-            max-width:1150px;
-
-            margin:0 auto;
-
-            padding-bottom:90px;
-        }
-
-        .project-grid{
-
-            display:grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap:22px;
-        }
-
-
-        /* =========================
            PROJECT CARD
         ========================= */
 
         .project-card{
 
-            background:
-                rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 
-            border:
-                1px solid rgba(255,255,255,.09);
+    border:
+        1px solid rgba(255,255,255,.09);
 
-            border-radius:14px;
+    border-radius:14px;
 
-            overflow:hidden;
+    overflow:hidden;
 
-            transition:
-                transform .3s ease,
-                border-color .3s ease,
-                box-shadow .3s ease;
-        }
+    height:auto;
+    min-height:0;
+
+    align-self:start;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
 
         .project-card:hover{
 
@@ -230,8 +209,11 @@
 
         .project-info{
 
-            padding:20px;
-        }
+    padding:20px;
+
+    height:auto;
+    min-height:0;
+}
 
         .project-type{
 
@@ -311,7 +293,7 @@
 
             text-align:center;
 
-            padding:70px 20px;
+            padding:40px 20px;
 
             border-top:
                 1px solid rgba(255,255,255,.06);

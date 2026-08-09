@@ -135,19 +135,6 @@ section{
     flex-direction:column;
     justify-content:center;
 }
-section{
-    opacity:0;
-    transform:translateY(80px);
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
-}
-
-section.show{
-    opacity:1;
-    transform:translateY(0);
-}
 
 section h2{
     color:#00e5ff;
@@ -732,17 +719,6 @@ html{
 .tech-item:hover::before{
     opacity:1;
     animation:shine 1s linear;
-}
-.card{
-    opacity:0;
-    transform:translateY(40px);
-    transition:
-        opacity .6s ease,
-        transform .6s ease;
-}
-.card.show{
-    opacity:1;
-    transform:translateY(0);
 }
 .hero-container{
     max-width:1200px;
@@ -1943,22 +1919,17 @@ section.show{
         box-shadow .35s ease,
         border-color .35s ease;
 }
-
 .card:hover,
 .project-card:hover,
 .tech-item:hover {
     transform:
-        perspective(1000px)
-        rotateX(3deg)
-        rotateY(-3deg)
-        translateY(-8px)
-        translateZ(10px);
+        translateY(-5px)
+        translateZ(4px);
 
     box-shadow:
-        0 20px 45px rgba(0,0,0,.35),
-        0 0 25px rgba(0,229,255,.12);
+        0 12px 25px rgba(0,0,0,.25),
+        0 0 15px rgba(0,229,255,.08);
 }
-
 
 /* =====================================================
    3D CONTENT DEPTH
@@ -2477,6 +2448,91 @@ section {
 
         width: 400px;
         height: 400px;
+    }
+
+}
+/* =====================================================
+   LIGHTWEIGHT 3D BACKGROUND
+===================================================== */
+
+.three-d-background {
+    opacity: .65;
+    perspective: 900px;
+}
+
+.perspective-grid {
+    opacity: .16;
+    filter: none;
+    animation-duration: 14s;
+}
+
+.particles span {
+    width: 3px;
+    height: 3px;
+    opacity: .3;
+
+    box-shadow:
+        0 0 5px rgba(0,229,255,.4);
+
+    animation-duration: 10s;
+}
+
+.depth-glow {
+    width: 450px;
+    height: 450px;
+    filter: blur(20px);
+    opacity: .55;
+    animation-duration: 12s;
+}
+/* =====================================================
+   DISABLE MOUSE EFFECTS ON TOUCH DEVICES
+===================================================== */
+
+@media (hover: none), (pointer: coarse) {
+
+    .cursor-glow {
+        display: none !important;
+    }
+
+    .three-d-background {
+        transform: none !important;
+    }
+
+}
+/* =====================================================
+   MOBILE NAVIGATION FIX
+===================================================== */
+
+.main-nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+
+    z-index: 99999 !important;
+
+    isolation: isolate;
+}
+
+@media (max-width: 800px) {
+
+    .main-nav {
+        height: 60px !important;
+    }
+
+    .nav-menu {
+        z-index: 100000 !important;
+    }
+
+    .menu-toggle {
+        position: relative;
+        z-index: 100001 !important;
+    }
+
+    .brand-logo {
+        position: relative;
+        z-index: 100001 !important;
     }
 
 }

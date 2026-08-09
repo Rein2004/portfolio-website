@@ -295,54 +295,8 @@ tiltElements.forEach(element => {
 
 });
 /* =====================================================
-   PROFILE 3D TILT
+LIGHTWEIGHT 3D BACKGROUND PARALLAX
 ===================================================== */
-
-const profile = document.querySelector(".profile-wrapper");
-
-if (profile) {
-
-    profile.addEventListener("mousemove", (e) => {
-
-        const rect =
-            profile.getBoundingClientRect();
-
-        const x =
-            e.clientX - rect.left;
-
-        const y =
-            e.clientY - rect.top;
-
-        const rotateY =
-            ((x / rect.width) - .5) * 12;
-
-        const rotateX =
-            ((y / rect.height) - .5) * -12;
-
-        profile.style.transform = `
-            perspective(800px)
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-            translateZ(15px)
-        `;
-
-    });
-
-
-    profile.addEventListener("mouseleave", () => {
-
-        profile.style.transform = "";
-
-    });
-
-}
-/* =====================================================
-   3D BACKGROUND MOUSE PARALLAX
-   ===================================================== */
-
-/* =====================================================
-   GLOBAL 3D BACKGROUND PARALLAX
-   ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -365,21 +319,21 @@ document.addEventListener("DOMContentLoaded", () => {
         mouseY =
             (event.clientY / window.innerHeight - 0.5);
 
-    });
+    }, { passive: true });
 
     function animate3D() {
 
         currentX +=
-            (mouseX - currentX) * 0.04;
+            (mouseX - currentX) * 0.025;
 
         currentY +=
-            (mouseY - currentY) * 0.04;
+            (mouseY - currentY) * 0.025;
 
         const rotateX =
-            currentY * -4;
+            currentY * -2;
 
         const rotateY =
-            currentX * 4;
+            currentX * 2;
 
         background.style.transform =
             `rotateX(${rotateX}deg)
