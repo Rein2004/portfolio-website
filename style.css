@@ -3083,3 +3083,55 @@ section {
 body:hover .cursor-glow {
     opacity: 1;
 }
+/* =========================================
+   PROJECT PAGE — MINIMALIST CARD SIZE
+========================================= */
+
+.projects {
+    width: 92%;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.projects .project-grid {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* Slightly smaller project cards */
+.projects .project-card {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Smaller project preview */
+.projects .project-image {
+    height: 150px;
+    padding: 8px;
+}
+
+/* Compact card content */
+.projects .project-info {
+    padding: 17px;
+}
+
+.projects .project-info h2 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.projects .project-info p {
+    font-size: .74rem;
+    line-height: 1.6;
+}
+
+.projects .tools {
+    margin-top: 13px;
+    gap: 5px;
+}
+
+.projects .tools span {
+    font-size: .57rem;
+    padding: 4px 7px;
+}
