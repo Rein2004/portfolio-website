@@ -1,8 +1,8 @@
 const roles = [
-    "Tech Virtual Assistant",
-    "AI Automation Specialist",
-    "CRM Manager",
-    "Workflow Architect",
+    "GoHighLevel Specialist",
+    "Funnel & Pipeline Builder",
+    "CRM & Automation Specialist",
+    "AI Workflow Automation Specialist",
     "Business Systems Builder"
 ];
 
