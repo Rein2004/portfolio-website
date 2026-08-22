@@ -39,7 +39,6 @@
         .grid-bg{
             position:fixed;
             inset:0;
-
             z-index:-2;
 
             background-image:
@@ -115,31 +114,138 @@
 
 
         /* =========================
+           PLATFORM SECTION
+        ========================= */
+
+        .platform-section{
+
+            width:90%;
+
+            max-width:1200px;
+
+            margin:0 auto 80px;
+        }
+
+
+        /* =========================
+           PLATFORM TITLE
+        ========================= */
+
+        .platform-header{
+
+            display:flex;
+
+            align-items:center;
+
+            gap:15px;
+
+            margin-bottom:25px;
+
+            padding-bottom:15px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+        }
+
+        .platform-number{
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            width:38px;
+
+            height:38px;
+
+            border-radius:8px;
+
+            background:
+                rgba(0,229,255,.08);
+
+            border:
+                1px solid
+                rgba(0,229,255,.2);
+
+            color:#00e5ff;
+
+            font-size:.7rem;
+
+            font-weight:700;
+
+            letter-spacing:1px;
+        }
+
+        .platform-header h2{
+
+            font-size:1.5rem;
+
+            line-height:1.2;
+
+            color:#ffffff;
+        }
+
+        .platform-header p{
+
+            margin-left:auto;
+
+            color:#64748b;
+
+            font-size:.7rem;
+
+            letter-spacing:1px;
+
+            text-transform:uppercase;
+        }
+
+
+        /* =========================
+           PROJECT GRID
+        ========================= */
+
+        .project-grid{
+
+            display:grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap:20px;
+
+            align-items:start;
+        }
+
+
+        /* =========================
            PROJECT CARD
         ========================= */
 
         .project-card{
 
-    background:
-        rgba(255,255,255,.025);
+            background:
+                rgba(255,255,255,.025);
 
-    border:
-        1px solid rgba(255,255,255,.09);
+            border:
+                1px solid
+                rgba(255,255,255,.09);
 
-    border-radius:14px;
+            border-radius:14px;
 
-    overflow:hidden;
+            overflow:hidden;
 
-    height:auto;
-    min-height:0;
+            height:auto;
 
-    align-self:start;
+            min-height:0;
 
-    transition:
-        transform .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
-}
+            align-self:start;
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+        }
 
         .project-card:hover{
 
@@ -169,7 +275,8 @@
             background:#090d1d;
 
             border-bottom:
-                1px solid rgba(255,255,255,.07);
+                1px solid
+                rgba(255,255,255,.07);
 
             display:flex;
 
@@ -209,11 +316,12 @@
 
         .project-info{
 
-    padding:20px;
+            padding:20px;
 
-    height:auto;
-    min-height:0;
-}
+            height:auto;
+
+            min-height:0;
+        }
 
         .project-type{
 
@@ -230,7 +338,7 @@
             margin-bottom:9px;
         }
 
-        .project-info h2{
+        .project-info h3{
 
             font-size:1.05rem;
 
@@ -284,6 +392,7 @@
                 rgba(0,229,255,.13);
         }
 
+
         /* =========================
            FOOTER
         ========================= */
@@ -295,7 +404,8 @@
             text-align:center;
 
             border-top:
-                1px solid rgba(255,255,255,.05);
+                1px solid
+                rgba(255,255,255,.05);
 
             color:#64748b;
 
@@ -313,9 +423,12 @@
 
                 grid-template-columns:
                     repeat(2,1fr);
-
             }
 
+            .platform-header p{
+
+                display:none;
+            }
         }
 
 
@@ -328,40 +441,52 @@
             .top-nav{
 
                 padding:18px 5%;
-
             }
 
             .projects-header{
 
                 padding:
                     60px 20px 40px;
-
             }
 
             .projects-header h1{
 
                 font-size:2.3rem;
-
             }
 
             .project-grid{
 
                 grid-template-columns:1fr;
-
             }
 
-            .projects{
+            .platform-section{
 
                 width:90%;
 
+                margin-bottom:60px;
+            }
+
+            .platform-header{
+
+                gap:10px;
+            }
+
+            .platform-header h2{
+
+                font-size:1.25rem;
+            }
+
+            .platform-number{
+
+                width:34px;
+
+                height:34px;
             }
 
             .project-image{
 
                 height:190px;
-
             }
-
         }
 
     </style>
@@ -370,342 +495,625 @@
 
 
 <body>
+
     <div class="cursor-glow"></div>
+
     <script>
 
-const cursorGlow = document.querySelector(".cursor-glow");
+        const cursorGlow =
+            document.querySelector(".cursor-glow");
 
-document.addEventListener("mousemove", (e) => {
+        document.addEventListener("mousemove", (e) => {
 
-    cursorGlow.style.left = e.clientX + "px";
-    cursorGlow.style.top = e.clientY + "px";
+            cursorGlow.style.left =
+                e.clientX + "px";
 
-});
+            cursorGlow.style.top =
+                e.clientY + "px";
 
-</script>
+        });
+
+    </script>
 
 
-<div class="grid-bg"></div>
-<div class="three-d-background">
-    <div class="perspective-grid"></div>
+    <div class="grid-bg"></div>
 
-    <div class="particles">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+    <div class="three-d-background">
+
+        <div class="perspective-grid"></div>
+
+        <div class="particles">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <div class="depth-glow"></div>
+
     </div>
 
-    <div class="depth-glow"></div>
-</div>
 
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-<nav class="main-nav">
+    <nav class="main-nav">
 
-    <!-- LOGO -->
-     <div class="brand-logo">
-    <img
-        src="Logo.png"
-        alt="Reinold Leonida"
-    >
-</div>
-    <!-- BACK TO PROJECTS SECTION -->
-<a href="about.html#projects" class="project-back-nav">
-    <span>←</span>
-    <span>Back to Projects</span>
-</a>
+        <!-- LOGO -->
 
+        <div class="brand-logo">
 
-    <!-- MOBILE MENU BUTTON -->
-    <button
-        class="menu-toggle"
-        aria-label="Open navigation"
-    >
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-
-    <!-- NAVIGATION LINKS -->
-    <ul class="nav-menu">
-
-        <li>
-            <a href="index.html" class="nav-link">
-                Home
-            </a>
-        </li>
-
-        <li>
-            <a href="about.html#about" class="nav-link">
-                About
-            </a>
-        </li>
-
-        <li>
-            <a href="about.html#services" class="nav-link">
-                Services
-            </a>
-        </li>
-
-        <li>
-            <a href="project.html" class="nav-link active">
-                Projects
-            </a>
-        </li>
-
-        <li>
-            <a
-                href="about.html#contact"
-                class="nav-link nav-contact"
+            <img
+                src="Logo.png"
+                alt="Reinold Leonida"
             >
-                Contact
-            </a>
-        </li>
 
-    </ul>
-
-</nav>
+        </div>
 
 
+        <!-- BACK TO PROJECTS -->
 
-<!-- =========================
-     HEADER
-========================= -->
+        <a
+            href="about.html#projects"
+            class="project-back-nav"
+        >
 
-<header class="projects-header">
+            <span>←</span>
 
-    <span class="projects-label">
-        Automation Portfolio
-    </span>
+            <span>Back to Projects</span>
 
-    <h1>
-        My Projects
-    </h1>
-
-    <p>
-        A selection of automation systems designed to reduce repetitive work,
-        connect business tools, organize processes, and improve operational
-        efficiency.
-    </p>
-
-</header>
+        </a>
 
 
+        <!-- MOBILE MENU BUTTON -->
 
-<!-- =========================
-     PROJECTS
-========================= -->
+        <button
+            class="menu-toggle"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
 
-<main class="projects">
+            <span></span>
+            <span></span>
+            <span></span>
 
-    <div class="project-grid">
+        </button>
 
 
-        <!-- =====================
-             PROJECT 01
-        ====================== -->
+        <!-- NAVIGATION LINKS -->
 
-        <article class="project-card">
+        <ul class="nav-menu">
 
-            <div class="project-image">
+            <li>
 
-                <img
-                    src="clientonboarding.png"
-                    alt="Client Onboarding Automation workflow"
+                <a
+                    href="index.html"
+                    class="nav-link"
                 >
+                    Home
+                </a>
 
+            </li>
+
+            <li>
+
+                <a
+                    href="about.html#about"
+                    class="nav-link"
+                >
+                    About
+                </a>
+
+            </li>
+
+            <li>
+
+                <a
+                    href="about.html#services"
+                    class="nav-link"
+                >
+                    Services
+                </a>
+
+            </li>
+
+            <li>
+
+                <a
+                    href="project.html"
+                    class="nav-link active"
+                >
+                    Projects
+                </a>
+
+            </li>
+
+            <li>
+
+                <a
+                    href="about.html#contact"
+                    class="nav-link nav-contact"
+                >
+                    Contact
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =========================
+         PAGE HEADER
+    ========================= -->
+
+    <header class="projects-header">
+
+        <span class="projects-label">
+            Automation Portfolio
+        </span>
+
+        <h1>
+            My Projects
+        </h1>
+
+        <p>
+            A selection of automation systems, funnel builds,
+            and workflow solutions designed to reduce repetitive
+            work, organize processes, and improve operational
+            efficiency.
+        </p>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         GOHIGHLEVEL PROJECTS
+    ====================================================== -->
+
+    <section class="platform-section">
+
+        <div class="platform-header">
+
+            <div class="platform-number">
+                01
             </div>
 
+            <h2>
+                GoHighLevel Projects
+            </h2>
 
-            <div class="project-info">
+            <p>
+                Funnels, Websites & Automation
+            </p>
 
-                <span class="project-type">
-                    CLIENT OPERATIONS
-                </span>
-
-                <h2>
-                    Client Onboarding Automation
-                </h2>
-
-                <p>
-                    Automates repetitive onboarding tasks and connects
-                    business tools to create a more organized client
-                    experience while reducing manual administrative work.
-                </p>
+        </div>
 
 
-                <div class="tools">
+        <div class="project-grid">
 
-                    <span>n8n</span>
 
-                    <span>APIs</span>
+            <!-- GHL PROJECT 01 -->
 
-                    <span>Business Tools</span>
+            <article class="project-card">
+
+                <div class="project-image">
+
+                    <img
+                        src="funnel.png"
+                        alt="GoHighLevel funnel system from opt-in page to thank you page"
+                    >
 
                 </div>
 
-            </div>
 
-        </article>
+                <div class="project-info">
 
+                    <span class="project-type">
+                        FUNNEL BUILD
+                    </span>
 
+                    <h3>
+                        GoHighLevel Funnel System
+                    </h3>
 
-        <!-- =====================
-             PROJECT 02
-        ====================== -->
-
-        <article class="project-card">
-
-            <div class="project-image">
-
-                <img
-                    src="Leadfollowup.png"
-                    alt="Sales and Follow-Up Automation workflow"
-                >
-
-            </div>
+                    <p>
+                        Built a complete funnel system in GoHighLevel
+                        from the ground up, including an opt-in page,
+                        checkout page, upsell page, and thank you page
+                        to create a connected customer journey.
+                    </p>
 
 
-            <div class="project-info">
+                    <div class="tools">
 
-                <span class="project-type">
-                    SALES AUTOMATION
-                </span>
+                        <span>GoHighLevel</span>
+                        <span>Funnel Builder</span>
+                        <span>Checkout</span>
+                        <span>Upsell</span>
 
-                <h2>
-                    Sales & Follow-Up Automation
-                </h2>
-
-                <p>
-                    Streamlines repetitive sales and follow-up activities,
-                    helping businesses keep leads organized, maintain
-                    consistent follow-ups, and reduce manual tracking.
-                </p>
-
-
-                <div class="tools">
-
-                    <span>n8n</span>
-
-                    <span>APIs</span>
-
-                    <span>Business Tools</span>
+                    </div>
 
                 </div>
 
-            </div>
-
-        </article>
+            </article>
 
 
+            <!-- GHL PROJECT 02 -->
 
-        <!-- =====================
-             PROJECT 03
-        ====================== -->
+            <article class="project-card">
 
-        <article class="project-card">
+                <div class="project-image">
 
-            <div class="project-image">
-
-                <img
-                    src="weeklysalesreport.png"
-                    alt="Weekly Sales Reporting and Order Management Automation workflow"
-                >
-
-            </div>
-
-
-            <div class="project-info">
-
-                <span class="project-type">
-                    REPORTING & OPERATIONS
-                </span>
-
-                <h2>
-                    Weekly Sales Reporting & Order Management
-                </h2>
-
-                <p>
-                    Automates sales data collection, order organization,
-                    and weekly reporting to reduce manual processing and
-                    make business updates easier to manage.
-                </p>
-
-
-                <div class="tools">
-
-                    <span>n8n</span>
-
-                    <span>APIs</span>
-
-                    <span>Business Tools</span>
+                    <img
+                        src="ghlmika.png"
+                        alt="GoHighLevel funnel workflow automation"
+                    >
 
                 </div>
 
+
+                <div class="project-info">
+
+                    <span class="project-type">
+                        WORKFLOW AUTOMATION
+                    </span>
+
+                    <h3>
+                        GoHighLevel Funnel Workflow Automation
+                    </h3>
+
+                    <p>
+                        Built the automation workflow behind the funnel
+                        to manage customer actions, order events,
+                        follow-up processes, and movement through the
+                        funnel journey with less manual work.
+                    </p>
+
+
+                    <div class="tools">
+
+                        <span>GoHighLevel</span>
+                        <span>Workflows</span>
+                        <span>CRM</span>
+                        <span>Automation</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         n8n PROJECTS
+    ====================================================== -->
+
+    <section class="platform-section">
+
+        <div class="platform-header">
+
+            <div class="platform-number">
+                02
             </div>
 
-        </article>
+            <h2>
+                n8n Projects
+            </h2>
+
+            <p>
+                Workflow Automation
+            </p>
+
+        </div>
 
 
-    </div>
-
-</main>
-
-<footer>
-
-    © 2026 Reinold Leonida. All Rights Reserved.
-
-</footer>
-
-<script>
-
-const menuToggle = document.querySelector(".menu-toggle");
-const navMenu = document.querySelector(".nav-menu");
-const navLinks = document.querySelectorAll(".nav-link");
-
-menuToggle.addEventListener("click", function () {
-
-    navMenu.classList.toggle("open");
-
-    const isOpen = navMenu.classList.contains("open");
-
-    menuToggle.setAttribute(
-        "aria-expanded",
-        isOpen
-    );
-
-});
+        <div class="project-grid">
 
 
-// Close menu after selecting a navigation link
+            <!-- n8n PROJECT 01 -->
 
-navLinks.forEach(function(link) {
+            <article class="project-card">
 
-    link.addEventListener("click", function() {
+                <div class="project-image">
 
-        navMenu.classList.remove("open");
+                    <img
+                        src="clientonboarding.png"
+                        alt="Client Onboarding Automation workflow"
+                    >
 
-        menuToggle.setAttribute(
-            "aria-expanded",
-            "false"
+                </div>
+
+
+                <div class="project-info">
+
+                    <span class="project-type">
+                        CLIENT OPERATIONS
+                    </span>
+
+                    <h3>
+                        Client Onboarding Automation
+                    </h3>
+
+                    <p>
+                        Automates repetitive onboarding tasks and connects
+                        business tools to create a more organized client
+                        experience while reducing manual administrative work.
+                    </p>
+
+
+                    <div class="tools">
+
+                        <span>n8n</span>
+                        <span>APIs</span>
+                        <span>Business Tools</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- n8n PROJECT 02 -->
+
+            <article class="project-card">
+
+                <div class="project-image">
+
+                    <img
+                        src="Leadfollowup.png"
+                        alt="Sales and Follow-Up Automation workflow"
+                    >
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <span class="project-type">
+                        SALES AUTOMATION
+                    </span>
+
+                    <h3>
+                        Sales & Follow-Up Automation
+                    </h3>
+
+                    <p>
+                        Streamlines repetitive sales and follow-up activities,
+                        helping businesses keep leads organized, maintain
+                        consistent follow-ups, and reduce manual tracking.
+                    </p>
+
+
+                    <div class="tools">
+
+                        <span>n8n</span>
+                        <span>APIs</span>
+                        <span>Business Tools</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- n8n PROJECT 03 -->
+
+            <article class="project-card">
+
+                <div class="project-image">
+
+                    <img
+                        src="weeklysalesreport.png"
+                        alt="Weekly Sales Reporting and Order Management Automation workflow"
+                    >
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <span class="project-type">
+                        REPORTING & OPERATIONS
+                    </span>
+
+                    <h3>
+                        Weekly Sales Reporting & Order Management
+                    </h3>
+
+                    <p>
+                        Automates sales data collection, order organization,
+                        and weekly reporting to reduce manual processing and
+                        make business updates easier to manage.
+                    </p>
+
+
+                    <div class="tools">
+
+                        <span>n8n</span>
+                        <span>APIs</span>
+                        <span>Business Tools</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ZAPIER PROJECTS
+    ====================================================== -->
+
+    <section class="platform-section">
+
+        <div class="platform-header">
+
+            <div class="platform-number">
+                03
+            </div>
+
+            <h2>
+                Zapier Projects
+            </h2>
+
+            <p>
+                App Integration & Automation
+            </p>
+
+        </div>
+
+
+        <div class="project-grid">
+
+
+            <!-- ZAPIER PROJECT 01 -->
+
+            <article class="project-card">
+
+                <div class="project-image">
+
+                    <img
+                        src="clientonboarding.png"
+                        alt="Zapier automation project"
+                    >
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <span class="project-type">
+                        WORKFLOW AUTOMATION
+                    </span>
+
+                    <h3>
+                        Business Workflow Automation
+                    </h3>
+
+                    <p>
+                        Connected business applications through automated
+                        workflows to move information between systems and
+                        reduce repetitive manual tasks.
+                    </p>
+
+
+                    <div class="tools">
+
+                        <span>Zapier</span>
+                        <span>Automation</span>
+                        <span>App Integration</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        © 2026 Reinold Leonida. All Rights Reserved.
+
+    </footer>
+
+
+
+    <!-- =========================
+         MOBILE MENU SCRIPT
+    ========================= -->
+
+    <script>
+
+        const menuToggle =
+            document.querySelector(".menu-toggle");
+
+        const navMenu =
+            document.querySelector(".nav-menu");
+
+        const navLinks =
+            document.querySelectorAll(".nav-link");
+
+
+        menuToggle.addEventListener(
+            "click",
+            function(){
+
+                navMenu.classList.toggle("open");
+
+                const isOpen =
+                    navMenu.classList.contains("open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+            }
         );
 
-    });
 
-});
+        // Close menu after selecting a navigation link
 
-</script>
+        navLinks.forEach(
+            function(link){
+
+                link.addEventListener(
+                    "click",
+                    function(){
+
+                        navMenu.classList.remove("open");
+
+                        menuToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
 </body>
 </html>

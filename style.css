@@ -1064,25 +1064,6 @@ nav a.active::after{
 section{
     min-height:100vh;
 }
-section{
-    opacity:0;
-    transform:
-        translateY(80px)
-        scale(.98);
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease,
-        filter 1s ease;
-}
-
-section.show{
-    opacity:1;
-
-    transform:
-        translateY(0)
-        scale(1);
-}
 .contact-form{
     display:flex;
     flex-direction:column;
