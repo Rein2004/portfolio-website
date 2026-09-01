@@ -172,15 +172,6 @@ section h2{
     0 0 30px rgba(0,229,255,.3);
 }
 
-.tech-grid{
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(150px,1fr));
-
-    gap:20px;
-}
-
 .tech-item{
     text-align:center;
 
@@ -194,10 +185,10 @@ section h2{
 }
 
 footer{
-    text-align:center;
-    color:#9ca3af;
-    margin-top:40px;
-    padding:45px 8% 20px;
+    text-align: center;
+    color: #9ca3af;
+    margin-top: 0;
+    padding: 20px 8% 15px;
 }
 
 @media(max-width:768px){
@@ -445,10 +436,6 @@ nav a.active::after{
 
 #tech{
     background:rgba(255,255,255,.02);
-}
-
-#why-me{
-    background:rgba(0,229,255,.02);
 }
 
 #contact{
@@ -822,7 +809,6 @@ nav a.active::after{
 /* Disable card animation inside those sections */
 
 #tech .card,
-#why-me .card,
 #contact .card{
     opacity:1 !important;
     transform:none !important;
@@ -870,37 +856,6 @@ nav a.active::after{
     padding:12px;
     font-size:0.85rem;
     border-radius:10px;
-}
-#why-me{
-    padding:50px 8%;
-    min-height:auto;
-}
-
-#why-me .project-grid{
-    max-width:1100px;
-    margin:0 auto;
-    gap:20px;
-}
-
-#why-me .project-card{
-    padding:24px;
-}
-
-#why-me .project-card h3{
-    font-size:1.15rem;
-    margin-bottom:12px;
-}
-
-#why-me .project-card p{
-    font-size:0.95rem;
-    line-height:1.7;
-    text-align:justify;
-    text-justify:inter-word;
-}
-
-#why-me h2{
-    font-size:2.5rem;
-    margin-bottom:40px;
 }
 /* CONTACT SECTION */
 
@@ -1277,11 +1232,6 @@ section{
     .project-card,
     .card{
         width:100%;
-    }
-
-    /* Why Work With Me */
-    #why-me .project-grid{
-        grid-template-columns:1fr;
     }
 
     /* Contact */
@@ -2939,27 +2889,6 @@ section {
 
 
     /* ---------------------------------
-       WHY WORK WITH ME
-    --------------------------------- */
-
-    #why-me .project-card {
-        padding: 24px 20px !important;
-    }
-
-    #why-me .project-card h3 {
-        margin-bottom: 14px;
-        line-height: 1.35;
-    }
-
-    #why-me .project-card p {
-        font-size:0.9rem;
-    line-height:1.6;
-    text-align:justify;
-    text-justify:inter-word;
-    }
-
-
-    /* ---------------------------------
        PROJECT GRID GAP
     --------------------------------- */
 
@@ -2973,12 +2902,10 @@ section {
     --------------------------------- */
 
     #services h2,
-    #projects h2,
-    #why-me h2 {
+    #projects h2{
         line-height: 1.2;
         margin-bottom: 24px;
     }
-
 
     /* ---------------------------------
        FEATURED PROJECT SPACING
@@ -3096,4 +3023,888 @@ body:hover .cursor-glow {
 .projects .tools span {
     font-size: .57rem;
     padding: 4px 7px;
+}
+
+
+/* =====================================================
+   ORBIT AREA
+===================================================== */
+
+.tech-orbit {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+}
+
+
+/* =====================================================
+   TECHNICAL LINES
+===================================================== */
+
+.tech-line {
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    height: 1px;
+
+    opacity: 0.08;
+
+    background: currentColor;
+}
+
+.tech-line::before,
+.tech-line::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+}
+
+.tech-line::before {
+    left: 20%;
+    top: -2px;
+}
+
+.tech-line::after {
+    right: 25%;
+    top: -2px;
+}
+
+.tech-line-1 {
+    top: 45%;
+    transform: rotate(-5deg);
+}
+
+.tech-line-2 {
+    top: 58%;
+    transform: rotate(5deg);
+}
+
+
+/* =====================================================
+   LOGO TRACKS
+===================================================== */
+
+.logo-track {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+
+    gap: 45px;
+
+    width: max-content;
+
+    will-change: transform;
+}
+
+
+/* First track */
+
+.logo-track-1 {
+    top: 70px;
+
+    animation: techLoop 34s linear infinite;
+}
+
+
+/* Second track */
+
+.logo-track-2 {
+    top: 155px;
+
+    opacity: 0.5;
+
+    animation: techLoopReverse 42s linear infinite;
+}
+
+
+/* =====================================================
+   LOGO CARDS
+===================================================== */
+
+.tech-logo {
+    position: relative;
+
+    width: 78px;
+    height: 78px;
+
+    flex: 0 0 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(128, 128, 128, 0.16);
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transform: rotate(-3deg);
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* Small technical node */
+
+.tech-logo::before {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    top: 8px;
+    right: 8px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+
+    opacity: 0.35;
+}
+
+
+/* Connection line */
+
+.tech-logo::after {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 1px;
+
+    top: 50%;
+    left: 100%;
+
+    background: currentColor;
+
+    opacity: 0.12;
+}
+
+
+/* Logo */
+
+.tech-logo img {
+    width: 48px;
+    height: 48px;
+
+    object-fit: contain;
+
+    display: block;
+
+    opacity: 0.8;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.tech-logo:hover {
+    transform:
+        translateY(-12px)
+        rotate(0deg)
+        scale(1.08);
+
+    opacity: 1;
+
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.tech-logo:hover img {
+    opacity: 1;
+
+    transform: scale(1.12);
+}
+
+
+/* =====================================================
+   WAVY / NON-STRAIGHT POSITIONING
+===================================================== */
+
+.logo-track-1 .tech-logo:nth-child(1) {
+    transform: translateY(18px) rotate(-5deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(2) {
+    transform: translateY(5px) rotate(3deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(3) {
+    transform: translateY(-12px) rotate(-4deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(4) {
+    transform: translateY(-20px) rotate(4deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(5) {
+    transform: translateY(-8px) rotate(-3deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(6) {
+    transform: translateY(12px) rotate(5deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(7) {
+    transform: translateY(20px) rotate(-4deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(8) {
+    transform: translateY(5px) rotate(3deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(9) {
+    transform: translateY(-15px) rotate(-3deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(10) {
+    transform: translateY(-20px) rotate(4deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(11) {
+    transform: translateY(-5px) rotate(-4deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(12) {
+    transform: translateY(12px) rotate(3deg);
+}
+
+.logo-track-1 .tech-logo:nth-child(13) {
+    transform: translateY(20px) rotate(-4deg);
+}
+
+
+/* =====================================================
+   INFINITE LOOP
+===================================================== */
+
+@keyframes techLoop {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+@keyframes techLoopReverse {
+
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+
+}
+
+
+/* =====================================================
+   EDGE DEPTH
+===================================================== */
+
+.tech-orbit::before,
+.tech-orbit::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 15%;
+
+    z-index: 3;
+
+    pointer-events: none;
+}
+
+.tech-orbit::before {
+    left: 0;
+
+    background: linear-gradient(
+        to right,
+        var(--background, #0b0b0f),
+        transparent
+    );
+}
+
+.tech-orbit::after {
+    right: 0;
+
+    background: linear-gradient(
+        to left,
+        var(--background, #0b0b0f),
+        transparent
+    );
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .tech-stack-section {
+        padding: 80px 0;
+    }
+
+    .tech-header {
+        margin-bottom: 40px;
+    }
+
+    .tech-header p {
+        padding: 0 25px;
+        font-size: 14px;
+    }
+
+    .tech-orbit {
+        height: 240px;
+    }
+
+    .logo-track {
+        gap: 28px;
+    }
+
+    .logo-track-1 {
+        top: 55px;
+        animation-duration: 28s;
+    }
+
+    .logo-track-2 {
+        top: 135px;
+        animation-duration: 35s;
+    }
+
+    .tech-logo {
+        width: 62px;
+        height: 62px;
+        flex-basis: 62px;
+        border-radius: 15px;
+    }
+
+    .tech-logo img {
+        width: 38px;
+        height: 38px;
+    }
+
+}
+/* =====================================================
+   WHY WORK WITH ME
+===================================================== */
+
+#why-me {
+    background: rgba(0, 229, 255, .02);
+}
+
+.before-after-section { 
+    position: relative; 
+    padding: 70px 8% 15px; /* reduced bottom space */
+    display: grid; 
+    grid-template-columns: .8fr 1.5fr; 
+    align-items: start; 
+    gap: 70px; 
+    background: rgba(0, 229, 255, .015); 
+    overflow: hidden; 
+}
+
+.before-after-header {
+    max-width: 390px;
+    text-align: left;
+    align-self: start;
+}
+
+.section-label {
+    display: inline-block;
+    margin-bottom: 16px;
+
+    color: #00e5ff;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    opacity: .7;
+}
+
+.before-after-header h2 {
+    margin: 0 0 18px;
+    color: white;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -1.8px;
+}
+
+.before-after-header p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: .92rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.before-after {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.ba-column {
+    position: relative;
+    padding: 30px;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, .025);
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    overflow: hidden;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.ba-column::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+}
+
+.ba-column.before {
+    background: linear-gradient(
+        145deg,
+        rgba(255, 70, 70, .025),
+        rgba(255, 255, 255, .02)
+    );
+}
+
+.ba-column.before::before {
+    background: rgba(255, 70, 70, .55);
+}
+
+.ba-column.after {
+    background: linear-gradient(
+        145deg,
+        rgba(0, 255, 136, .035),
+        rgba(255, 255, 255, .02)
+    );
+
+    border-color: rgba(0, 255, 136, .15);
+}
+
+.ba-column.after::before {
+    background: rgba(0, 255, 136, .55);
+}
+
+.ba-column.before:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 70, 70, .25);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .2);
+}
+
+.ba-column.after:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 255, 136, .3);
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, .2),
+        0 0 25px rgba(0, 255, 136, .05);
+}
+
+.ba-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.ba-status {
+    font-size: .62rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.ba-status.red {
+    color: #ff5c5c;
+}
+
+.ba-status.green {
+    color: #00ff88;
+}
+
+.ba-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, .08);
+}
+
+.ba-column h3 {
+    margin: 0 0 25px;
+    color: #f8fafc;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.ba-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ba-column li {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 18px;
+
+    color: #94a3b8;
+    font-size: .86rem;
+    line-height: 1.6;
+}
+
+.ba-icon {
+    flex-shrink: 0;
+    width: 21px;
+    height: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    font-size: .9rem;
+    font-weight: 800;
+    margin-top: 1px;
+}
+
+.ba-icon.red {
+    color: #ff5c5c;
+    background: rgba(255, 70, 70, .08);
+    border: 1px solid rgba(255, 70, 70, .25);
+}
+
+.ba-icon.green {
+    color: #00ff88;
+    background: rgba(0, 255, 136, .08);
+    border: 1px solid rgba(0, 255, 136, .25);
+}
+
+/* =====================================================
+   CARD HEADER
+===================================================== */
+
+.ba-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.ba-status {
+    font-size: .62rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.ba-status.red {
+    color: #ff5c5c;
+}
+
+.ba-status.green {
+    color: #00ff88;
+}
+
+.ba-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,.08);
+}
+
+
+/* =====================================================
+   CARD TITLE
+===================================================== */
+
+.ba-column h3 {
+    margin: 0 0 25px;
+    color: #f8fafc;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   LIST
+===================================================== */
+
+.ba-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ba-column li {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 18px;
+    color: #94a3b8;
+    font-size: .86rem;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   ICONS
+===================================================== */
+
+.ba-icon {
+    flex-shrink: 0;
+    width: 21px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: .9rem;
+    font-weight: 800;
+    margin-top: 1px;
+}
+
+.ba-icon.red {
+    color: #ff5c5c;
+    background: rgba(255,70,70,.08);
+    border: 1px solid rgba(255,70,70,.25);
+}
+
+.ba-icon.green {
+    color: #00ff88;
+    background: rgba(0,255,136,.08);
+    border: 1px solid rgba(0,255,136,.25);
+}
+
+
+/* =====================================================
+   BEFORE CARD
+===================================================== */
+
+.ba-column.before {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,70,70,.025),
+            rgba(255,255,255,.02)
+        );
+}
+
+
+/* =====================================================
+   AFTER CARD
+===================================================== */
+
+.ba-column.after {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,255,136,.035),
+            rgba(255,255,255,.02)
+        );
+
+    border-color: rgba(0,255,136,.15);
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.ba-column {
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.ba-column.before:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,70,70,.25);
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.2);
+}
+
+.ba-column.after:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0,255,136,.3);
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.2),
+        0 0 25px rgba(0,255,136,.05);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .before-after-section {
+        display: block;
+        padding: 70px 5%;
+    }
+
+    .before-after-header {
+        max-width: 650px;
+        margin: 0 auto 40px;
+        text-align: center;
+    }
+
+    .before-after-header p {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .before-after {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .before-after-section {
+        padding: 65px 5%;
+    }
+
+    .before-after-header {
+        margin-bottom: 32px;
+    }
+
+    .before-after-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .before-after-header p {
+        font-size: .86rem;
+    }
+
+    .before-after {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .ba-column {
+        padding: 24px 20px;
+    }
+
+    .ba-column h3 {
+        font-size: 1.05rem;
+    }
+
+    .ba-column li {
+        font-size: .84rem;
+    }
+}
+/* =====================================================
+   TECH STACK — REDUCE BOTTOM SPACE
+===================================================== */
+
+.tech-stack-section {
+    padding-top: 80px;
+    padding-bottom: 25px;
+}
+
+.tech-header {
+    margin-bottom: 40px;
+}
+
+.tech-orbit {
+    height: 240px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .tech-stack-section {
+        padding-top: 60px;
+        padding-bottom: 15px;
+    }
+
+    .tech-header {
+        margin-bottom: 30px;
+    }
+
+    .tech-orbit {
+        height: 210px;
+    }
+}
+/* =====================================================
+   WHY ME → CONTACT SPACING FIX
+===================================================== */
+
+.before-after-section {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+}
+
+#why-me {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+}
+
+/* Remove extra space before Contact */
+#contact {
+    margin-top: 0 !important;
+    padding-top: 35px !important;
+    min-height: 0 !important;
 }
