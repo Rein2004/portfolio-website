@@ -346,4 +346,74 @@ element.style.transform = `
     rotateX(${rotateX}deg)
     rotateY(${rotateY}deg)
     translateZ(8px)
-`;z
+`;
+/* =====================================================
+   CONTACT FORM — AJAX SUBMISSION
+===================================================== */
+
+const contactForm = document.getElementById("contact-form");
+const successBox = document.getElementById("success-box");
+
+if (contactForm) {
+
+    contactForm.addEventListener("submit", async function(e) {
+
+        e.preventDefault();
+
+        const submitButton =
+            contactForm.querySelector('button[type="submit"]');
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
+        }
+
+        try {
+
+            const response = await fetch(
+                contactForm.action,
+                {
+                    method: "POST",
+                    body: new FormData(contactForm),
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
+            );
+
+            if (response.ok) {
+
+                contactForm.reset();
+
+                if (successBox) {
+
+                    successBox.classList.add("show");
+
+                    setTimeout(() => {
+                        successBox.classList.remove("show");
+                    }, 3000);
+
+                }
+
+            } else {
+
+                alert("Something went wrong. Please try again.");
+
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Unable to send your message. Please try again.");
+
+        }
+
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = "Send Message";
+        }
+
+    });
+
+}
