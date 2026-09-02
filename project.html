@@ -118,13 +118,10 @@
         ========================= */
 
         .platform-section{
-
-            width:90%;
-
-            max-width:1200px;
-
-            margin:0 auto 80px;
-        }
+    width:90%;
+    max-width:1200px;
+    margin:0 auto 10px;
+}
 
 
         /* =========================
@@ -200,198 +197,140 @@
             text-transform:uppercase;
         }
 
-
-        /* =========================
-           PROJECT GRID
-        ========================= */
-
-        .project-grid{
-
-            display:grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
-            gap:20px;
-
-            align-items:start;
-        }
-
-
-        /* =========================
-           PROJECT CARD
-        ========================= */
-
-        .project-card{
-
-            background:
-                rgba(255,255,255,.025);
-
-            border:
-                1px solid
-                rgba(255,255,255,.09);
-
-            border-radius:14px;
-
-            overflow:hidden;
-
-            height:auto;
-
-            min-height:0;
-
-            align-self:start;
-
-            transition:
-                transform .3s ease,
-                border-color .3s ease,
-                box-shadow .3s ease;
-        }
-
-        .project-card:hover{
-
-            transform:translateY(-6px);
-
-            border-color:
-                rgba(0,229,255,.4);
-
-            box-shadow:
-                0 18px 45px
-                rgba(0,0,0,.3);
-        }
-
-
-        /* =========================
-           PROJECT IMAGE
-        ========================= */
-
-        .project-image{
-
-            width:100%;
-
-            height:175px;
-
-            padding:10px;
-
-            background:#090d1d;
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,.07);
-
-            display:flex;
-
-            align-items:center;
-
-            justify-content:center;
-
-            overflow:hidden;
-        }
-
-        .project-image img{
-
-            width:100%;
-
-            height:100%;
-
-            object-fit:contain;
-
-            border-radius:8px;
-
-            display:block;
-
-            transition:
-                transform .3s ease;
-        }
-
-        .project-card:hover
-        .project-image img{
-
-            transform:scale(1.025);
-        }
-
-
-        /* =========================
-           CARD CONTENT
-        ========================= */
-
-        .project-info{
-
-            padding:20px;
-
-            height:auto;
-
-            min-height:0;
-        }
-
-        .project-type{
-
-            display:block;
-
-            color:#00e5ff;
-
-            font-size:.6rem;
-
-            font-weight:700;
-
-            letter-spacing:1.5px;
-
-            margin-bottom:9px;
-        }
-
-        .project-info h3{
-
-            font-size:1.05rem;
-
-            line-height:1.4;
-
-            margin-bottom:10px;
-
-            color:#ffffff;
-        }
-
-        .project-info p{
-
-            color:#94a3b8;
-
-            font-size:.78rem;
-
-            line-height:1.7;
-        }
-
-
-        /* =========================
-           TOOLS
-        ========================= */
-
-        .tools{
-
-            display:flex;
-
-            flex-wrap:wrap;
-
-            gap:6px;
-
-            margin-top:17px;
-        }
-
-        .tools span{
-
-            font-size:.6rem;
-
-            color:#aab4c4;
-
-            padding:5px 8px;
-
-            border-radius:5px;
-
-            background:
-                rgba(0,229,255,.035);
-
-            border:
-                1px solid
-                rgba(0,229,255,.13);
-        }
-
+/* =========================
+   PROJECT GRID
+========================= */
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+    align-items:stretch;
+}
+
+
+/* =========================
+   PROJECT CARD
+========================= */
+
+.project-card{
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:14px;
+    overflow:hidden;
+
+    /* SAME HEIGHT */
+    height:100%;
+    min-height:440px;
+
+    display:flex;
+    flex-direction:column;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.project-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(0,229,255,.4);
+    box-shadow:0 18px 45px rgba(0,0,0,.3);
+}
+
+
+/* =========================
+   PROJECT IMAGE
+========================= */
+
+.project-image{
+    width:100%;
+    height:175px;
+    flex-shrink:0;
+
+    padding:10px;
+    background:#090d1d;
+    border-bottom:1px solid rgba(255,255,255,.07);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.project-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:8px;
+    display:block;
+    transition:transform .3s ease;
+}
+
+.project-card:hover .project-image img{
+    transform:scale(1.025);
+}
+
+
+/* =========================
+   CARD CONTENT
+========================= */
+
+.project-info{
+    padding:20px;
+
+    /* fills remaining card height */
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.project-type{
+    display:block;
+    color:#00e5ff;
+    font-size:.6rem;
+    font-weight:700;
+    letter-spacing:1.5px;
+    margin-bottom:9px;
+}
+
+.project-info h3{
+    font-size:1.05rem;
+    line-height:1.4;
+    margin-bottom:10px;
+    color:#ffffff;
+}
+
+.project-info p{
+    color:#94a3b8;
+    font-size:.78rem;
+    line-height:1.7;
+}
+
+
+/* =========================
+   TOOLS
+========================= */
+
+.tools{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+
+    /* pushes tools to the bottom */
+    margin-top:auto;
+    padding-top:17px;
+}
+
+.tools span{
+    font-size:.6rem;
+    color:#aab4c4;
+    padding:5px 8px;
+    border-radius:5px;
+    background:rgba(0,229,255,.035);
+    border:1px solid rgba(0,229,255,.13);
+}
 
         /* =========================
            FOOTER
@@ -409,7 +348,7 @@
 
             color:#64748b;
 
-            font-size:.65rem;
+            font-size:.80rem;
         }
 
 
@@ -432,62 +371,29 @@
         }
 
 
-        /* =========================
-           MOBILE
-        ========================= */
+ @media(max-width:950px){
 
-        @media(max-width:650px){
+    .project-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
 
-            .top-nav{
+}
 
-                padding:18px 5%;
-            }
+@media(max-width:650px){
 
-            .projects-header{
+    .project-grid{
+        grid-template-columns:1fr;
+    }
 
-                padding:
-                    60px 20px 40px;
-            }
+    .project-card{
+        min-height:440px;
+    }
 
-            .projects-header h1{
+    .project-image{
+        height:190px;
+    }
 
-                font-size:2.3rem;
-            }
-
-            .project-grid{
-
-                grid-template-columns:1fr;
-            }
-
-            .platform-section{
-
-                width:90%;
-
-                margin-bottom:60px;
-            }
-
-            .platform-header{
-
-                gap:10px;
-            }
-
-            .platform-header h2{
-
-                font-size:1.25rem;
-            }
-
-            .platform-number{
-
-                width:34px;
-
-                height:34px;
-            }
-
-            .project-image{
-
-                height:190px;
-            }
-        }
+}
 
     </style>
 
