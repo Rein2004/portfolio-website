@@ -345,7 +345,7 @@ footer{
 }
 
 .footer h3{
-    font-size:1.2rem;
+    font-size:1rem;
     margin-bottom:12px;
 }
 
@@ -1017,7 +1017,7 @@ nav a.active::after{
     }
 }
 section{
-    min-height:100vh;
+    min-height:auto;
 }
 .contact-form{
     display:flex;
@@ -2768,14 +2768,10 @@ section {
        FOOTER
     --------------------------------- */
 
-    footer {
-        width: 100%;
-
-        padding:
-            25px 18px;
-
-        font-size: .62rem;
-    }
+    footer{
+    font-size:1rem;
+    margin-bottom:12px;
+}
 
 }
 
@@ -3874,5 +3870,38 @@ body:hover .cursor-glow {
 #contact {
     margin-top: 0 !important;
     padding-top: 35px !important;
+    min-height: 0 !important;
+}
+/* =========================================
+   REMOVE SPACE AROUND / AFTER FOOTER
+========================================= */
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+footer,
+.footer {
+    margin: 0 !important;
+    padding-bottom: 15px !important;
+}
+
+footer + *,
+.footer + * {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+main {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Prevent sections from creating unnecessary bottom space */
+section:last-of-type {
+    margin-bottom: 0 !important;
+    padding-bottom: 20px !important;
     min-height: 0 !important;
 }
