@@ -1,3 +1,7 @@
+/* =====================================================
+   TYPING EFFECT (hero role text)
+===================================================== */
+
 const roles = [
     "GoHighLevel Specialist",
     "Funnel & Pipeline Builder",
@@ -13,13 +17,10 @@ let charIndex = 0;
 let isDeleting = false;
 
 function typeEffect() {
-
     const currentRole = roles[roleIndex];
 
     if (!isDeleting) {
-        typingElement.textContent =
-            currentRole.substring(0, charIndex + 1);
-
+        typingElement.textContent = currentRole.substring(0, charIndex + 1);
         charIndex++;
 
         if (charIndex === currentRole.length) {
@@ -27,21 +28,13 @@ function typeEffect() {
             setTimeout(typeEffect, 1500);
             return;
         }
-
     } else {
-
-        typingElement.textContent =
-            currentRole.substring(0, charIndex - 1);
-
+        typingElement.textContent = currentRole.substring(0, charIndex - 1);
         charIndex--;
 
         if (charIndex === 0) {
             isDeleting = false;
-            roleIndex++;
-
-            if (roleIndex >= roles.length) {
-                roleIndex = 0;
-            }
+            roleIndex = (roleIndex + 1) % roles.length;
         }
     }
 
@@ -52,241 +45,127 @@ if (typingElement) {
     typeEffect();
 }
 
-const uploadInput =
-document.getElementById("profileUpload");
 
-const profilePreview =
-document.getElementById("profilePreview");
-
-if (uploadInput && profilePreview) {
-
-    uploadInput.addEventListener("change", function(){
-
-        const file = this.files[0];
-
-        if(file){
-
-            const reader = new FileReader();
-
-            reader.onload = function(e){
-                profilePreview.src = e.target.result;
-            };
-
-            reader.readAsDataURL(file);
-        }
-
-    });
-
-}
+/* =====================================================
+   SCROLL-TRIGGERED SECTION / CARD REVEAL
+===================================================== */
 
 const sections = document.querySelectorAll("section");
 
-const observer = new IntersectionObserver((entries) => {
-
+const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-
-        if (entry.isIntersecting) {
-            entry.classList?.remove;
-            entry.target.classList.add("show");
-        } else {
-            entry.target.classList.remove("show");
-        }
-
+        entry.target.classList.toggle("show", entry.isIntersecting);
     });
+}, { threshold: 0.2 });
 
-}, {
-    threshold: 0.2
+sections.forEach((section) => sectionObserver.observe(section));
+
+const cards = document.querySelectorAll(".card");
+
+const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.15 });
+
+cards.forEach((card, index) => {
+    const isExcluded =
+        card.closest("#tech") ||
+        card.closest("#why-me") ||
+        card.closest("#contact");
+
+    if (!isExcluded) {
+        card.style.transitionDelay = `${index * 0.1}s`;
+        cardObserver.observe(card);
+    }
 });
 
-sections.forEach((section) => {
-    observer.observe(section);
-});
-const navLinks =
-document.querySelectorAll(".nav-link");
+
+/* =====================================================
+   ACTIVE NAV LINK ON SCROLL
+===================================================== */
+
+const navLinks = document.querySelectorAll(".nav-link");
 
 window.addEventListener("scroll", () => {
-
     let current = "";
 
-    sections.forEach(section => {
-
-        const sectionTop =
-            section.offsetTop - 200;
-
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 200;
         if (window.scrollY >= sectionTop) {
             current = section.getAttribute("id");
         }
-
     });
 
-    navLinks.forEach(link => {
-
+    navLinks.forEach((link) => {
         link.classList.remove("active");
 
         const href = link.getAttribute("href");
 
-        /* Normal sections */
+        // Normal in-page sections
         if (href === "#" + current) {
             link.classList.add("active");
         }
 
-        /* Projects section on about.html */
-        if (
-            current === "projects" &&
-            href === "project.html"
-        ) {
+        // Projects section links to project.html rather than an anchor
+        if (current === "projects" && href === "project.html") {
             link.classList.add("active");
         }
-
     });
-
-});
-const cards = document.querySelectorAll(".card");
-
-const cardObserver =
-new IntersectionObserver((entries)=>{
-
-    entries.forEach((entry)=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("show");
-        }
-
-    });
-
-},{
-    threshold:0.15
 });
 
-const glow =
-document.createElement("div");
 
+/* =====================================================
+   CURSOR GLOW EFFECT
+===================================================== */
+
+const glow = document.createElement("div");
 glow.classList.add("cursor-glow");
-
 document.body.appendChild(glow);
 
-document.addEventListener("mousemove",(e)=>{
-
+document.addEventListener("mousemove", (e) => {
     glow.style.left = e.clientX + "px";
     glow.style.top = e.clientY + "px";
-
 });
-cards.forEach((card,index)=>{
 
-    if(
-        !card.closest("#tech") &&
-        !card.closest("#why-me") &&
-        !card.closest("#contact")
-    ){
-        card.style.transitionDelay =
-        `${index * 0.1}s`;
 
-        cardObserver.observe(card);
-    }
-});
-;
+/* =====================================================
+   CONTACT FORM SUCCESS MESSAGE
+   (shown after formsubmit.co redirects back with ?sent=true)
+===================================================== */
+
 document.addEventListener("DOMContentLoaded", () => {
-
     if (window.location.search.includes("sent=true")) {
-
-        const successBox =
-        document.getElementById("success-box");
+        const successBox = document.getElementById("success-box");
 
         if (successBox) {
-
             successBox.classList.add("show");
-
-            setTimeout(() => {
-                successBox.classList.remove("show");
-            }, 3000);
-
+            setTimeout(() => successBox.classList.remove("show"), 3000);
         }
-
     }
-
 });
+
+
 /* =====================================================
    MOBILE NAVIGATION
 ===================================================== */
 
-const menuToggle =
-    document.querySelector(".menu-toggle");
-
-const navMenu =
-    document.querySelector(".nav-menu");
-
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector(".nav-menu");
 
 if (menuToggle && navMenu) {
-
     menuToggle.addEventListener("click", () => {
-
         menuToggle.classList.toggle("open");
-
         navMenu.classList.toggle("open");
-
     });
 
-
-    /* Close menu after clicking */
-
-    document.querySelectorAll(".nav-link")
-        .forEach(link => {
-
-            link.addEventListener("click", () => {
-
-                menuToggle.classList.remove("open");
-
-                navMenu.classList.remove("open");
-
-            });
-
+    // Close the menu after a link is clicked
+    navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            menuToggle.classList.remove("open");
+            navMenu.classList.remove("open");
         });
-
+    });
 }
-/* =====================================================
-   GLOBAL 3D MOUSE TILT
-===================================================== */
-
-tiltElements.forEach(element => {
-
-    element.addEventListener("mousemove", (e) => {
-
-        const rect = element.getBoundingClientRect();
-
-        const x =
-            e.clientX - rect.left;
-
-        const y =
-            e.clientY - rect.top;
-
-        const centerX =
-            rect.width / 2;
-
-        const centerY =
-            rect.height / 2;
-
-        const rotateY =
-            ((x - centerX) / centerX) * 4;
-
-        const rotateX =
-            ((centerY - y) / centerY) * 4;
-
-
-        element.style.transform = `
-            perspective(1000px)
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-            translateZ(8px)
-        `;
-
-    });
-
-
-    element.addEventListener("mouseleave", () => {
-
-        element.style.transform = "";
-
-    });
-
-});
