@@ -2824,3 +2824,143 @@ section:last-of-type {
     padding-bottom: 20px !important;
     min-height: 0 !important;
 }
+/* =====================================================
+   PROJECT SHOWCASE REEL  (about.html — after #why-me)
+===================================================== */
+
+.showcase-section { padding: 110px 8% 120px; position: relative; }
+
+.showcase-head { max-width: 620px; margin: 0 auto 50px; text-align: center; }
+.showcase-head h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 14px; }
+.showcase-head h2 em { font-style: normal; color: #00e5ff; }
+.showcase-head p { color: #9ca3af; font-size: 1rem; line-height: 1.7; }
+
+.reel {
+    position: relative;
+    margin: 0 -8%;
+    padding: 60px 0 40px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    overflow: visible;
+}
+
+.reel-track {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    width: max-content;
+    padding: 0 8%;
+    animation: reel-slide 60s linear infinite;
+}
+
+.reel:hover .reel-track,
+.reel:focus-within .reel-track { animation-play-state: paused; }
+
+@keyframes reel-slide {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.reel-card {
+    flex: 0 0 292px;
+    margin: 0;
+    padding: 10px 10px 0;
+    border-radius: 14px;
+    background: #0a0f22;
+    border: 1px solid rgba(0, 229, 255, 0.14);
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    transition: transform 0.35s ease, border-color 0.35s ease,
+                box-shadow 0.35s ease, opacity 0.35s ease;
+}
+
+.reel-track:hover .reel-card { opacity: 0.4; }
+
+.reel-track .reel-card:hover,
+.reel-track .reel-card:focus-within {
+    opacity: 1;
+    z-index: 5;
+    transform: scale(1.16);
+    border-color: #00e5ff;
+    box-shadow: 0 24px 50px -14px rgba(0, 229, 255, 0.6);
+}
+
+.reel-frame { position: relative; height: 164px; border-radius: 9px; overflow: hidden; background: #020510; }
+.reel-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+
+.reel-tag {
+    position: absolute;
+    top: 9px; left: 9px; z-index: 2;
+    font-size: 0.64rem; font-weight: 700; letter-spacing: 0.06em;
+    padding: 4px 9px; border-radius: 999px;
+    color: #00e5ff;
+    background: rgba(5, 8, 22, 0.85);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+.reel-card figcaption { padding: 13px 4px 16px; }
+.reel-card figcaption strong { display: block; font-size: 0.93rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.reel-card figcaption span { display: block; font-size: 0.78rem; line-height: 1.5; color: #9ca3af; }
+
+.showcase-cta { text-align: center; margin-top: 46px; }
+.showcase-cta a {
+    display: inline-block;
+    padding: 13px 30px;
+    border-radius: 999px;
+    font-weight: 600; font-size: 0.93rem;
+    color: #00e5ff; text-decoration: none;
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    transition: 0.3s ease;
+}
+.showcase-cta a:hover { background: #00e5ff; color: #050816; }
+
+@media (max-width: 768px) {
+    .showcase-section { padding: 80px 6% 90px; }
+    .reel { margin: 0 -6%; }
+    .reel-track { padding: 0 6%; }
+    .reel-card { flex: 0 0 248px; }
+    .reel-frame { height: 142px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reel-track { animation: none; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; }
+    .reel-card, .reel-frame img { transition: none; }
+}
+
+
+/* =====================================================
+   FOOTER SOCIAL LOGOS
+===================================================== */
+
+.footer-connect { text-align: center; }
+
+.social-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 6px auto 0;
+}
+
+.social-logos a {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    transition: transform 0.28s ease, opacity 0.28s ease;
+    opacity: 0.85;
+}
+
+.social-logos img { width: 17px; height: 17px; object-fit: contain; display: block; }
+
+.social-logos a:hover,
+.social-logos a:focus-visible {
+    transform: translateY(-4px) scale(1.08);
+    opacity: 1;
+}
+
+.social-logos a:focus-visible { outline: 2px solid #00e5ff; outline-offset: 4px; border-radius: 8px; }
