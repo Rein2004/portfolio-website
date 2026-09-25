@@ -648,7 +648,8 @@ nav a.active::after {
     max-width: none;
 }
 
-.about-page h1 {
+.about-page h1,
+.about-page h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: #00e5ff;
@@ -2964,3 +2965,201 @@ section:last-of-type {
 }
 
 .social-logos a:focus-visible { outline: 2px solid #00e5ff; outline-offset: 4px; border-radius: 8px; }
+/* =====================================================
+   HERO 2.0 — value-prop headline, trust signals, flow chip
+   (appended last so these rules win over earlier hero styles)
+===================================================== */
+
+.hero {
+    padding: 160px 5% 100px;
+    min-height: auto;
+}
+
+.availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border: 1px solid rgba(0,255,136,.4);
+    background: rgba(0,255,136,.06);
+    border-radius: 50px;
+    color: #00ff88;
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+.availability-badge .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ff88;
+    animation: pulse 2s infinite;
+}
+
+.hero-kicker {
+    margin-top: 22px;
+    font-size: 1.05rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.hero-kicker #typing {
+    color: #00e5ff;
+    font-weight: 600;
+}
+
+.hero-headline {
+    margin-top: 14px;
+    font-family: "Inter", sans-serif;
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    max-width: 640px;
+
+    background: linear-gradient(90deg, #ffffff, #00e5ff, #00ff88, #ffffff);
+    background-size: 300% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 8s linear infinite;
+}
+
+.hero-lede {
+    margin-top: 22px;
+    max-width: 520px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #cbd5e1;
+}
+
+.hero-trust {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-size: .92rem;
+    color: #94a3b8;
+}
+
+.hero-trust strong {
+    color: #e2e8f0;
+}
+
+.hero-trust .dot {
+    color: #334155;
+}
+
+/* --- visual side: photo + floating automation chip --- */
+
+.hero-visual {
+    position: relative;
+    display: inline-block;
+}
+
+.flow-chip {
+    position: absolute;
+    left: 50%;
+    bottom: -26px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background: rgba(5,8,22,.9);
+    border: 1px solid rgba(0,229,255,.35);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.4);
+    white-space: nowrap;
+    font-size: .78rem;
+    font-weight: 600;
+}
+
+.flow-step {
+    color: #94a3b8;
+}
+
+.flow-step.done {
+    color: #00ff88;
+}
+
+.flow-arrow {
+    color: #334155;
+    font-size: .7rem;
+}
+
+/* --- one orchestrated entrance sequence --- */
+
+.hero-text > * {
+    opacity: 0;
+    animation: heroRise .7s ease forwards;
+}
+
+.availability-badge { animation-delay: .05s; }
+.hero-kicker        { animation-delay: .15s; }
+.hero-headline       { animation-delay: .25s; }
+.hero-lede           { animation-delay: .35s; }
+.hero-buttons        { animation-delay: .45s; }
+.hero-trust          { animation-delay: .55s; }
+
+@keyframes heroRise {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-text > * {
+        animation: none;
+        opacity: 1;
+    }
+    .availability-badge .pulse-dot {
+        animation: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero {
+        padding: 140px 6% 70px;
+    }
+    .hero-headline {
+        font-size: 2.2rem;
+        max-width: 100%;
+    }
+    .hero-lede {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-trust {
+        justify-content: center;
+    }
+    .flow-chip {
+        font-size: .68rem;
+        padding: 10px 12px;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flow-chip {
+        display: none;
+    }
+}
+
+.hero-buttons {
+    justify-content: flex-start;
+}
+
+@media (max-width: 900px) {
+    .hero-buttons {
+        justify-content: center;
+    }
+}
