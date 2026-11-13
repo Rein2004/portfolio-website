@@ -3163,3 +3163,332 @@ section:last-of-type {
         justify-content: center;
     }
 }
+
+/* ===== Services, profit section and process (added) ===== */
+.why-extra{grid-column:1/-1;display:grid;gap:22px;margin-top:8px}
+.lever-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.lever{background:rgba(255,255,255,.03);border:1px solid rgba(0,229,255,.2);border-radius:20px;padding:28px 30px;opacity:1;transition:.3s}
+.lever:hover{border-color:#00e5ff;transform:translateY(-4px)}
+.lever h3{color:#00e5ff;font-size:1.15rem;margin-bottom:10px}
+.lever p{color:#a9b8cc;font-size:.98rem;line-height:1.75}
+.profit-example{padding:28px 30px;border:1px solid rgba(0,229,255,.2);border-left:4px solid #00ff88;border-radius:16px;background:rgba(255,255,255,.03)}
+.profit-example strong{display:block;font-size:1.1rem;margin-bottom:8px}
+.profit-example p{color:#cbd5e1;line-height:1.75}
+.profit-example small{display:block;margin-top:12px;color:#94a3b8;font-size:.85rem}
+#process{padding:60px 8%}
+#process .section-subtitle{margin-bottom:40px}
+.process-steps{list-style:none;counter-reset:step;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.process-steps li{counter-increment:step}
+.process-steps li::before{content:counter(step);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#00e5ff;color:#050816;font-weight:800;margin-bottom:16px}
+.process-steps h3{font-size:1.15rem;margin-bottom:8px}
+.process-steps p{color:#a9b8cc;font-size:.98rem;line-height:1.75}
+@media(max-width:900px){.lever-grid{grid-template-columns:1fr}.process-steps{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.process-steps{grid-template-columns:1fr}}
+
+
+/* =====================================================
+   SPACING SYSTEM (added last so it wins)
+   One vertical rhythm, one side gutter, one gap size.
+   Change --section-space to make everything tighter or looser.
+===================================================== */
+:root {
+    --section-space: 48px;                                  /* top and bottom of every section (96px between sections) */
+    --gutter: 5%;                                           /* left and right, same for every section */
+    --gap: 24px;                                            /* space between cards */
+}
+
+/* 1. Same top, bottom and side space for every section */
+#about, #services, #projects, #why-me, #showcase, #process, #contact {
+    padding: var(--section-space) var(--gutter) !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+}
+
+.hero {
+    min-height: 0 !important;
+    padding: 104px var(--gutter) var(--section-space) !important;   /* 62px fixed nav + 42px */
+    align-items: flex-start !important;
+}
+
+#tech {                       /* thin logo band */
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+}
+
+.footer {
+    padding: 48px var(--gutter) 28px !important;
+    margin: 0 !important;
+}
+
+/* 2. Same rhythm inside every section: heading, intro, content */
+section h2 { margin-bottom: 16px; }
+#projects h2 { margin-bottom: 32px; }
+.section-subtitle { margin-bottom: 40px !important; }
+
+/* 3. Same gap between all cards */
+.project-grid,
+#services .project-grid,
+.project-highlights,
+.lever-grid,
+.before-after,
+.why-extra,
+.process-steps { gap: var(--gap) !important; }
+
+.project-highlights { margin-top: var(--gap) !important; }
+.before-after-section { column-gap: 56px !important; row-gap: 40px !important; }
+
+/* 4. Cards line up with the rest of the page and read cleanly */
+#projects .project-card { max-width: none !important; margin: 0 !important; }
+#services .project-card p,
+#projects .project-card p,
+.lever p { text-align: left !important; }
+
+/* 5. Contact lines up with the other sections */
+.contact-container { max-width: none !important; width: 100%; gap: 56px !important; }
+
+@media (max-width: 900px) {
+    :root { --section-space: 40px; }
+    .hero { padding-top: 96px !important; }
+    .before-after-section { row-gap: 32px !important; }
+}
+
+@media (max-width: 600px) {
+    :root { --section-space: 36px; --gap: 16px; }
+    .hero { padding-top: 88px !important; }
+    #tech { padding-top: 28px !important; padding-bottom: 28px !important; }
+    .footer { padding-top: 40px !important; }
+}
+
+
+/* =====================================================
+   ABOUT ME: photo height matches the text beside it
+===================================================== */
+.about-page {
+    align-items: stretch !important;
+    gap: 56px !important;
+}
+
+.about-page .about-content {
+    align-self: center;
+}
+
+.about-page .about-image {
+    position: relative;
+    margin-top: 0 !important;
+    min-height: 340px;
+    align-self: stretch;
+}
+
+.about-page .about-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+}
+
+@media (max-width: 900px) {
+    .about-page .about-image { min-height: 0; }
+    .about-page .about-photo {
+        position: relative;
+        inset: auto;
+        width: auto;
+        height: auto;
+        max-width: 280px;
+        max-height: 340px;
+        margin: 0 auto;
+    }
+}
+
+
+/* =====================================================
+   SHOWCASE ("Systems I've actually shipped"): tighter
+   Carousel and CTA sit closer to the heading.
+   28px top and bottom inside the reel keeps room for the hover zoom.
+===================================================== */
+.showcase-head { margin-bottom: 12px !important; }
+
+.reel { padding: 28px 0 28px !important; }
+
+.showcase-cta { margin-top: 14px !important; }
+
+
+/* =====================================================
+   FEATURED PROJECT: wide card centered above three stat cards
+   Card is narrower than the stat row; padding is comfortable
+===================================================== */
+#projects .project-link {
+    display: block;
+    width: 100%;
+}
+
+#projects .project-card {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    padding: 32px 36px !important;
+}
+
+#projects .project-card h3 { margin-bottom: 12px; }
+#projects .project-card p  { margin-bottom: 20px; }
+
+#projects .stat-card {
+    padding: 32px 24px !important;
+    text-align: center;
+}
+
+#projects .project-note {
+    max-width: 720px;
+    margin: 32px auto 0 !important;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    #projects .project-card { padding: 24px 22px !important; }
+    #projects .stat-card { padding: 24px 20px !important; }
+}
+
+
+/* =====================================================
+   SIDE PADDING FOR THE WHOLE PAGE: 5% left and right
+   Nav, hero, every section and the footer use --gutter.
+   (To change it, edit --gutter near the spacing system.)
+===================================================== */
+.main-nav { padding-left: var(--gutter) !important; padding-right: var(--gutter) !important; }
+
+.hero-container { max-width: none !important; width: 100%; margin: 0 !important; }
+
+/* Carousel still runs edge to edge of the screen */
+.reel { margin-left: -5.56% !important; margin-right: -5.56% !important; }
+
+@media (max-width: 600px) {
+    :root { --gutter: 5%; }
+}
+
+
+/* =====================================================
+   WHY WORK WITH ME: one font system for every card
+   Uses the Before/After sizes everywhere:
+   titles 1.1rem, text 0.86rem
+===================================================== */
+#why-me .ba-column h3,
+#why-me .lever h3,
+#why-me .profit-example strong {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+}
+
+#why-me .ba-column li,
+#why-me .lever p,
+#why-me .profit-example p,
+#why-me .before-after-header p {
+    font-size: .86rem !important;
+    line-height: 1.6 !important;
+    font-weight: 400 !important;
+}
+
+#why-me .profit-example small { font-size: .78rem !important; }
+
+
+/* =====================================================
+   WHAT I BUILD FOR YOU: same fonts as Why Work With Me
+   Titles 1.1rem, text 0.86rem
+===================================================== */
+#services .project-card h3 {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+}
+
+#services .project-card p,
+#services .section-subtitle {
+    font-size: .86rem !important;
+    line-height: 1.6 !important;
+    font-weight: 400 !important;
+}
+
+
+/* =====================================================
+   ABOUT ME PHOTO: bigger framed portrait
+   4:5 frame, cyan border and glow, face kept in view
+===================================================== */
+.about-page {
+    grid-template-columns: 1.1fr .9fr !important;
+    align-items: center !important;
+    gap: 64px !important;
+}
+
+.about-page .about-image {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 5;
+    margin: 0 auto !important;
+    justify-self: center;
+    align-self: center !important;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 229, 255, .45);
+    background: radial-gradient(circle at 50% 30%, rgba(0, 229, 255, .18), rgba(5, 8, 22, .9) 70%);
+    box-shadow: 0 0 60px rgba(0, 229, 255, .22);
+    overflow: hidden;
+}
+
+.about-page .about-photo {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    border-radius: 0;
+    filter: none !important;
+}
+
+.about-page .image-glow { display: none; }
+
+@media (max-width: 900px) {
+    .about-page { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .about-page .about-image { max-width: 360px !important; }
+    .about-page .about-photo { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; max-width: none !important; max-height: none !important; margin: 0 !important; }
+}
+
+
+/* =====================================================
+   SMALL ADJUSTMENTS
+   1) Service card titles use the same cyan as the Why Work With Me titles
+   2) About photo: medium size (360 x 450 on desktop)
+===================================================== */
+#services .project-card h3 { color: #00e5ff !important; }
+
+.about-page .about-image { max-width: 360px !important; }
+@media (min-width: 901px) {
+    .about-page { grid-template-columns: 1.3fr .7fr !important; }
+}
+
+@media (max-width: 900px) {
+    .about-page .about-image { max-width: 300px !important; }
+}
+
+
+/* =====================================================
+   HOW WE WORK TOGETHER: same fonts as the other sections
+   Titles 1.1rem, text 0.86rem
+===================================================== */
+#process .process-steps h3 {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+}
+
+#process .process-steps p,
+#process .section-subtitle {
+    font-size: .86rem !important;
+    line-height: 1.6 !important;
+    font-weight: 400 !important;
+}

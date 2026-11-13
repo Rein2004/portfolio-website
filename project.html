@@ -389,7 +389,45 @@
 
 }
 
-    </style>
+    
+    /* =========================
+       GOHIGHLEVEL: ONE CASE STUDY
+    ========================= */
+    .case-study {
+        background: rgba(255,255,255,.025);
+        border: 1px solid rgba(0,229,255,.22);
+        border-radius: 16px;
+        padding: 32px;
+    }
+    .case-study > h3 { font-size: 1.35rem; line-height: 1.3; color: #fff; margin-bottom: 12px; }
+    .case-study > p { color: #94a3b8; font-size: .86rem; line-height: 1.7; max-width: 820px; }
+    .case-label { color: #00e5ff; font-size: .75rem; letter-spacing: 1.5px; text-transform: uppercase; margin: 32px 0 16px; }
+    .build-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .build-card { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.09); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform .3s, border-color .3s; }
+    .build-card:hover { transform: translateY(-4px); border-color: rgba(0,229,255,.4); }
+    .build-image { display: block; background: #090d1d; border-bottom: 1px solid rgba(255,255,255,.07); padding: 10px; }
+    .build-image img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; border-radius: 8px; display: block; }
+    .build-info { padding: 20px; }
+    .build-info h4 { font-size: 1.05rem; line-height: 1.4; color: #fff; margin-bottom: 8px; }
+    .build-info p { color: #94a3b8; font-size: .78rem; line-height: 1.7; }
+    .build-info .project-type { letter-spacing: .5px; font-size: .58rem; }
+    .case-tools { margin-top: 0; padding-top: 0; }
+    @media (max-width: 900px) { .build-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .build-grid { grid-template-columns: 1fr; } .case-study { padding: 22px 18px; } }
+
+    /* =========================
+       EXPAND / COLLAPSE
+    ========================= */
+    .case-toggle { margin-top: 24px; display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; background: rgba(0,229,255,.08); color: #00e5ff; border: 1px solid rgba(0,229,255,.4); border-radius: 10px; font: 600 .85rem "Manrope", sans-serif; cursor: pointer; transition: background .25s, box-shadow .25s; }
+    .case-toggle:hover { background: rgba(0,229,255,.16); box-shadow: 0 0 20px rgba(0,229,255,.2); }
+    .toggle-icon { display: inline-block; transition: transform .35s ease; }
+    .case-toggle[aria-expanded="true"] .toggle-icon { transform: rotate(180deg); }
+    .case-collapse { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
+    .case-collapse.open { grid-template-rows: 1fr; }
+    .case-collapse-inner { min-height: 0; overflow: hidden; visibility: hidden; transition: visibility 0s .45s; }
+    .case-collapse.open .case-collapse-inner { visibility: visible; transition-delay: 0s; }
+    @media (prefers-reduced-motion: reduce) { .case-collapse, .toggle-icon { transition: none; } }
+</style>
 
 </head>
 
@@ -588,375 +626,126 @@
 <section class="platform-section">
 
     <div class="platform-header">
+        <div class="platform-number">01</div>
+        <h2>GoHighLevel Project</h2>
+        <p>One account, one complete system</p>
+    </div>
 
-        <div class="platform-number">
-            01
-        </div>
+    <article class="case-study">
 
-        <h2>
-            GoHighLevel Projects
-        </h2>
+        <span class="project-type">COMPLETE COURSE SYSTEM</span>
+        <h3>Course Sales &amp; Enrollment System in GoHighLevel</h3>
 
         <p>
-            Funnels, CRM, Automation & AI
+            Everything below was built inside one GoHighLevel account.
+            I created a complete course system that brings in leads with a
+            free blueprint, sells a paid blueprint, enrolls students into
+            the course, follows up with automated emails, tracks every
+            contact in a CRM pipeline, and answers questions with an AI
+            support agent. Here is each part I built.
         </p>
 
-    </div>
+        <button type="button" class="case-toggle" aria-expanded="false" aria-controls="ghl-details">
+            <span class="toggle-text">View what I built (7 parts)</span>
+            <span class="toggle-icon" aria-hidden="true">&#9662;</span>
+        </button>
 
+        <div class="case-collapse" id="ghl-details">
+        <div class="case-collapse-inner">
 
-    <div class="project-grid">
+        <h4 class="case-label">What I built</h4>
 
+        <div class="build-grid">
 
-        <!-- =================================================
-             GHL PROJECT 01 — FUNNEL
-        ================================================== -->
-
-        <article class="project-card">
-
-            <div class="project-image">
-
-                <img
-                    src="GHLfunnel.png"
-                    alt="GoHighLevel funnel system from opt-in page to thank you page"
-                >
-
-            </div>
-
-
-            <div class="project-info">
-
-                <span class="project-type">
-                    FUNNEL BUILD
-                </span>
-
-                <h3>
-                    GoHighLevel Funnel System
-                </h3>
-
-                <p>
-                    Built a complete funnel system in GoHighLevel
-                    from the opt-in page through checkout, upsell,
-                    and thank you page to create a connected
-                    customer journey.
-                </p>
-
-
-                <div class="tools">
-
-                    <span>GoHighLevel</span>
-                    <span>Funnel Builder</span>
-                    <span>Checkout</span>
-                    <span>Upsell</span>
-
+            <article class="build-card">
+                <a class="build-image" href="GHLfunnel.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="GHLfunnel.png" alt="GoHighLevel funnel system from opt-in page to thank you page" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">1 &middot; FUNNEL BUILD</span>
+                    <h4>Funnel from opt-in to thank-you page</h4>
+                    <p>Built a complete funnel system in GoHighLevel from the opt-in page through checkout, upsell, and thank you page to create a connected customer journey.</p>
                 </div>
+            </article>
 
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             GHL PROJECT 02 — FREE BLUEPRINT WORKFLOW
-        ================================================== -->
-
-        <article class="project-card">
-
-            <div class="project-image">
-
-                <img
-                    src="leadmagnet.png"
-                    alt="GoHighLevel free blueprint lead magnet workflow"
-                >
-
-            </div>
-
-
-            <div class="project-info">
-
-                <span class="project-type">
-                    LEAD MAGNET AUTOMATION
-                </span>
-
-                <h3>
-                    Free Blueprint Lead Workflow
-                </h3>
-
-                <p>
-                    Built a GoHighLevel lead-generation workflow
-                    that captures free blueprint requests, creates
-                    and updates contacts, applies lead tags,
-                    creates opportunities, and starts the
-                    appropriate nurturing journey.
-                </p>
-
-
-                <div class="tools">
-
-                    <span>GoHighLevel</span>
-                    <span>Workflow</span>
-                    <span>Lead Capture</span>
-                    <span>Tags</span>
-                    <span>CRM</span>
-
+            <article class="build-card">
+                <a class="build-image" href="leadmagnet.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="leadmagnet.png" alt="GoHighLevel free blueprint lead magnet workflow" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">2 &middot; LEAD MAGNET AUTOMATION</span>
+                    <h4>Free blueprint lead workflow</h4>
+                    <p>Built a GoHighLevel lead-generation workflow that captures free blueprint requests, creates and updates contacts, applies lead tags, creates opportunities, and starts the appropriate nurturing journey.</p>
                 </div>
+            </article>
 
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             GHL PROJECT 03 — PAID BLUEPRINT
-        ================================================== -->
-
-        <article class="project-card">
-
-            <div class="project-image">
-
-                <img
-                    src="upsell.png"
-                    alt="GoHighLevel paid blueprint upsell workflow"
-                >
-
-            </div>
-
-
-            <div class="project-info">
-
-                <span class="project-type">
-                    UPSELL AUTOMATION
-                </span>
-
-                <h3>
-                    Paid Blueprint Upsell Workflow
-                </h3>
-
-                <p>
-                    Built an automated paid blueprint workflow
-                    that tracks purchases, updates contact tags,
-                    manages opportunities, and continues relevant
-                    follow-up while removing leads from
-                    unnecessary promotional sequences.
-                </p>
-
-
-                <div class="tools">
-
-                    <span>GoHighLevel</span>
-                    <span>Workflows</span>
-                    <span>Upsell</span>
-                    <span>Tags</span>
-                    <span>CRM</span>
-
+            <article class="build-card">
+                <a class="build-image" href="upsell.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="upsell.png" alt="GoHighLevel paid blueprint upsell workflow" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">3 &middot; UPSELL AUTOMATION</span>
+                    <h4>Paid blueprint upsell workflow</h4>
+                    <p>Built an automated paid blueprint workflow that tracks purchases, updates contact tags, manages opportunities, and continues relevant follow-up while removing leads from unnecessary promotional sequences.</p>
                 </div>
+            </article>
 
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             GHL PROJECT 04 — COURSE ENROLLMENT
-        ================================================== -->
-
-        <article class="project-card">
-
-            <div class="project-image">
-
-                <img
-                    src="enrollment.png"
-                    alt="GoHighLevel course enrollment automation workflow"
-                >
-
-            </div>
-
-
-            <div class="project-info">
-
-                <span class="project-type">
-                    ENROLLMENT AUTOMATION
-                </span>
-
-                <h3>
-                    GHL Starter Blueprint Enrollment
-                </h3>
-
-                <p>
-                    Built a course enrollment workflow that
-                    identifies enrolled contacts, applies the
-                    Paid Student status, updates CRM opportunities,
-                    and checks whether the contact has also
-                    purchased the paid blueprint.
-                </p>
-
-
-                <div class="tools">
-
-                    <span>GoHighLevel</span>
-                    <span>Workflow</span>
-                    <span>Course Enrollment</span>
-                    <span>Tags</span>
-                    <span>CRM</span>
-
+            <article class="build-card">
+                <a class="build-image" href="enrollment.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="enrollment.png" alt="GoHighLevel course enrollment automation workflow" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">4 &middot; ENROLLMENT AUTOMATION</span>
+                    <h4>Starter blueprint enrollment</h4>
+                    <p>Built a course enrollment workflow that identifies enrolled contacts, applies the Paid Student status, updates CRM opportunities, and checks whether the contact has also purchased the paid blueprint.</p>
                 </div>
+            </article>
 
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             GHL PROJECT 05 — CRM / PIPELINE
-        ================================================== -->
-
-        <article class="project-card">
-
-            <div class="project-image">
-
-                <img
-                    src="pipeline.png"
-                    alt="GoHighLevel CRM lead nurturing pipeline"
-                >
-
-            </div>
-
-
-            <div class="project-info">
-
-                <span class="project-type">
-                    CRM & PIPELINE
-                </span>
-
-                <h3>
-                    Lead Nurturing & CRM Pipeline
-                </h3>
-
-                <p>
-                    Designed the CRM pipeline to track contacts
-                    from initial lead through multiple follow-up
-                    stages. Contact status adapts based on their
-                    blueprint purchase and course enrollment.
-                </p>
-
-
-                <div class="tools">
-
-                    <span>GoHighLevel</span>
-                    <span>CRM</span>
-                    <span>Pipeline</span>
-                    <span>Opportunities</span>
-                    <span>Lead Nurturing</span>
-
+            <article class="build-card">
+                <a class="build-image" href="pipeline.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="pipeline.png" alt="GoHighLevel CRM lead nurturing pipeline" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">5 &middot; CRM & PIPELINE</span>
+                    <h4>Lead nurturing and CRM pipeline</h4>
+                    <p>Designed the CRM pipeline to track contacts from initial lead through multiple follow-up stages. Contact status adapts based on their blueprint purchase and course enrollment.</p>
                 </div>
+            </article>
 
-            </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             GHL PROJECT 06 — AI SUPPORT AGENT
-        ================================================== -->
-
-        <article class="project-card">
-
-            <div class="project-image">
-
-                <img
-                    src="Aiagent.png"
-                    alt="GoHighLevel AI support agent"
-                >
-
-            </div>
-
-
-            <div class="project-info">
-
-                <span class="project-type">
-                    AI AGENT
-                </span>
-
-                <h3>
-                    GoHighLevel AI Support Agent
-                </h3>
-
-                <p>
-                    Configured a GoHighLevel AI support agent to
-                    answer questions, guide users, provide
-                    personalized assistance, capture leads,
-                    and support follow-up conversations.
-                </p>
-
-
-                <div class="tools">
-
-                    <span>GoHighLevel</span>
-                    <span>AI Agent</span>
-                    <span>Knowledge Base</span>
-                    <span>Live Chat</span>
-                    <span>Lead Capture</span>
-
+            <article class="build-card">
+                <a class="build-image" href="Aiagent.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="Aiagent.png" alt="GoHighLevel AI support agent" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">6 &middot; AI AGENT</span>
+                    <h4>AI support agent</h4>
+                    <p>Configured a GoHighLevel AI support agent to answer questions, guide users, provide personalized assistance, capture leads, and support follow-up conversations.</p>
                 </div>
+            </article>
 
-            </div>
-
-        </article>
-
-                <!-- =================================================
-             GHL PROJECT 07 — EMAIL MARKETING AUTOMATION
-        ================================================== -->
-
-        <article class="project-card">
-
-            <div class="project-image">
-
-                <img
-                    src="1st email Maarketing.png"
-                    alt="GoHighLevel email marketing automation"
-                >
-
-            </div>
-
-
-            <div class="project-info">
-
-                <span class="project-type">
-                    EMAIL MARKETING
-                </span>
-
-                <h3>
-                    GHL Email Marketing & Lead Nurturing
-                </h3>
-
-                <p>
-                    Designed automated email sequences for course enrollment and 
-                    template sales, using CRM segmentation, workflow logic, 
-                    lead nurturing, and conversion-based triggers to guide 
-                    prospects from lead to customer.
-                </p>
-
-
-                <div class="tools">
-
-                    <span>GoHighLevel</span>
-                    <span>Email Marketing</span>
-                    <span>Lead Nurturing</span>
-                    <span>Workflow Automation</span>
-                    <span>CRM</span>
-
+            <article class="build-card">
+                <a class="build-image" href="1st%20email%20Maarketing.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="1st%20email%20Maarketing.png" alt="GoHighLevel email marketing automation" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">7 &middot; EMAIL MARKETING</span>
+                    <h4>Email marketing and lead nurturing</h4>
+                    <p>Designed automated email sequences for course enrollment and template sales, using CRM segmentation, workflow logic, lead nurturing, and conversion-based triggers to guide prospects from lead to customer.</p>
                 </div>
+            </article>
 
-            </div>
+        </div>
 
-        </article>
+        <h4 class="case-label">Tools used</h4>
 
+        <div class="tools case-tools">
+            <span>GoHighLevel</span><span>Funnel Builder</span><span>Checkout</span><span>Upsell</span><span>Workflows</span><span>Lead Capture</span><span>Tags</span><span>CRM</span><span>Pipeline</span><span>Opportunities</span><span>Course Enrollment</span><span>Email Marketing</span><span>Lead Nurturing</span><span>AI Agent</span><span>Knowledge Base</span><span>Live Chat</span>
+        </div>
 
-    </div>
+        </div>
+        </div>
+
+    </article>
 
 </section>
 
@@ -1397,5 +1186,18 @@
 
     </script>
 
+<script>
+    (function () {
+        var btn = document.querySelector(".case-toggle");
+        var panel = document.getElementById("ghl-details");
+        if (!btn || !panel) return;
+        var label = btn.querySelector(".toggle-text");
+        btn.addEventListener("click", function () {
+            var open = panel.classList.toggle("open");
+            btn.setAttribute("aria-expanded", open);
+            label.textContent = open ? "Hide details" : "View what I built (7 parts)";
+        });
+    })();
+</script>
 </body>
 </html>
