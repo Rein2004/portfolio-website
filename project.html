@@ -980,7 +980,7 @@
     data-video="CustomerRequestTriageVid.mp4"
     data-goal="Reduce repetitive email work so support teams can focus on the customers who really need a human."
     data-purpose="Built for businesses that receive many customer emails every day. Every request is sorted, logged and answered faster, and nothing slips through."
-    data-how="A Gmail trigger detects each new customer email.|The request is prepared and checked against Airtable to catch duplicates.|OpenAI classifies the request and writes a draft reply.|The result is saved in Airtable.|Low-confidence cases and refund requests are flagged for human review.|The support team is notified by email when a person needs to step in.|If the AI fails, the request is marked as failed and the team is alerted.">
+    data-how="A Gmail trigger detects each new customer email.|The request is prepared and checked against the n8n Data Table to catch duplicates.|OpenAI classifies the request and writes a draft reply.|The result is saved in an n8n Data Table.|Low-confidence cases and refund requests are flagged for human review.|The support team is notified by email when a person needs to step in.|If the AI fails, the request is marked as failed and the team is alerted.">
 
     <div class="project-image">
 
@@ -1008,7 +1008,7 @@
 
         <p>
             Detects incoming customer emails, classifies each request with AI,
-            drafts a reply, saves everything in Airtable, flags duplicates,
+            drafts a reply, saves everything in an n8n Data Table, flags duplicates,
             refunds and low-confidence cases for human review, and alerts the
             team if the AI fails.
         </p>
@@ -1019,7 +1019,7 @@
             <span>n8n</span>
             <span>OpenAI</span>
             <span>Gmail</span>
-            <span>Airtable</span>
+            <span>Data Tables</span>
 
         </div>
 
