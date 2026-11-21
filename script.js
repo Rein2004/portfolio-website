@@ -47,6 +47,89 @@ if (typingElement) {
 
 
 /* =====================================================
+   AUTOMATIC STATS (counted from project.html)
+   - Projects  = every .build-card and .project-card on project.html
+   - Platforms = every .platform-section on project.html
+   Add a project card or a platform section there and the
+   numbers on the home page update by themselves.
+   The numbers written in index.html are only a fallback
+   (shown if project.html can't be loaded).
+===================================================== */
+
+function animateCount(el, target) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+        el.textContent = target;
+        return;
+    }
+    const start = performance.now();
+    const duration = 2200;
+    function tick(now) {
+        const t = Math.min((now - start) / duration, 1);
+        // fast at first, then slows down as it lands on the exact number
+        const eased = 1 - Math.pow(1 - t, 4);
+        el.textContent = Math.round(target * eased);
+        if (t < 1) {
+            requestAnimationFrame(tick);
+        } else {
+            el.textContent = target;
+        }
+    }
+    requestAnimationFrame(tick);
+}
+
+async function loadAutoStats() {
+    const targets = document.querySelectorAll("[data-stat]");
+    if (!targets.length) return;
+
+    // Start every number at 0 so the count visibly runs up to the real value
+    const fallbacks = new Map();
+    targets.forEach((el) => {
+        fallbacks.set(el, el.textContent);
+        el.textContent = "0";
+    });
+
+    const restoreFallbacks = () => {
+        targets.forEach((el) => { el.textContent = fallbacks.get(el); });
+    };
+
+    try {
+        const res = await fetch("project.html", { cache: "no-cache" });
+        if (!res.ok) { restoreFallbacks(); return; }
+
+        const doc = new DOMParser().parseFromString(await res.text(), "text/html");
+
+        const stats = {
+            projects: doc.querySelectorAll(".build-card, .project-card").length,
+            platforms: doc.querySelectorAll(".platform-section").length
+        };
+
+        // Count up when each number scrolls into view (once)
+        const statObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                obs.unobserve(el);
+                const value = stats[el.dataset.stat];
+                if (value > 0) {
+                    animateCount(el, value);
+                } else {
+                    el.textContent = fallbacks.get(el);
+                }
+            });
+        }, { threshold: 0.6 });
+
+        targets.forEach((el) => statObserver.observe(el));
+    } catch (err) {
+        // Keep the fallback numbers written in index.html
+        restoreFallbacks();
+    }
+}
+
+loadAutoStats();
+
+
+/* =====================================================
    SCROLL-TRIGGERED SECTION / CARD REVEAL
 ===================================================== */
 

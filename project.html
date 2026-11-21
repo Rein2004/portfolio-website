@@ -427,6 +427,72 @@
     .case-collapse-inner { min-height: 0; overflow: hidden; visibility: hidden; transition: visibility 0s .45s; }
     .case-collapse.open .case-collapse-inner { visibility: visible; transition-delay: 0s; }
     @media (prefers-reduced-motion: reduce) { .case-collapse, .toggle-icon { transition: none; } }
+
+    /* =========================
+       HOT PROJECT (same size as other cards, just flagged)
+    ========================= */
+    .hot-card { border-color: rgba(255,140,0,.55); box-shadow: 0 0 24px rgba(255,120,0,.10); }
+    .hot-card:hover { border-color: rgba(255,160,40,.85); }
+    .hot-card .project-image { position: relative; }
+    .hot-card .project-image a { display: block; width: 100%; height: 100%; }
+    .hot-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 4px 10px; border-radius: 999px; font-size: .58rem; font-weight: 800; letter-spacing: 1.3px; color: #1a0f00; background: linear-gradient(90deg, #ff9d00, #ff5e2b); box-shadow: 0 0 14px rgba(255,120,0,.5); animation: hotPulse 2.2s ease-in-out infinite; }
+    @keyframes hotPulse { 50% { box-shadow: 0 0 24px rgba(255,120,0,.85); } }
+    .hot-card .project-type { color: #ffa63d; }
+
+    /* =========================
+       PROJECT POPUP (centered modal)
+    ========================= */
+    .project-card, .build-card { cursor: pointer; }
+    .project-card:focus-visible, .build-card:focus-visible { outline: 2px solid #00e5ff; outline-offset: 3px; }
+
+    .pm-overlay { position: fixed; inset: 0; z-index: 1100000; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(3,6,18,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility 0s .25s; }
+    .pm-overlay.open { opacity: 1; visibility: visible; transition-delay: 0s; }
+    .pm-dialog { position: relative; width: min(100%, 880px); max-height: min(86vh, 760px); overflow-y: auto; background: #0a1020; border: 1px solid rgba(0,229,255,.28); border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 40px rgba(0,229,255,.08); transform: translateY(14px) scale(.97); transition: transform .28s ease; scrollbar-width: thin; scrollbar-color: rgba(0,229,255,.3) transparent; }
+    .pm-overlay.open .pm-dialog { transform: none; }
+    .pm-overlay.is-hot .pm-dialog { border-color: rgba(255,140,0,.55); box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 40px rgba(255,120,0,.12); }
+
+    .pm-overlay [hidden] { display: none !important; }
+    .pm-close { position: sticky; top: 12px; display: flex; margin: 12px 12px -46px auto; z-index: 5; width: 34px; height: 34px; align-items: center; justify-content: center; font-size: 1.3rem; line-height: 1; color: #cbd5e1; background: rgba(5,8,22,.85); border: 1px solid rgba(255,255,255,.14); border-radius: 50%; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+    .pm-close:hover { color: #00e5ff; border-color: #00e5ff; background: rgba(0,229,255,.1); }
+
+    .pm-body { display: grid; grid-template-columns: 1.05fr 1fr; gap: 26px; padding: 28px; }
+    .pm-media { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+    .pm-video { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
+    .pm-video iframe, .pm-video video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .pm-shot { display: block; background: #090d1d; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 8px; }
+    .pm-shot img { display: block; width: 100%; max-height: 260px; object-fit: contain; border-radius: 6px; }
+    .pm-shot-hint { font-size: .62rem; color: #64748b; text-align: center; }
+
+    .pm-main { min-width: 0; padding-top: 4px; }
+    .pm-type { display: block; font-size: .62rem; font-weight: 700; letter-spacing: 1.5px; color: #00e5ff; margin-bottom: 9px; }
+    .pm-overlay.is-hot .pm-type { color: #ffa63d; }
+    .pm-hotbadge { display: inline-block; margin-bottom: 10px; padding: 4px 10px; border-radius: 999px; font-size: .58rem; font-weight: 800; letter-spacing: 1.3px; color: #1a0f00; background: linear-gradient(90deg, #ff9d00, #ff5e2b); }
+    .pm-main h3 { font-size: 1.3rem; line-height: 1.35; color: #fff; margin-bottom: 12px; }
+    .pm-main p { color: #94a3b8; font-size: .82rem; line-height: 1.75; }
+    .pm-block { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.07); }
+    .pm-block h4, .pm-how h4 { font-size: .68rem; letter-spacing: 1.5px; text-transform: uppercase; color: #00e5ff; margin-bottom: 8px; }
+    .pm-overlay.is-hot .pm-block h4, .pm-overlay.is-hot .pm-how h4 { color: #ffa63d; }
+
+    .pm-how, .pm-sec { grid-column: 1 / -1; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.07); }
+    .pm-sec h4 { font-size: .68rem; letter-spacing: 1.5px; text-transform: uppercase; color: #00e5ff; margin-bottom: 10px; }
+    .pm-overlay.is-hot .pm-sec h4 { color: #ffa63d; }
+    .pm-checks { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px 22px; }
+    .pm-checks li { position: relative; padding-left: 22px; color: #94a3b8; font-size: .78rem; line-height: 1.6; }
+    .pm-checks li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: #00ff88; font-weight: 800; }
+    .pm-value li::before { content: "\2192"; color: #00e5ff; }
+    .pm-overlay.is-hot .pm-value li::before { color: #ffa63d; }
+    .pm-how ol { list-style: none; counter-reset: pmstep; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; }
+    .pm-how li { counter-increment: pmstep; position: relative; padding-left: 34px; color: #94a3b8; font-size: .78rem; line-height: 1.6; }
+    .pm-how li::before { content: counter(pmstep); position: absolute; left: 0; top: 0; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: .65rem; font-weight: 700; color: #00e5ff; background: rgba(0,229,255,.08); border: 1px solid rgba(0,229,255,.25); border-radius: 6px; }
+    .pm-overlay.is-hot .pm-how li::before { color: #ffa63d; background: rgba(255,140,0,.08); border-color: rgba(255,140,0,.3); }
+
+    .pm-tools { grid-column: 1 / -1; margin-top: 0; padding-top: 0; }
+
+    @media (max-width: 760px) {
+        .pm-overlay { padding: 12px; }
+        .pm-body { grid-template-columns: 1fr; gap: 20px; padding: 20px 18px 24px; }
+        .pm-how ol, .pm-checks { grid-template-columns: 1fr; }
+    }
 </style>
 
 </head>
@@ -669,8 +735,8 @@
             </article>
 
             <article class="build-card">
-                <a class="build-image" href="leadmagnet.png" target="_blank" rel="noopener" title="Open full size">
-                    <img src="leadmagnet.png" alt="GoHighLevel free blueprint lead magnet workflow" loading="lazy">
+                <a class="build-image" href="Lead Magnet.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="Lead Magnet.png" alt="GoHighLevel free blueprint lead magnet workflow" loading="lazy">
                 </a>
                 <div class="build-info">
                     <span class="project-type">2 &middot; LEAD MAGNET AUTOMATION</span>
@@ -680,8 +746,8 @@
             </article>
 
             <article class="build-card">
-                <a class="build-image" href="upsell.png" target="_blank" rel="noopener" title="Open full size">
-                    <img src="upsell.png" alt="GoHighLevel paid blueprint upsell workflow" loading="lazy">
+                <a class="build-image" href="Upsell.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="Upsell.png" alt="GoHighLevel paid blueprint upsell workflow" loading="lazy">
                 </a>
                 <div class="build-info">
                     <span class="project-type">3 &middot; UPSELL AUTOMATION</span>
@@ -691,8 +757,8 @@
             </article>
 
             <article class="build-card">
-                <a class="build-image" href="enrollment.png" target="_blank" rel="noopener" title="Open full size">
-                    <img src="enrollment.png" alt="GoHighLevel course enrollment automation workflow" loading="lazy">
+                <a class="build-image" href="Main Course.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="Main Course.png" alt="GoHighLevel course enrollment automation workflow" loading="lazy">
                 </a>
                 <div class="build-info">
                     <span class="project-type">4 &middot; ENROLLMENT AUTOMATION</span>
@@ -702,8 +768,8 @@
             </article>
 
             <article class="build-card">
-                <a class="build-image" href="pipeline.png" target="_blank" rel="noopener" title="Open full size">
-                    <img src="pipeline.png" alt="GoHighLevel CRM lead nurturing pipeline" loading="lazy">
+                <a class="build-image" href="crm-pipeline-merged.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="crm-pipeline-merged.png" alt="GoHighLevel CRM lead nurturing pipeline" loading="lazy">
                 </a>
                 <div class="build-info">
                     <span class="project-type">5 &middot; CRM & PIPELINE</span>
@@ -777,7 +843,14 @@
 
         <!-- FUNNELISH PROJECT 01 -->
 
-        <article class="project-card">
+        <article class="project-card"
+    data-title="E-commerce Funnel Build: VitaCore"
+    data-video=""
+    data-summary="I built a complete e-commerce sales funnel for VitaCore using Funnelish, designed to guide customers from product discovery all the way through purchase confirmation."
+    data-built-title="What I built"
+    data-built="Landing Page: a product-focused page designed to introduce VitaCore and encourage customers to take action.|3 Checkout Pages: checkout experiences for the 1-Month, 3-Month, and 6-Month product options.|Upsell/Offer Structure: the funnel flow supports different product packages and increases order value.|Thank You Page: a confirmation page with order details and customer support information.|Automation Workflow: started building the automation system to manage customer and order-related processes.|Shopify Integration: set up the Shopify integration inside Funnelish."
+    data-blocks="[{&quot;t&quot;: &quot;Current status&quot;, &quot;p&quot;: &quot;The Shopify connection is currently pending because I don’t yet have a business Shopify account/domain available for the live connection. Because of this, I paused the final stage of the automation rather than pretending the integration was fully live.&quot;}, {&quot;t&quot;: &quot;Once Shopify is connected&quot;, &quot;p&quot;: &quot;The completed integration can be used to sync Funnelish orders with Shopify, allowing orders and customer purchase information to flow into Shopify. From there, the automation can be completed to trigger actions such as order processing, customer notifications, tagging, follow-ups, and other post-purchase workflows.&quot;}, {&quot;t&quot;: &quot;What I gained&quot;, &quot;p&quot;: &quot;Hands-on experience building an e-commerce funnel, checkout flow, thank-you page, automation workflow, and Shopify integration setup in Funnelish.&quot;}]"
+    data-tools="Funnelish|Shopify|Automation Workflows">
 
             <div class="project-image">
 
@@ -796,23 +869,20 @@
                 </span>
 
                 <h3>
-                    VitaCore E-commerce Funnel, CRM & Automation
+                    VitaCore E-commerce Funnel &amp; Automation
                 </h3>
 
                 <p>
-                    Built a complete VitaCore e-commerce funnel with landing pages, 
-                    multiple checkout offers, CRM, workflow automation, and Shopify 
-                    integration using Funnelish.
+                    Built a complete VitaCore sales funnel in Funnelish: landing page, three checkout pages for the 1, 3 and 6-month options, a thank-you page, an automation workflow in progress, and Shopify integration set up (live connection pending).
                 </p>
 
 
                 <div class="tools">
 
                     <span>Funnelish</span>
-                    <span>E-commerce Funnel</span>
-                    <span>CRM</span>
-                    <span>Automation</span>
-                    <span>Shopify</span>
+<span>E-commerce Funnel</span>
+<span>Automation</span>
+<span>Shopify</span>
 
                 </div>
 
@@ -822,7 +892,13 @@
 
         <!-- Funnelish Project 02 -->
 
-<article class="project-card">
+<article class="project-card"
+    data-title="Funnelish E-commerce Funnel: Paid Task for Zenbodi"
+    data-video="ZenbodiCoffee1.mp4|ZenbodiCoffee2.mp4"
+    data-summary="Completed a paid funnel-building task for Zenbodi, focused on creating an e-commerce sales funnel in Funnelish."
+    data-built-title="What the project included"
+    data-built="Advertorial / landing page|Product checkout page|Mobile-responsive layout|Product-focused sections and CTA flow|Funnel structure designed to guide visitors toward checkout"
+    data-blocks="[{&quot;t&quot;: &quot;What it showed&quot;, &quot;p&quot;: &quot;A great opportunity to work from a real business brief, follow specific requirements, and build the funnel from start to finish.&quot;}]">
 
     <div class="project-image">
 
@@ -854,10 +930,10 @@
         <div class="tools">
 
             <span>Funnelish</span>
-            <span>E-commerce Funnel</span>
-            <span>Landing Page</span>
-            <span>Checkout</span>
-            <span>Conversion Optimization</span>
+<span>E-commerce Funnel</span>
+<span>Landing Page</span>
+<span>Checkout</span>
+<span>Mobile Responsive</span>
 
         </div>
 
@@ -896,9 +972,71 @@
 
         <div class="project-grid">
 
+            <!-- n8n HOT PROJECT: AI Customer Request Triage -->
+
+<!-- Popup content for this project. Paste your video link in data-video
+         (YouTube, Vimeo, Loom, Google Drive or a .mp4 file). Leave it empty to hide the video. -->
+<article class="project-card hot-card"
+    data-video="CustomerRequestTriageVid.mp4"
+    data-goal="Reduce repetitive email work so support teams can focus on the customers who really need a human."
+    data-purpose="Built for businesses that receive many customer emails every day. Every request is sorted, logged and answered faster, and nothing slips through."
+    data-how="A Gmail trigger detects each new customer email.|The request is prepared and checked against Airtable to catch duplicates.|OpenAI classifies the request and writes a draft reply.|The result is saved in Airtable.|Low-confidence cases and refund requests are flagged for human review.|The support team is notified by email when a person needs to step in.|If the AI fails, the request is marked as failed and the team is alerted.">
+
+    <div class="project-image">
+
+        <span class="hot-badge">🔥 HOT PROJECT</span>
+
+        <a href="CustomerRequestTriage.png" target="_blank" rel="noopener" title="Open full size">
+            <img
+                src="CustomerRequestTriage.png"
+                alt="AI Customer Request Triage workflow built in n8n"
+            >
+        </a>
+
+    </div>
+
+
+    <div class="project-info">
+
+        <span class="project-type">
+            AI CUSTOMER SUPPORT
+        </span>
+
+        <h3>
+            AI Customer Request Triage
+        </h3>
+
+        <p>
+            Detects incoming customer emails, classifies each request with AI,
+            drafts a reply, saves everything in Airtable, flags duplicates,
+            refunds and low-confidence cases for human review, and alerts the
+            team if the AI fails.
+        </p>
+
+
+        <div class="tools">
+
+            <span>n8n</span>
+            <span>OpenAI</span>
+            <span>Gmail</span>
+            <span>Airtable</span>
+
+        </div>
+
+    </div>
+
+</article>
+
             <!-- n8n PROJECT 01 -->
 
-<article class="project-card">
+<article class="project-card"
+    data-video="AiContentAutomation.mp4"
+    data-summary="Built an AI Content Automation System to streamline the process of turning a simple content request into ready-to-publish social media content."
+    data-built-title="What it does"
+    data-built="Captures content requests through Tally|Uses an AI Content Strategist to generate the hook, message, CTA, hashtags, and visual concept|Uses an AI Creative Agent to create the image prompt and alt text|Generates the visual automatically|Prepares the content for Instagram publishing"
+    data-how="A content request is submitted through Tally.|n8n receives the request and starts the workflow.|The AI Content Strategist writes the hook, message, CTA, hashtags, and visual concept.|The AI Creative Agent creates the image prompt and alt text.|The visual is generated automatically.|The content is prepared for Instagram publishing."
+    data-goal="Reduce repetitive manual work while keeping the content creation process structured and consistent."
+    data-tools="n8n|AI Agents|Tally|Image Generation">
 
     <div class="project-image">
 
@@ -921,20 +1059,17 @@
         </h3>
 
         <p>
-            Automates the content creation process from client request to
-            Instagram publishing, using AI to develop content strategies,
-            creative direction, captions, hashtags, and custom marketing
-            visuals.
+            Turns a simple content request from Tally into Instagram-ready content: AI agents write the hook, message, CTA and hashtags, create the image prompt and alt text, and the visual is generated automatically.
         </p>
 
 
         <div class="tools">
 
             <span>n8n</span>
-            <span>Tally</span>
-            <span>AI</span>
-            <span>Webhooks</span>
-            <span>Instagram</span>
+<span>Tally</span>
+<span>AI Agents</span>
+<span>Image Generation</span>
+<span>Instagram</span>
 
         </div>
 
@@ -944,7 +1079,14 @@
 
             <!-- n8n PROJECT 02 -->
 
-            <article class="project-card">
+            <article class="project-card"
+    data-title="Automated Lead Follow-Up &amp; Reminder Workflow"
+    data-video="automatedFollowUp.mp4"
+    data-problem="Following up with leads manually can result in missed opportunities, inconsistent communication, and unnecessary reminders being sent to people who have already responded."
+    data-solution="Built an automated workflow in n8n that captures incoming leads, processes them with an AI Agent, stores lead information in Google Sheets, sends an initial email, notifies through Telegram, and waits before triggering a follow-up reminder. The workflow checks the lead’s latest status before sending the reminder, helping prevent unnecessary follow-ups when the lead has already been contacted."
+    data-how="A webhook captures each incoming lead.|An AI Agent processes the lead.|Lead information is stored in Google Sheets.|An initial email is sent to the lead.|A Telegram notification alerts the team.|The workflow waits before following up.|It checks the lead’s latest status.|A reminder is sent only if the lead hasn’t already been contacted."
+    data-blocks="[{&quot;t&quot;: &quot;The result&quot;, &quot;p&quot;: &quot;This system helps make lead follow-ups more consistent, organized, and automated while reducing repetitive manual work.&quot;}]"
+    data-tools="n8n|AI Agent|Google Sheets|Email|Telegram|Wait &amp; Follow-Up Automation">
 
                 <div class="project-image">
 
@@ -959,26 +1101,24 @@
                 <div class="project-info">
 
                     <span class="project-type">
-                        SALES AUTOMATION
+                        LEAD FOLLOW-UP AUTOMATION
                     </span>
 
                     <h3>
-                        Sales & Follow-Up Automation
+                        Automated Lead Follow-Up &amp; Reminder Workflow
                     </h3>
 
                     <p>
-                        Automatically keeps track of leads and follow-ups, 
-                        so businesses know who to contact, when to follow up, 
-                        and what action to take next—without having to manage 
-                        everything manually.
+                        Captures incoming leads, processes them with an AI Agent, logs them in Google Sheets, emails and notifies the team, then sends a reminder only if the lead still needs one.
                     </p>
 
 
                     <div class="tools">
 
                         <span>n8n</span>
-                        <span>APIs</span>
-                        <span>Business Tools</span>
+<span>AI Agent</span>
+<span>Google Sheets</span>
+<span>Telegram</span>
 
                     </div>
 
@@ -989,7 +1129,14 @@
 
             <!-- n8n PROJECT 03 -->
 
-            <article class="project-card">
+            <article class="project-card"
+                data-title="Weekly Sales Reporting & Order Management Automation"
+                data-video=""
+                data-problem="Sales reporting was a repetitive and error-prone process that required manually retrieving order data, calculating booked sales totals, and tracking orders that were still in processing. This consumed valuable time, delayed reporting, and increased the risk of human error in weekly sales updates."
+                data-solution="Designed and implemented an automated workflow in n8n that retrieves sales data from a warehouse API, processes order statuses, calculates booked sales totals, and automatically distributes reports to the appropriate teams. The workflow runs on a scheduled basis, eliminating manual data collection and ensuring that sales information is delivered consistently and accurately."
+                data-features="Automated weekly reporting using scheduled triggers|API integration with the data warehouse|Conditional logic for Processing and Booked orders|Automated calculation of booked sales totals|Storage of processing orders in Data Tables for follow-up|Discord notifications for sales updates|Reduced manual reporting effort and improved accuracy"
+                data-value="Eliminates repetitive manual reporting tasks|Improves reporting accuracy and consistency|Provides real-time visibility into sales performance|Centralizes order tracking for follow-up actions|Enables teams to focus on higher-value work instead of administrative tasks"
+                data-tools="n8n|REST API|Data Tables|Discord|Workflow Automation">
 
                 <div class="project-image">
 
@@ -1021,8 +1168,9 @@
                     <div class="tools">
 
                         <span>n8n</span>
-                        <span>APIs</span>
-                        <span>Business Tools</span>
+                        <span>REST API</span>
+                        <span>Data Tables</span>
+                        <span>Discord</span>
 
                     </div>
 
@@ -1065,7 +1213,14 @@
 
             <!-- ZAPIER PROJECT 01 -->
 
-<article class="project-card">
+<article class="project-card"
+    data-title="Automated Client Onboarding &amp; Project Setup System"
+    data-video=""
+    data-problem="Service providers often spend valuable time manually setting up new client projects. Creating project folders, organizing tasks, sending welcome emails, updating client records, and assigning onboarding activities can be repetitive and time-consuming. This manual process slows project kickoffs, creates inconsistencies, and increases the risk of missed steps during onboarding."
+    data-solution="Designed and implemented an automated client onboarding workflow in Zapier that instantly prepares project resources whenever a new client submits an onboarding form. The system automatically creates project folders, generates project tasks, sends onboarding communications, updates CRM records, and notifies the internal team, ensuring a consistent and efficient onboarding experience."
+    data-features="Automated client onboarding through Google Forms submissions|Automatic project folder creation in Google Drive|Trello card generation for project management and tracking|Personalized welcome email delivery through Gmail|Automated client record creation in CRM (Google Sheets)|Internal team notifications for new client projects|Standardized onboarding checklist assignment|Reduced manual administrative work and onboarding delays"
+    data-value="Standardizes the client onboarding process|Reduces repetitive administrative tasks|Accelerates project setup and kickoff timelines|Improves team organization and project visibility|Enhances the client onboarding experience|Minimizes human error through automation|Allows teams to focus on client delivery instead of manual setup"
+    data-tools="Zapier|Google Forms|Google Sheets|Google Drive|Trello|Gmail|Workflow Automation">
 
     <div class="project-image">
 
@@ -1080,28 +1235,25 @@
     <div class="project-info">
 
         <span class="project-type">
-            FILE & WORKFLOW AUTOMATION
+            CLIENT ONBOARDING AUTOMATION
         </span>
 
         <h3>
-            Automated File Organization & Notifications
+            Automated Client Onboarding &amp; Project Setup
         </h3>
 
         <p>
-            Automates file organization by detecting new client files in
-            Google Sheets, organizing them in Google Drive, creating a task
-            note in Trello, and sending confirmation notifications to both
-            the client and internal team.
+            Whenever a new client submits an onboarding form, this Zap creates the project folder, Trello card and CRM record, sends a welcome email, and notifies the team, with no manual setup.
         </p>
 
 
         <div class="tools">
 
             <span>Zapier</span>
-            <span>Google Sheets</span>
-            <span>Google Drive</span>
-            <span>Trello</span>
-            <span>Email</span>
+<span>Google Forms</span>
+<span>Google Drive</span>
+<span>Trello</span>
+<span>Gmail</span>
 
         </div>
 
@@ -1198,6 +1350,260 @@
             label.textContent = open ? "Hide details" : "View what I built (7 parts)";
         });
     })();
+</script>
+
+<!-- =========================
+     PROJECT POPUP
+========================= -->
+<div class="pm-overlay" id="pm" aria-hidden="true">
+    <div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+        <button type="button" class="pm-close" aria-label="Close">&times;</button>
+        <div class="pm-body">
+            <div class="pm-media" id="pm-media"></div>
+            <div class="pm-main">
+                <span class="pm-hotbadge" id="pm-hotbadge" hidden>🔥 HOT PROJECT</span>
+                <span class="pm-type" id="pm-type"></span>
+                <h3 id="pm-title"></h3>
+                <p id="pm-desc"></p>
+                <div class="pm-block" id="pm-problem-wrap" hidden><h4>The problem</h4><p id="pm-problem"></p></div>
+                <div class="pm-block" id="pm-solution-wrap" hidden><h4>The solution</h4><p id="pm-solution"></p></div>
+                <div id="pm-blocks"></div>
+                <div class="pm-block" id="pm-goal-wrap" hidden><h4>The goal</h4><p id="pm-goal"></p></div>
+                <div class="pm-block" id="pm-purpose-wrap" hidden><h4>The purpose</h4><p id="pm-purpose"></p></div>
+            </div>
+            <div class="pm-sec" id="pm-built-wrap" hidden><h4 id="pm-built-title">What I built</h4><ul class="pm-checks" id="pm-built"></ul></div>
+            <div class="pm-sec" id="pm-features-wrap" hidden><h4>Key features</h4><ul class="pm-checks" id="pm-features"></ul></div>
+            <div class="pm-how" id="pm-how-wrap" hidden><h4>How it works</h4><ol id="pm-how"></ol></div>
+            <div class="pm-sec" id="pm-value-wrap" hidden><h4>Business value</h4><ul class="pm-checks pm-value" id="pm-value"></ul></div>
+            <div class="tools pm-tools" id="pm-tools" hidden></div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    var overlay = document.getElementById("pm");
+    if (!overlay) return;
+    var dialog = overlay.querySelector(".pm-dialog");
+    var closeBtn = overlay.querySelector(".pm-close");
+    var el = function (id) { return document.getElementById(id); };
+    var lastFocus = null;
+
+    function videoNode(url, poster) {
+        url = (url || "").trim();
+        if (!url) return null;
+        var wrap = document.createElement("div");
+        wrap.className = "pm-video";
+        var m, src;
+
+        if ((m = url.match(/(?:youtube\.com\/watch\?(?:.*&)?v=|youtu\.be\/|youtube\.com\/shorts\/|youtube\.com\/embed\/)([\w-]{11})/))) {
+            src = "https://www.youtube.com/embed/" + m[1] + "?rel=0";
+        } else if ((m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/))) {
+            src = "https://player.vimeo.com/video/" + m[1];
+        } else if ((m = url.match(/loom\.com\/(?:share|embed)\/([\w]+)/))) {
+            src = "https://www.loom.com/embed/" + m[1];
+        } else if ((m = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/))) {
+            src = "https://drive.google.com/file/d/" + m[1] + "/preview";
+        } else if (/\.(mp4|webm|mov|ogg)(\?.*)?$/i.test(url)) {
+            var v = document.createElement("video");
+            v.src = url;
+            v.controls = true;
+            v.preload = "metadata";
+            if (poster) v.poster = poster;
+            v.playsInline = true;
+            wrap.appendChild(v);
+            return wrap;
+        } else {
+            src = url;
+        }
+
+        var f = document.createElement("iframe");
+        f.src = src;
+        f.title = "Project video";
+        f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+        f.allowFullscreen = true;
+        f.loading = "lazy";
+        wrap.appendChild(f);
+        return wrap;
+    }
+
+    function setText(wrapId, textId, value) {
+        var wrap = el(wrapId);
+        value = (value || "").trim();
+        wrap.hidden = !value;
+        if (textId) el(textId).textContent = value;
+    }
+
+    function openModal(card) {
+        var isHot = card.classList.contains("hot-card");
+        var img = card.querySelector("img");
+        var typeEl = card.querySelector(".project-type");
+        var titleEl = card.querySelector("h3, h4");
+        var descEl = card.querySelector(".project-info p, .build-info p");
+
+        overlay.classList.toggle("is-hot", isHot);
+        el("pm-hotbadge").hidden = !isHot;
+        el("pm-type").textContent = typeEl ? typeEl.textContent.replace(/\s+/g, " ").trim() : "";
+        el("pm-title").textContent = (card.dataset.title || (titleEl ? titleEl.textContent : "")).replace(/\s+/g, " ").trim();
+        el("pm-desc").textContent = (card.dataset.summary || (descEl ? descEl.textContent : "")).replace(/\s+/g, " ").trim();
+
+        setText("pm-problem-wrap", "pm-problem", card.dataset.problem);
+        setText("pm-solution-wrap", "pm-solution", card.dataset.solution);
+        setText("pm-goal-wrap", "pm-goal", card.dataset.goal);
+        setText("pm-purpose-wrap", "pm-purpose", card.dataset.purpose);
+
+        // Extra text blocks: data-blocks='[{"t":"Title","p":"Text"}]'
+        var blocks = el("pm-blocks");
+        blocks.innerHTML = "";
+        try {
+            JSON.parse(card.dataset.blocks || "[]").forEach(function (b) {
+                if (!b.t || !b.p) return;
+                var d = document.createElement("div");
+                d.className = "pm-block";
+                var h = document.createElement("h4"); h.textContent = b.t;
+                var q = document.createElement("p"); q.textContent = b.p;
+                d.appendChild(h); d.appendChild(q);
+                blocks.appendChild(d);
+            });
+        } catch (err) {}
+
+        // Bullet lists (items separated by |)
+        function fillList(wrapId, listId, raw) {
+            var items = (raw || "").split("|").map(function (t) { return t.trim(); }).filter(Boolean);
+            var ul = el(listId);
+            ul.innerHTML = "";
+            items.forEach(function (t) { var li = document.createElement("li"); li.textContent = t; ul.appendChild(li); });
+            el(wrapId).hidden = !items.length;
+        }
+        fillList("pm-built-wrap", "pm-built", card.dataset.built);
+        el("pm-built-title").textContent = card.dataset.builtTitle || "What I built";
+        fillList("pm-features-wrap", "pm-features", card.dataset.features);
+        fillList("pm-value-wrap", "pm-value", card.dataset.value);
+
+        // How it works (steps separated by |)
+        var steps = (card.dataset.how || "").split("|").map(function (t) { return t.trim(); }).filter(Boolean);
+        var ol = el("pm-how");
+        ol.innerHTML = "";
+        steps.forEach(function (t) { var li = document.createElement("li"); li.textContent = t; ol.appendChild(li); });
+        el("pm-how-wrap").hidden = !steps.length;
+
+        // Tools
+        var tools = el("pm-tools");
+        tools.innerHTML = "";
+        var toolNames = card.dataset.tools
+            ? card.dataset.tools.split("|").map(function (t) { return t.trim(); }).filter(Boolean)
+            : Array.prototype.map.call(card.querySelectorAll(".tools span"), function (sp) { return sp.textContent.trim(); });
+        toolNames.forEach(function (name) {
+            var c = document.createElement("span");
+            c.textContent = name;
+            tools.appendChild(c);
+        });
+        tools.hidden = !tools.children.length;
+
+        // Media: video first (if provided), then the screenshot
+        var media = el("pm-media");
+        media.innerHTML = "";
+        var poster = img ? img.getAttribute("src") : "";
+        var urls = (card.dataset.video || "").split("|").map(function (u) { return u.trim(); }).filter(Boolean);
+        var vid = urls.length > 0;
+        var players = [];
+        urls.forEach(function (u) {
+            var node = videoNode(u, poster);
+            if (!node) return;
+            media.appendChild(node);
+            var v = node.querySelector("video");
+            if (v) players.push(v);
+        });
+
+        // Several videos: the first plays on open, the next starts when one ends,
+        // and starting one by hand pauses the others.
+        players.forEach(function (v, i) {
+            v.addEventListener("ended", function () {
+                var nxt = players[i + 1];
+                if (!nxt) return;
+                var wrap = nxt.parentNode;
+                if (wrap.scrollIntoView) wrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                var p2 = nxt.play();
+                if (p2 && p2.catch) p2.catch(function () {});
+            });
+            v.addEventListener("play", function () {
+                players.forEach(function (o) { if (o !== v) o.pause(); });
+            });
+        });
+
+        if (players[0]) {
+            // autoplay (the click that opened the popup allows sound; fall back to muted if the browser refuses)
+            var first = players[0];
+            var pr = first.play();
+            if (pr && pr.catch) pr.catch(function () {
+                first.muted = true;
+                var pr2 = first.play();
+                if (pr2 && pr2.catch) pr2.catch(function () {});
+            });
+        }
+        if (img && !vid) {
+            var a = document.createElement("a");
+            a.className = "pm-shot";
+            a.href = img.getAttribute("src");
+            a.target = "_blank";
+            a.rel = "noopener";
+            a.title = "Open full size";
+            var im = document.createElement("img");
+            im.src = img.getAttribute("src");
+            im.alt = img.getAttribute("alt") || "";
+            a.appendChild(im);
+            media.appendChild(a);
+            var hint = document.createElement("span");
+            hint.className = "pm-shot-hint";
+            hint.textContent = "Click the image to open it full size";
+            media.appendChild(hint);
+        }
+
+        lastFocus = document.activeElement;
+        dialog.scrollTop = 0;
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeBtn.focus();
+    }
+
+    function closeModal() {
+        if (!overlay.classList.contains("open")) return;
+        overlay.classList.remove("open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        // remove the player so the video stops playing
+        setTimeout(function () { if (!overlay.classList.contains("open")) el("pm-media").innerHTML = ""; }, 300);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    document.querySelectorAll(".project-card, .build-card").forEach(function (card) {
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.addEventListener("click", function (e) {
+            if (e.target.closest("a")) e.preventDefault();
+            openModal(card);
+        });
+        card.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(card); }
+        });
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+
+    document.addEventListener("keydown", function (e) {
+        if (!overlay.classList.contains("open")) return;
+        if (e.key === "Escape") { closeModal(); return; }
+        if (e.key === "Tab") {
+            var f = dialog.querySelectorAll("a[href], button, iframe, video");
+            if (!f.length) return;
+            var first = f[0], last = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+    });
+})();
 </script>
 </body>
 </html>
