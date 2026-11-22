@@ -3798,3 +3798,55 @@ html, body { overflow-x: clip; }
     .platform-section .project-image { height: auto; aspect-ratio: 16 / 10; }
     .platform-section { margin-bottom: 18px; }
 }
+
+
+/* =====================================================
+   ABOUT PHOTO: even spacing, TECH BAND: smaller and quieter,
+   MOBILE SHOWCASE: smaller cards
+===================================================== */
+/* About: crop the empty top of the photo (scale from the bottom) so top/bottom spacing is even.
+   Tune --about-zoom: higher = less empty space on top. */
+.about-page .about-image { --about-zoom: 1.18; }
+.about-page .about-photo {
+    object-fit: cover !important;
+    object-position: center bottom !important;
+    transform: scale(var(--about-zoom));
+    transform-origin: center bottom;
+}
+
+/* Tech logos: compact, blends into the page */
+#tech, #tech.tech-stack-section {
+    background: transparent !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    border: 0 !important;
+}
+#tech .tech-orbit { height: 150px !important; opacity: .55; }
+#tech .tech-line { display: none; }
+#tech .logo-track { gap: 28px; }
+#tech .logo-track-1 { top: 10px !important; }
+#tech .logo-track-2 { top: 82px !important; opacity: .45; }
+#tech .tech-logo { width: 56px !important; height: 56px !important; flex-basis: 56px !important; border-radius: 14px; }
+#tech .tech-logo img { width: 32px !important; height: 32px !important; }
+#tech .tech-orbit::before, #tech .tech-orbit::after { width: 25%; }
+
+@media (max-width: 600px) {
+    #tech, #tech.tech-stack-section { padding-top: 6px !important; padding-bottom: 6px !important; }
+    #tech .tech-orbit { height: 104px !important; }
+    #tech .logo-track { gap: 18px; }
+    #tech .logo-track-1 { top: 6px !important; }
+    #tech .logo-track-2 { top: 56px !important; }
+    #tech .tech-logo { width: 40px !important; height: 40px !important; flex-basis: 40px !important; border-radius: 11px; }
+    #tech .tech-logo img { width: 22px !important; height: 22px !important; }
+
+    .showcase-section { padding: 44px 5% 48px !important; }
+    .showcase-head h2 { font-size: 1.45rem !important; margin-bottom: 8px; }
+    .showcase-head p { font-size: .85rem; line-height: 1.55; }
+    .reel { padding: 12px 0 !important; }
+    .reel-card { flex: 0 0 188px !important; padding: 7px 7px 0 !important; border-radius: 12px; }
+    .reel-frame { height: 98px !important; }
+    .reel-card figcaption { padding: 8px 2px 10px; }
+    .reel-card figcaption strong { font-size: .8rem; margin-bottom: 2px; }
+    .reel-card figcaption span { font-size: .68rem; line-height: 1.4; }
+    .showcase-cta { margin-top: 8px !important; }
+}
