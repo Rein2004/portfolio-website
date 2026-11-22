@@ -3806,7 +3806,7 @@ html, body { overflow-x: clip; }
 ===================================================== */
 /* About: crop the empty top of the photo (scale from the bottom) so top/bottom spacing is even.
    Tune --about-zoom: higher = less empty space on top. */
-.about-page .about-image { --about-zoom: 1.18; }
+.about-page .about-image { --about-zoom: 1.06; }
 .about-page .about-photo {
     object-fit: cover !important;
     object-position: center bottom !important;
