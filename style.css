@@ -3504,3 +3504,297 @@ section h2 { margin-bottom: 16px; }
     border-color: transparent;
     box-shadow: 0 0 16px rgba(255, 120, 0, .5);
 }
+
+
+/* =====================================================
+   WATCH IT WORK (video preview cards)
+===================================================== */
+#demos {
+    padding: var(--section-space) var(--gutter) !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+}
+
+#demos .showcase-head { margin-bottom: 28px !important; }
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap);
+}
+
+.demo-card {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+    background: #0a0f22;
+    border: 1px solid rgba(0, 229, 255, .16);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.demo-card:hover,
+.demo-card:focus-visible {
+    transform: translateY(-6px);
+    border-color: #00e5ff;
+    box-shadow: 0 22px 44px -16px rgba(0, 229, 255, .5);
+}
+
+.demo-card.is-hot {
+    border-color: rgba(255, 140, 0, .5);
+    box-shadow: 0 0 26px rgba(255, 120, 0, .12);
+}
+
+.demo-card.is-hot:hover,
+.demo-card.is-hot:focus-visible {
+    border-color: #ffa63d;
+    box-shadow: 0 22px 44px -16px rgba(255, 140, 0, .55);
+}
+
+.demo-media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: #020510;
+    overflow: hidden;
+}
+
+.demo-media img,
+.demo-media video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
+.demo-media video { opacity: 0; transition: opacity .5s ease; }
+.demo-media video.is-playing { opacity: 1; }
+
+.demo-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+    padding: 4px 10px;
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    color: #00e5ff;
+    background: rgba(5, 8, 22, .85);
+    border: 1px solid rgba(0, 229, 255, .3);
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+}
+
+.demo-tag-hot {
+    color: #1a0f00;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ff9d00, #ff5e2b);
+    border-color: transparent;
+    box-shadow: 0 0 16px rgba(255, 120, 0, .5);
+}
+
+.demo-watch {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 3;
+    padding: 6px 12px;
+    font-size: .68rem;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(5, 8, 22, .8);
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.demo-card:hover .demo-watch { background: #00e5ff; color: #050816; border-color: #00e5ff; }
+.demo-card.is-hot:hover .demo-watch { background: #ffa63d; border-color: #ffa63d; }
+
+.demo-info { padding: 14px 16px 18px; }
+.demo-info strong { display: block; margin-bottom: 4px; font-size: .95rem; font-weight: 700; color: #fff; }
+.demo-info span { display: block; font-size: .8rem; line-height: 1.5; color: #9ca3af; }
+
+@media (max-width: 1000px) {
+    .demo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .demo-grid {
+        display: flex;
+        gap: 14px;
+        margin: 0 calc(var(--gutter) * -1);
+        padding: 4px var(--gutter) 10px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+    .demo-grid::-webkit-scrollbar { display: none; }
+    .demo-card { flex: 0 0 78%; scroll-snap-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .demo-card, .demo-media video { transition: none; }
+}
+
+
+/* =====================================================
+   SERVICES: icon cards with one short line
+===================================================== */
+.svc-card { display: flex; flex-direction: column; align-items: flex-start; }
+
+.svc-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 14px;
+    color: #00e5ff;
+    background: rgba(0, 229, 255, .08);
+    border: 1px solid rgba(0, 229, 255, .28);
+    border-radius: 12px;
+    transition: background .3s ease, box-shadow .3s ease;
+}
+
+.svc-icon svg { width: 22px; height: 22px; }
+
+.svc-card:hover .svc-icon {
+    background: rgba(0, 229, 255, .16);
+    box-shadow: 0 0 18px rgba(0, 229, 255, .3);
+}
+
+#services .svc-card p { font-size: .92rem !important; color: #cbd5e1; }
+
+
+/* =====================================================
+   NAVIGATION: identical on every page and screen size
+   - always one row on tablets (it used to wrap and cover the page)
+   - same font on the Projects page
+===================================================== */
+.main-nav {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    padding: 0 5% !important;
+    text-align: left !important;
+}
+
+.main-nav,
+.main-nav * { font-family: "Manrope", sans-serif; }
+
+
+/* =====================================================
+   RESPONSIVE POLISH (tablet and phone)
+===================================================== */
+
+/* No sideways wobble on iPad / iPhone */
+html, body { overflow-x: clip; }
+#showcase { overflow-x: clip; }
+
+/* ---- Projects page header (the "Back to Projects" pill is gone) ---- */
+.projects-header { padding-top: 112px !important; }
+
+/* ---- Tablet portrait: two-column hero, like desktop but smaller ---- */
+@media (min-width: 700px) and (max-width: 900px) {
+    .hero-container {
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 32px !important;
+        text-align: left !important;
+    }
+    .hero-text { text-align: left !important; flex: 1.25; }
+    .hero-image { flex: .75; justify-content: center !important; }
+    .profile-wrapper { width: 230px; height: 230px; }
+    .hero-headline { font-size: 2.3rem; }
+    .hero-lede { margin-left: 0 !important; margin-right: 0 !important; }
+    .hero-buttons {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: flex-start !important;
+        align-items: center !important;
+    }
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary { width: auto !important; max-width: none !important; }
+    .hero-trust { justify-content: flex-start !important; }
+    .flow-chip { font-size: .6rem; padding: 8px 10px; }
+}
+
+/* ---- Tablet: services in two columns, stats always in one row ---- */
+@media (min-width: 601px) and (max-width: 900px) {
+    #services .project-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 900px) {
+    .project-highlights { grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; }
+
+    #services h2, #process h2 { text-align: center; }
+    #services .section-subtitle,
+    #process .section-subtitle {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+/* ---- Phone ---- */
+@media (max-width: 600px) {
+
+    /* hero: smaller photo so the headline shows without scrolling */
+    .profile-wrapper { width: 168px; height: 168px; }
+    .status-dot { width: 26px; height: 26px; bottom: 12px; right: 12px; border-width: 4px; }
+    .hero-container { gap: 20px !important; }
+    .hero-headline { font-size: 2rem; }
+
+    .section-subtitle { margin-bottom: 24px !important; }
+
+    /* services: compact rows, icon on the left */
+    #services .project-grid { gap: 10px !important; }
+    #services .svc-card {
+        display: grid !important;
+        grid-template-columns: 44px 1fr;
+        column-gap: 14px;
+        row-gap: 2px;
+        align-items: center;
+        padding: 14px 16px !important;
+    }
+    #services .svc-card .svc-icon { grid-row: 1 / span 2; margin: 0; }
+    #services .svc-card h3 { margin: 0 !important; font-size: 1rem !important; }
+    #services .svc-card p { margin: 0 !important; font-size: .85rem !important; }
+
+    /* numbers: three small cards in one row */
+    #projects h2 { margin-bottom: 20px; }
+    .project-highlights .stat-card { padding: 16px 6px !important; }
+    .stat-card h3 { font-size: 1.6rem !important; margin-bottom: 6px !important; }
+    .stat-card p { font-size: .72rem !important; line-height: 1.35; }
+
+    /* why-me cards: tighter */
+    .lever { padding: 18px !important; }
+    .lever p { font-size: .88rem; }
+    .profit-example { padding: 20px 18px; }
+
+    /* process: number on the left of each step */
+    .process-steps { gap: 14px !important; }
+    .process-steps li { display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; align-items: start; }
+    .process-steps li::before { grid-row: 1 / span 2; margin-bottom: 0; }
+    #process .process-steps h3 { margin: 2px 0 4px !important; }
+
+    .projects-header { padding-top: 100px !important; }
+}
+
+
+/* =====================================================
+   PROJECTS PAGE: cards on tablet and phone
+   (the card used to get padding twice, so images looked small)
+===================================================== */
+@media (max-width: 800px) {
+    .platform-section .project-card { padding: 0 !important; min-height: 0 !important; }
+    .platform-section .project-image { height: auto; aspect-ratio: 16 / 10; }
+    .platform-section { margin-bottom: 18px; }
+}

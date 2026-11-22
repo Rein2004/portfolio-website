@@ -566,20 +566,6 @@
         </div>
 
 
-        <!-- BACK TO PROJECTS -->
-
-        <a
-            href="index.html#projects"
-            class="project-back-nav"
-        >
-
-            <span>←</span>
-
-            <span>Back to Projects</span>
-
-        </a>
-
-
         <!-- MOBILE MENU BUTTON -->
 
         <button
@@ -600,58 +586,33 @@
         <ul class="nav-menu">
 
             <li>
-
-                <a
-                    href="index.html"
-                    class="nav-link"
-                >
+                <a href="index.html" class="nav-link">
                     Home
                 </a>
-
             </li>
 
             <li>
-
-                <a
-                    href="index.html#about"
-                    class="nav-link"
-                >
-                    About
-                </a>
-
-            </li>
-
-            <li>
-
-                <a
-                    href="index.html#services"
-                    class="nav-link"
-                >
+                <a href="index.html#services" class="nav-link">
                     Services
                 </a>
-
             </li>
 
             <li>
-
-                <a
-                    href="project.html"
-                    class="nav-link active"
-                >
+                <a href="project.html" class="nav-link active">
                     Projects
                 </a>
-
             </li>
 
             <li>
+                <a href="index.html#about" class="nav-link">
+                    About
+                </a>
+            </li>
 
-                <a
-                    href="index.html#contact"
-                    class="nav-link nav-contact"
-                >
+            <li>
+                <a href="index.html#contact" class="nav-link nav-contact">
                     Contact
                 </a>
-
             </li>
 
         </ul>
@@ -843,7 +804,7 @@
 
         <!-- FUNNELISH PROJECT 01 -->
 
-        <article class="project-card"
+        <article id="vitacore" class="project-card"
     data-title="E-commerce Funnel Build: VitaCore"
     data-video=""
     data-summary="I built a complete e-commerce sales funnel for VitaCore using Funnelish, designed to guide customers from product discovery all the way through purchase confirmation."
@@ -892,7 +853,7 @@
 
         <!-- Funnelish Project 02 -->
 
-<article class="project-card"
+<article id="zenbodi" class="project-card"
     data-title="Funnelish E-commerce Funnel: Paid Task for Zenbodi"
     data-video="ZenbodiCoffee1.mp4|ZenbodiCoffee2.mp4"
     data-summary="Completed a paid funnel-building task for Zenbodi, focused on creating an e-commerce sales funnel in Funnelish."
@@ -976,7 +937,7 @@
 
 <!-- Popup content for this project. Paste your video link in data-video
          (YouTube, Vimeo, Loom, Google Drive or a .mp4 file). Leave it empty to hide the video. -->
-<article class="project-card hot-card"
+<article id="triage" class="project-card hot-card"
     data-video="CustomerRequestTriageVid.mp4"
     data-goal="Reduce repetitive email work so support teams can focus on the customers who really need a human."
     data-purpose="Built for businesses that receive many customer emails every day. Every request is sorted, logged and answered faster, and nothing slips through."
@@ -1029,7 +990,7 @@
 
             <!-- n8n PROJECT 01 -->
 
-<article class="project-card"
+<article id="content" class="project-card"
     data-video="AiContentAutomation.mp4"
     data-summary="Built an AI Content Automation System to streamline the process of turning a simple content request into ready-to-publish social media content."
     data-built-title="What it does"
@@ -1079,7 +1040,7 @@
 
             <!-- n8n PROJECT 02 -->
 
-            <article class="project-card"
+            <article id="followup" class="project-card"
     data-title="Automated Lead Follow-Up &amp; Reminder Workflow"
     data-video="automatedFollowUp.mp4"
     data-problem="Following up with leads manually can result in missed opportunities, inconsistent communication, and unnecessary reminders being sent to people who have already responded."
@@ -1129,7 +1090,7 @@
 
             <!-- n8n PROJECT 03 -->
 
-            <article class="project-card"
+            <article id="weekly" class="project-card"
                 data-title="Weekly Sales Reporting & Order Management Automation"
                 data-video=""
                 data-problem="Sales reporting was a repetitive and error-prone process that required manually retrieving order data, calculating booked sales totals, and tracking orders that were still in processing. This consumed valuable time, delayed reporting, and increased the risk of human error in weekly sales updates."
@@ -1213,7 +1174,7 @@
 
             <!-- ZAPIER PROJECT 01 -->
 
-<article class="project-card"
+<article id="onboarding" class="project-card"
     data-title="Automated Client Onboarding &amp; Project Setup System"
     data-video=""
     data-problem="Service providers often spend valuable time manually setting up new client projects. Creating project folders, organizing tasks, sending welcome emails, updating client records, and assigning onboarding activities can be repetitive and time-consuming. This manual process slows project kickoffs, creates inconsistencies, and increases the risk of missed steps during onboarding."
@@ -1588,6 +1549,16 @@
             if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(card); }
         });
     });
+
+    // Deep link from the home page, e.g. project.html#triage opens that project's popup
+    var wanted = (location.hash || "").slice(1);
+    if (wanted) {
+        var target = document.getElementById(wanted);
+        if (target && /project-card|build-card/.test(target.className)) {
+            target.scrollIntoView({ block: "center" });
+            setTimeout(function () { openModal(target); }, 350);
+        }
+    }
 
     closeBtn.addEventListener("click", closeModal);
     overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });

@@ -252,3 +252,42 @@ if (menuToggle && navMenu) {
         });
     });
 }
+
+
+/* =====================================================
+   "WATCH IT WORK" PREVIEWS
+   Each card shows its screenshot, then plays a muted
+   loop of the demo video while it is on screen.
+   Skipped for reduced-motion and data-saver visitors.
+===================================================== */
+
+(function () {
+    const vids = document.querySelectorAll(".demo-media video");
+    if (!vids.length) return;
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = navigator.connection && navigator.connection.saveData;
+    if (reduce || saveData) return;
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const v = entry.target;
+            if (entry.isIntersecting) {
+                if (!v.getAttribute("src")) v.src = v.dataset.src;
+                const p = v.play();
+                if (p && p.then) {
+                    p.then(() => v.classList.add("is-playing")).catch(() => {});
+                }
+            } else {
+                v.pause();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    vids.forEach((v) => {
+        v.muted = true;
+        // if the file is missing, the screenshot simply stays visible
+        v.addEventListener("error", () => v.classList.remove("is-playing"));
+        io.observe(v);
+    });
+})();
