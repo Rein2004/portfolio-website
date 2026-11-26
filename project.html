@@ -401,6 +401,10 @@
     }
     .case-study > h3 { font-size: 1.35rem; line-height: 1.3; color: #fff; margin-bottom: 12px; }
     .case-study > p { color: #94a3b8; font-size: .86rem; line-height: 1.7; max-width: 820px; }
+    .case-study + .case-study { margin-top: 24px; }
+    .case-study > p.case-lead { color: #cbd5e1; margin-bottom: 14px; }
+    .case-study > p { margin-bottom: 12px; }
+    .case-study > p strong { color: #00e5ff; }
     .case-label { color: #00e5ff; font-size: .75rem; letter-spacing: 1.5px; text-transform: uppercase; margin: 32px 0 16px; }
     .build-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .build-card { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.09); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform .3s, border-color .3s; }
@@ -486,6 +490,8 @@
     .pm-how li::before { content: counter(pmstep); position: absolute; left: 0; top: 0; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: .65rem; font-weight: 700; color: #00e5ff; background: rgba(0,229,255,.08); border: 1px solid rgba(0,229,255,.25); border-radius: 6px; }
     .pm-overlay.is-hot .pm-how li::before { color: #ffa63d; background: rgba(255,140,0,.08); border-color: rgba(255,140,0,.3); }
 
+    .pm-link { display: inline-block; margin-top: 18px; padding: 10px 18px; border-radius: 10px; color: #00e5ff; border: 1px solid rgba(0,229,255,.4); background: rgba(0,229,255,.08); font-size: .8rem; font-weight: 700; text-decoration: none; }
+    .pm-link:hover { background: rgba(0,229,255,.18); }
     .pm-tools { grid-column: 1 / -1; margin-top: 0; padding-top: 0; }
 
     @media (max-width: 760px) {
@@ -663,14 +669,7 @@
         <span class="project-type">COMPLETE COURSE SYSTEM</span>
         <h3>Course Sales &amp; Enrollment System in GoHighLevel</h3>
 
-        <p>
-            Everything below was built inside one GoHighLevel account.
-            I created a complete course system that brings in leads with a
-            free blueprint, sells a paid blueprint, enrolls students into
-            the course, follows up with automated emails, tracks every
-            contact in a CRM pipeline, and answers questions with an AI
-            support agent. Here is each part I built.
-        </p>
+        <p>A complete course system built in one GoHighLevel account. A free blueprint brings in leads, a four-page funnel sells the paid blueprint, and workflows enroll students, send the right emails, and update the CRM pipeline, with an AI agent answering questions along the way.</p>
 
         <button type="button" class="case-toggle" aria-expanded="false" aria-controls="ghl-details">
             <span class="toggle-text">View what I built (7 parts)</span>
@@ -685,13 +684,13 @@
         <div class="build-grid">
 
             <article class="build-card">
-                <a class="build-image" href="GHLfunnel.png" target="_blank" rel="noopener" title="Open full size">
-                    <img src="GHLfunnel.png" alt="GoHighLevel funnel system from opt-in page to thank you page" loading="lazy">
+                <a class="build-image" href="CourseFunnel.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="CourseFunnel.png" alt="GoHighLevel funnel system from opt-in page to thank you page" loading="lazy">
                 </a>
                 <div class="build-info">
-                    <span class="project-type">1 &middot; FUNNEL BUILD</span>
-                    <h4>Funnel from opt-in to thank-you page</h4>
-                    <p>Built a complete funnel system in GoHighLevel from the opt-in page through checkout, upsell, and thank you page to create a connected customer journey.</p>
+                    <span class="project-type">1 &middot; SALES FUNNEL</span>
+                    <h4>Course Sales Funnel: Landing, Checkout, Upsell &amp; Thank-You Pages</h4>
+                    <p>Built the four-page funnel that takes a visitor from the landing page through checkout and a one-click upsell to the thank-you page.</p>
                 </div>
             </article>
 
@@ -700,9 +699,9 @@
                     <img src="Lead Magnet.png" alt="GoHighLevel free blueprint lead magnet workflow" loading="lazy">
                 </a>
                 <div class="build-info">
-                    <span class="project-type">2 &middot; LEAD MAGNET AUTOMATION</span>
-                    <h4>Free blueprint lead workflow</h4>
-                    <p>Built a GoHighLevel lead-generation workflow that captures free blueprint requests, creates and updates contacts, applies lead tags, creates opportunities, and starts the appropriate nurturing journey.</p>
+                    <span class="project-type">2 &middot; LEAD WORKFLOW</span>
+                    <h4>Free Blueprint Lead Workflow</h4>
+                    <p>Captures every free blueprint request, saves the contact, tags it, opens an opportunity, and starts the nurture emails.</p>
                 </div>
             </article>
 
@@ -711,9 +710,9 @@
                     <img src="Upsell.png" alt="GoHighLevel paid blueprint upsell workflow" loading="lazy">
                 </a>
                 <div class="build-info">
-                    <span class="project-type">3 &middot; UPSELL AUTOMATION</span>
-                    <h4>Paid blueprint upsell workflow</h4>
-                    <p>Built an automated paid blueprint workflow that tracks purchases, updates contact tags, manages opportunities, and continues relevant follow-up while removing leads from unnecessary promotional sequences.</p>
+                    <span class="project-type">3 &middot; UPSELL WORKFLOW</span>
+                    <h4>Paid Blueprint Upsell Workflow</h4>
+                    <p>Tracks paid blueprint purchases, updates tags and opportunities, and removes buyers from promotional emails they no longer need.</p>
                 </div>
             </article>
 
@@ -722,9 +721,9 @@
                     <img src="Main Course.png" alt="GoHighLevel course enrollment automation workflow" loading="lazy">
                 </a>
                 <div class="build-info">
-                    <span class="project-type">4 &middot; ENROLLMENT AUTOMATION</span>
-                    <h4>Starter blueprint enrollment</h4>
-                    <p>Built a course enrollment workflow that identifies enrolled contacts, applies the Paid Student status, updates CRM opportunities, and checks whether the contact has also purchased the paid blueprint.</p>
+                    <span class="project-type">4 &middot; ENROLLMENT WORKFLOW</span>
+                    <h4>Starter Blueprint Enrollment Workflow</h4>
+                    <p>Identifies enrolled students, applies the Paid Student status, updates the CRM, and checks for a paid blueprint purchase.</p>
                 </div>
             </article>
 
@@ -733,9 +732,9 @@
                     <img src="crm-pipeline-merged.png" alt="GoHighLevel CRM lead nurturing pipeline" loading="lazy">
                 </a>
                 <div class="build-info">
-                    <span class="project-type">5 &middot; CRM & PIPELINE</span>
-                    <h4>Lead nurturing and CRM pipeline</h4>
-                    <p>Designed the CRM pipeline to track contacts from initial lead through multiple follow-up stages. Contact status adapts based on their blueprint purchase and course enrollment.</p>
+                    <span class="project-type">5 &middot; CRM PIPELINE</span>
+                    <h4>Lead Nurturing CRM Pipeline</h4>
+                    <p>A pipeline that tracks each contact from first lead through the follow-up stages, and updates as they buy or enroll.</p>
                 </div>
             </article>
 
@@ -745,8 +744,8 @@
                 </a>
                 <div class="build-info">
                     <span class="project-type">6 &middot; AI AGENT</span>
-                    <h4>AI support agent</h4>
-                    <p>Configured a GoHighLevel AI support agent to answer questions, guide users, provide personalized assistance, capture leads, and support follow-up conversations.</p>
+                    <h4>AI Support Agent</h4>
+                    <p>An AI agent that answers questions, guides visitors, captures leads, and supports follow-up conversations.</p>
                 </div>
             </article>
 
@@ -756,8 +755,8 @@
                 </a>
                 <div class="build-info">
                     <span class="project-type">7 &middot; EMAIL MARKETING</span>
-                    <h4>Email marketing and lead nurturing</h4>
-                    <p>Designed automated email sequences for course enrollment and template sales, using CRM segmentation, workflow logic, lead nurturing, and conversion-based triggers to guide prospects from lead to customer.</p>
+                    <h4>Email Marketing &amp; Lead Nurturing Sequences</h4>
+                    <p>Automated email sequences for course enrollment and template sales that move prospects from lead to customer.</p>
                 </div>
             </article>
 
@@ -767,6 +766,267 @@
 
         <div class="tools case-tools">
             <span>GoHighLevel</span><span>Funnel Builder</span><span>Checkout</span><span>Upsell</span><span>Workflows</span><span>Lead Capture</span><span>Tags</span><span>CRM</span><span>Pipeline</span><span>Opportunities</span><span>Course Enrollment</span><span>Email Marketing</span><span>Lead Nurturing</span><span>AI Agent</span><span>Knowledge Base</span><span>Live Chat</span>
+        </div>
+
+        </div>
+        </div>
+
+    </article>
+
+    <article class="case-study" id="clientpilot-case">
+
+        <span class="project-type">SAAS CONCEPT &middot; MOCK CLIENT</span>
+        <h3>ClientPilot: SaaS Funnel Landing Page in GoHighLevel</h3>
+
+        <p>A SaaS concept for a mock client. Visitors land on the funnel, start a 14-day free trial, sign up and log in (Supabase authentication), complete onboarding, and reach the dashboard, while GoHighLevel workflows nurture trial users and win back those who leave.</p>
+
+        <button type="button" class="case-toggle" aria-expanded="false" aria-controls="clientpilot-details">
+            <span class="toggle-text">View what I built (5 parts)</span>
+            <span class="toggle-icon" aria-hidden="true">&#9662;</span>
+        </button>
+
+        <div class="case-collapse" id="clientpilot-details">
+        <div class="case-collapse-inner">
+
+        <h4 class="case-label">What I built</h4>
+
+        <div class="build-grid">
+
+            <article class="build-card" id="clientpilot"
+                data-title="ClientPilot: SaaS Funnel Landing Page"
+                data-summary="A SaaS concept I built for a mock client: a landing page funnel for a simple CRM and automation platform for small businesses. It is a concept project, so there are no real customers yet."
+                data-problem="Leads get lost because they are scattered across different tools, and follow-ups get forgotten."
+                data-solution="A landing page that explains how ClientPilot keeps leads in one place, follows up automatically, and helps turn more inquiries into booked appointments."
+                data-goal="Turn visitors into free trial sign-ups with a clear, modern SaaS landing page."
+                data-purpose="Show how I design a conversion-focused SaaS funnel page in GoHighLevel: a strong message, clear features, simple pricing, and a clear call to action."
+                data-built-title="What I built"
+                data-built="Landing page: a headline, supporting message, and call to action that explain what ClientPilot does.|Features section: capabilities and how the platform works, presented in clean sections.|Pricing section: simple plans that guide visitors toward starting a free trial.|Call-to-action sections: repeated prompts to start the 14-day free trial."
+                data-tools="GoHighLevel|Funnel Builder|Landing Page Design">
+                <a class="build-image" href="clientPliotFunnel.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="clientPliotFunnel.png" alt="ClientPilot SaaS funnel landing page: hero, features, and pricing" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">1 &middot; SAAS LANDING PAGE</span>
+                    <h4>Landing page, features, and pricing</h4>
+                    <p>Designed a modern SaaS funnel landing page in GoHighLevel, with features and pricing sections that lead visitors to a free trial.</p>
+                </div>
+            </article>
+
+            <article class="build-card" id="cp-app"
+                data-title="ClientPilot: Sign-up, Login, Onboarding &amp; Dashboard"
+                data-summary="The product side of the ClientPilot concept: a visitor creates a free trial account, logs in, goes through a 5-step setup wizard, and reaches a dashboard. Account authentication is handled by Supabase."
+                data-problem="A landing page only gets the click. Visitors also need a smooth path from sign-up to a workspace that feels set up for their business."
+                data-solution="A complete user journey built around the funnel: sign up, log in, onboarding, and dashboard, with Supabase handling authentication so each user has their own secure account."
+                data-goal="Take a visitor from the first click to inside the product with as little friction as possible."
+                data-purpose="Show that I can build the whole journey, not just a landing page: the pages people use after they say yes."
+                data-built-title="The four screens"
+                data-built="Sign up: a create-account page with personal and business information and a 14-day free trial, no credit card required.|Log in: a secure portal login with remember me and a link to start a free trial.|Onboarding: a 5-step setup wizard (Business, Lead Source, Pipeline, Automation, Connect) that starts by asking about the business.|Dashboard: a workspace with CRM, Pipeline, Meetings, Automation, Conversations, Reports, and Settings, opening with a personal greeting and a pipeline summary."
+                data-how="A visitor lands on the funnel and starts a 14-day free trial.|They create an account on the sign-up page.|Supabase handles the account authentication.|They log in to their workspace.|The onboarding wizard guides them through setup.|They reach the dashboard."
+                data-blocks="[{&quot;t&quot;: &quot;Authentication&quot;, &quot;p&quot;: &quot;Account authentication is handled by Supabase.&quot;}, {&quot;t&quot;: &quot;Status: in progress&quot;, &quot;p&quot;: &quot;The dashboard is not complete yet and shows demo content for now. The onboarding wizard is designed and working on the front end, but making it production-ready needs a more advanced backend: saving each customer's answers, connecting their tools, and generating their workflow. That is the next major build. This is a concept project, so there are no real customers yet.&quot;}]"
+                data-tools="Supabase|Authentication|Sign-up &amp; Login|Onboarding Wizard|Dashboard|GoHighLevel">
+                <a class="build-image" href="ClientPilotLast.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="ClientPilotLast.png" alt="ClientPilot user journey: sign up, log in, onboarding, and dashboard" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">2 &middot; USER JOURNEY</span>
+                    <h4>Sign up, login, onboarding, and dashboard</h4>
+                    <p>Built the product journey after the funnel: account creation, secure login with Supabase authentication, a 5-step onboarding wizard, and a dashboard.</p>
+                </div>
+            </article>
+
+            <article class="build-card" id="cp-winback"
+                data-title="ClientPilot: Post-Trial Win-back Workflow"
+                data-summary="A GoHighLevel workflow for the ClientPilot concept that follows up with people whose free trial has ended, to win them back as paying customers."
+                data-problem="When a free trial ends, many people simply disappear and are never followed up with."
+                data-solution="A win-back workflow that tags the contact, updates their opportunity, sends follow-up emails with waits in between, and checks their tags to see whether they have already become a paying customer."
+                data-built-title="What I built"
+                data-built="Contact tag and added tag to mark the contact as trial-ended|Create or update opportunity to keep the pipeline accurate|Email follow-ups spaced out with Wait steps|Condition checks on tags (paid-customer: custom, paid-customer: sovereign suite)|Branches that add the right tag for each paying plan|A path for contacts who have not paid, which gets another email and an opportunity update"
+                data-how="The workflow starts when a contact is tagged.|A tag is added and the opportunity is created or updated.|An email goes out, followed by a wait.|A condition checks the contact's tags.|Paying customers are tagged for their plan.|Everyone else gets the next email and an updated opportunity, then the cycle repeats."
+                data-tools="GoHighLevel|Workflows|Tags|Opportunities|Email Automation|Conditions">
+                <a class="build-image" href="PostTrial.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="PostTrial.png" alt="ClientPilot Post-Trial Win-back workflow in GoHighLevel" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">3 &middot; WORKFLOW</span>
+                    <h4>Post-Trial Win-back Workflow</h4>
+                    <p>A workflow that follows up with people whose free trial ended, using emails, waits, and tag checks to win them back as paying customers.</p>
+                </div>
+            </article>
+
+            <article class="build-card" id="cp-nurture"
+                data-title="ClientPilot: Free Trial Nurture Workflow"
+                data-summary="A GoHighLevel workflow for the ClientPilot concept that nurtures people during their free trial and stops automatically when they upgrade to a paid plan."
+                data-problem="People who start a free trial can forget about it, and sending them emails after they already paid is a bad experience."
+                data-solution="A nurture workflow that starts from the sign-up form, checks for paid-plan tags, sends emails, and ends the trial cleanly: it waits, expires the free trial in the external system, stops on a paid-plan tag, and updates the tags and opportunity."
+                data-built-title="What I built"
+                data-built="Form Submitted trigger that starts the workflow|Check for paid-plan tags, with a Paid plan path and a default path|Email and Add Tag steps for people still on the trial|Create or update opportunity to track the contact in the pipeline|Wait step before the trial ends|Expire free trial in the external system|Stop on paid-plan tag so paying customers stop receiving trial emails|Remove Tag, Add Tag, and an opportunity update to move the contact to the right stage"
+                data-how="A visitor submits the free trial form.|The workflow checks whether they already have a paid-plan tag.|If not, they get an email, a tag, and an opportunity.|The workflow waits through the trial.|The free trial is expired in the external system.|If a paid-plan tag appears, the workflow stops.|The tags and opportunity are updated."
+                data-tools="GoHighLevel|Workflows|Forms|Tags|Opportunities|Email Automation|Conditions">
+                <a class="build-image" href="TrialNurturing.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="TrialNurturing.png" alt="ClientPilot Free Trial Nurture workflow in GoHighLevel" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">4 &middot; WORKFLOW</span>
+                    <h4>Free Trial Nurture Workflow</h4>
+                    <p>A workflow that starts when someone signs up for the free trial, sends emails, and stops as soon as they buy a paid plan.</p>
+                </div>
+            </article>
+
+            <article class="build-card" id="cp-pipeline"
+                data-title="ClientPilot: Customer Pipeline"
+                data-summary="A GoHighLevel CRM pipeline for the ClientPilot concept that shows every sign-up and where they are in the customer lifecycle."
+                data-problem="Without a pipeline, it is hard to see who is on a free trial, who has expired, and who has upgraded."
+                data-solution="A pipeline called ClientPilot Customers with a stage for each step of the lifecycle. Sign-ups enter as opportunities and are moved by the workflows as they upgrade or expire."
+                data-built-title="How it is set up"
+                data-built="Pipeline named ClientPilot Customers|Stages for Free Trial, Expired, Sovereign Suite, and Custom|Each sign-up becomes an opportunity with its source (for example, Sign up) and value|Opportunities are created and updated by the nurture and win-back workflows"
+                data-how="A person signs up and enters the pipeline at Free Trial.|The nurture workflow keeps their opportunity up to date.|If they upgrade, they move to their paid plan stage.|If the trial ends without a purchase, they move to Expired and the win-back workflow starts."
+                data-tools="GoHighLevel|CRM Pipeline|Opportunities|Tags|Workflows">
+                <a class="build-image" href="SaasPipeline.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="SaasPipeline.png" alt="ClientPilot Customers pipeline in GoHighLevel" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">5 &middot; CRM PIPELINE</span>
+                    <h4>Customer Pipeline</h4>
+                    <p>A pipeline that shows every ClientPilot contact by plan stage, from Free Trial to Expired and the paid plans.</p>
+                </div>
+            </article>
+        </div>
+
+        <h4 class="case-label">Tools used</h4>
+
+        <div class="tools case-tools">
+            <span>GoHighLevel</span><span>Funnel Builder</span><span>Landing Page Design</span><span>Workflows</span><span>Tags</span><span>Email Automation</span><span>CRM Pipeline</span><span>Opportunities</span><span>Supabase</span><span>Authentication</span>
+        </div>
+
+        </div>
+        </div>
+
+    </article>
+
+    <article class="case-study" id="serenity-case">
+
+        <span class="project-type">WEBSITE &amp; BOOKING CONCEPT &middot; GOHIGHLEVEL</span>
+        <h3>Serenity Haven Spa: Booking Funnel in GoHighLevel</h3>
+
+        <p>A calm booking funnel for a spa concept. Visitors book on a landing, booking, and thank-you page, or send an inquiry that an AI agent answers, while staff workflows and an appointments pipeline keep every booking organized.</p>
+
+        <button type="button" class="case-toggle" aria-expanded="false" aria-controls="serenity-details">
+            <span class="toggle-text">View what I built (5 parts)</span>
+            <span class="toggle-icon" aria-hidden="true">&#9662;</span>
+        </button>
+
+        <div class="case-collapse" id="serenity-details">
+        <div class="case-collapse-inner">
+
+        <h4 class="case-label">What I built</h4>
+
+        <div class="build-grid">
+
+            <article class="build-card" id="serenity"
+                data-title="Serenity Haven Spa: Booking Funnel"
+                data-summary="A calm, premium booking experience for a spa, designed and built in GoHighLevel as a concept project, made of four pages: landing page, booking page, inquiry page, and thank-you page."
+                data-problem="Spa websites often list services but make booking feel like work, and visitors who are not ready to book have nowhere to ask a question."
+                data-solution="A four-page funnel that sells the experience, makes booking simple, offers a second path for visitors with questions, and confirms the booking with clear next steps."
+                data-goal="Make booking effortless and give every visitor a clear next step, whether they are ready to book or still have questions."
+                data-purpose="Show how I design a calm, premium booking funnel in GoHighLevel where every page matches the feel of the business."
+                data-built-title="The four pages"
+                data-built="Landing page: sells the experience, not just the services, with 4 signature treatments from $100 to $220 (facial, massage, body scrub, and a 2-hour Spa Reset Package).|Booking page: choose a treatment, optional add-ons (8 add-ons from $10), therapist, date, and time. Free to book, pay at the spa.|Inquiry page: a second path for visitors who are not ready to book yet, &quot;Have a Question First?&quot;|Thank-you page: the &quot;You&rsquo;re All Set&quot; confirmation with prep tips and what happens next."
+                data-blocks="[{&quot;t&quot;: &quot;Status&quot;, &quot;p&quot;: &quot;This is a concept project, so there are no real customers yet. It is a desktop design for now, and the mobile version is next.&quot;}]"
+                data-link="https://sites.leadconnectorhq.com/preview/YJPLQ9lIIpVyFeAzm3hn"
+                data-link-text="View the live preview"
+                data-tools="GoHighLevel|Funnel Builder|Website Design|Booking Page">
+                <a class="build-image" href="SerenityFunnel.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="SerenityFunnel.png" alt="Serenity Haven Spa funnel: landing page, booking page, inquiry page and thank-you page" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">1 &middot; BOOKING FUNNEL</span>
+                    <h4>Landing, booking, inquiry, and thank-you pages</h4>
+                    <p>Designed a calm, premium four-page booking funnel in GoHighLevel: a landing page, a booking page, an inquiry page, and a thank-you page.</p>
+                </div>
+            </article>
+
+            <article class="build-card" id="sv-confirmed"
+                data-title="Serenity Haven Spa: ST-Confirmed (Staff Only) Workflow"
+                data-summary="A staff-side GoHighLevel workflow for the Serenity Haven Spa concept that runs whenever an appointment is confirmed."
+                data-problem="When appointments are confirmed, rescheduled, or cancelled, the records can get out of date and the team has to fix tags and pipeline stages by hand."
+                data-solution="A workflow triggered by the confirmed appointment status. It checks whether the appointment was rescheduled or previously cancelled, adds the right tags, and keeps the opportunity in the right pipeline stage."
+                data-built-title="What I built"
+                data-built="Trigger: confirmed appointment status|Condition: was the appointment rescheduled?|Branch for rescheduled appointments: add a tag and update the opportunity|Branch for previously cancelled appointments: add a tag and update the opportunity|Default path: add the Confirmed tag and remove the Cancelled and Rescheduled tags|Create or update the Confirmed opportunity|Wait and condition steps that check the workflow trigger before the final opportunity update"
+                data-how="An appointment is marked as confirmed.|The workflow checks if it was a reschedule.|It checks if the contact has a cancelled tag.|The right tags are added and old ones removed.|The opportunity is created or updated as Confirmed."
+                data-tools="GoHighLevel|Workflows|Appointment Status|Tags|Opportunities|Conditions">
+                <a class="build-image" href="SpaConfirmed.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="SpaConfirmed.png" alt="Serenity Haven Spa ST-Confirmed staff workflow in GoHighLevel" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">2 &middot; WORKFLOW</span>
+                    <h4>ST-Confirmed (Staff Only) Workflow</h4>
+                    <p>Runs when an appointment is confirmed. It checks whether it was a reschedule or a cancellation, then tags the contact and updates the opportunity.</p>
+                </div>
+            </article>
+
+            <article class="build-card" id="sv-unconfirmed"
+                data-title="Serenity Haven Spa: Unconfirmed (Staff Only) Workflow"
+                data-summary="A staff-side GoHighLevel workflow for the Serenity Haven Spa concept that handles appointments that are not confirmed yet."
+                data-problem="Appointments that stay unconfirmed, get rescheduled, or turn into no-shows are easy to lose track of."
+                data-solution="A workflow that checks the appointment status, tags rescheduled and cancelled appointments, then waits and checks whether the workflow trigger is the No Show appointment status."
+                data-built-title="What I built"
+                data-built="Trigger: appointment status|Condition: was the appointment rescheduled?|Branch for rescheduled appointments that adds a tag|Branch for cancelled contacts that adds a tag|Default path with a Wait step and a condition|Branch that checks for the No Show appointment status"
+                data-how="An appointment status changes.|The workflow checks if it was rescheduled or cancelled and tags the contact.|Otherwise it waits.|A condition checks whether the status is No Show."
+                data-tools="GoHighLevel|Workflows|Appointment Status|Tags|Conditions|Wait Steps">
+                <a class="build-image" href="SpaUnconfirmed.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="SpaUnconfirmed.png" alt="Serenity Haven Spa Unconfirmed staff workflow in GoHighLevel" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">3 &middot; WORKFLOW</span>
+                    <h4>Unconfirmed (Staff Only) Workflow</h4>
+                    <p>Runs on the appointment status and tags reschedules and cancellations, then waits and checks for no-shows.</p>
+                </div>
+            </article>
+
+            <article class="build-card" id="sv-inquiry"
+                data-title="Serenity Haven Spa: Inquiry Workflow"
+                data-summary="A GoHighLevel workflow for the Serenity Haven Spa concept that follows up with visitors who send an inquiry instead of booking right away."
+                data-problem="Visitors who are not ready to book still have questions, and without a follow-up they never come back."
+                data-solution="A workflow that starts from the inquiry form, tags the contact, creates an opportunity, and hands the conversation to an AI agent that can answer questions and book. Timed emails follow up and keep the opportunity updated."
+                data-built-title="What I built"
+                data-built="Form Submitted trigger from the inquiry page|Add Tag and Create or update opportunity|AI Agent with three tools: Knowledge base search, Book appointment, and Update contact field|Follow-up emails with Wait steps in between|Opportunity updates after each follow-up"
+                data-how="A visitor sends the inquiry form.|The contact is tagged and an opportunity is created.|The AI agent answers questions using the knowledge base and can book an appointment.|An email goes out, followed by a wait.|More follow-up emails go out and the opportunity is updated each time."
+                data-tools="GoHighLevel|AI Agent|Knowledge Base|Forms|Workflows|Email Automation|Opportunities">
+                <a class="build-image" href="SpaInquiry.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="SpaInquiry.png" alt="Serenity Haven Spa inquiry workflow with AI agent in GoHighLevel" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">4 &middot; WORKFLOW</span>
+                    <h4>Inquiry Workflow with AI Agent</h4>
+                    <p>Starts when someone sends the inquiry form. An AI agent can search the knowledge base, book an appointment, and update contact fields, and follow-up emails go out after.</p>
+                </div>
+            </article>
+
+            <article class="build-card" id="sv-pipeline"
+                data-title="Serenity Haven Spa: Appointments Pipeline"
+                data-summary="A GoHighLevel CRM pipeline for the Serenity Haven Spa concept that shows every appointment and its status."
+                data-problem="Without a clear view of appointment status, the team cannot see what needs attention."
+                data-solution="A pipeline called Serenity Haven Appointments with a stage for each appointment status. The workflows create and update opportunities so each appointment sits in the right stage."
+                data-built-title="How it is set up"
+                data-built="Pipeline named Serenity Haven Appointments|Stages for Unconfirmed, Confirmed, Reschedule, and the cancelled and no-show statuses|Opportunities created and moved by the confirmed, unconfirmed, and inquiry workflows"
+                data-how="An appointment is booked and enters as Unconfirmed.|When it is confirmed, the workflow moves it to Confirmed.|Reschedules and cancellations move it to their own stages.|The team sees every appointment and its status at a glance."
+                data-tools="GoHighLevel|CRM Pipeline|Opportunities|Workflows">
+                <a class="build-image" href="SpaPipeline.png" target="_blank" rel="noopener" title="Open full size">
+                    <img src="SpaPipeline.png" alt="Serenity Haven Appointments pipeline in GoHighLevel" loading="lazy">
+                </a>
+                <div class="build-info">
+                    <span class="project-type">5 &middot; CRM PIPELINE</span>
+                    <h4>Appointments Pipeline</h4>
+                    <p>A pipeline that tracks every appointment by status, from Unconfirmed to Confirmed, Reschedule, and cancelled.</p>
+                </div>
+            </article>
+
+        </div>
+
+        <h4 class="case-label">Tools used</h4>
+
+        <div class="tools case-tools">
+            <span>GoHighLevel</span><span>Funnel Builder</span><span>Website Design</span><span>Booking Page</span><span>Workflows</span><span>AI Agent</span><span>CRM Pipeline</span><span>Tags</span><span>Opportunities</span>
         </div>
 
         </div>
@@ -932,6 +1192,62 @@
 
 
         <div class="project-grid">
+
+            <!-- n8n HOT PROJECT: AI Appointment Setter -->
+
+<article id="appointment" class="project-card hot-card"
+    data-title="AI Appointment Setter for a Dental Clinic"
+    data-video=""
+    data-summary="An AI appointment setter for a dental clinic, built in n8n. A patient chats with the assistant, and it checks real availability in Calendly, books or reschedules the appointment, saves everything to a database, emails the patient, and reports to the team in Slack. No receptionist is needed for scheduling."
+    data-goal="Handle the whole scheduling conversation without a human, and make sure every booking is accurate, with no double bookings and no bad data."
+    data-purpose="Take scheduling off the receptionist, reduce no-shows with automatic reminders, and make the system reusable for another clinic by changing one settings box."
+    data-built-title="The four parts of the workflow"
+    data-built="Load Clinic Settings: one place to edit the clinic name, address, phone, hours, arrival instructions, cancellation policy, the AI's instructions, email templates, and the Calendly event. To reuse it for another clinic, change this one box and nothing else.|Chat with Patient: the AI Scheduling Assistant acts as the front desk. It remembers the conversation, asks one question at a time, collects name, phone, email, service, and preferred date and time, checks Calendly for open slots, and never books without a clear yes.|Handle Booking Requests: the engine. It validates email, phone, and date, checks for duplicates and taken slots, books or reschedules in Calendly, saves the record, sends the confirmation email, and posts a Slack report.|Reminders: every 30 minutes it checks the table for upcoming appointments, sends reminder emails (for example 24 hours and 2 hours before), and marks them as sent so none go out twice."
+    data-how="A patient chats with the Scheduling Assistant.|The AI collects the details and checks real availability in Calendly.|It confirms the details and waits for a clear yes before booking.|The booking engine validates the data and checks for duplicates and taken slots.|The appointment is booked or rescheduled in Calendly.|The record is saved to the Appointments Data Table.|A confirmation email goes to the patient and a report goes to Slack.|Reminder emails go out automatically before the visit."
+    data-blocks="[{&quot;t&quot;: &quot;Error handling&quot;, &quot;p&quot;: &quot;If something fails, the failure is logged, the team is alerted in Slack, and the patient gets a clear message instead of the chat freezing.&quot;}, {&quot;t&quot;: &quot;The Data Table (the system's memory)&quot;, &quot;p&quot;: &quot;Every appointment is saved in an n8n Data Table called Appointments. It stores the appointment ID, patient name, phone and email, service, date and time, status (Pending, Confirmed, Rescheduled, Cancelled), notes, whether the confirmation and reminder emails were sent, created and updated timestamps, and an error log.&quot;}]"
+    data-tools="n8n|AI Agent|Calendly|Data Tables|Email|Slack|Reminder Automation">
+
+    <div class="project-image">
+
+        <span class="hot-badge">🔥 HOT PROJECT</span>
+
+        <a href="AppointmentSetter.png" target="_blank" rel="noopener" title="Open full size">
+            <img
+                src="AppointmentSetter.png"
+                alt="AI Appointment Setter for a dental clinic built in n8n"
+            >
+        </a>
+
+    </div>
+
+
+    <div class="project-info">
+
+        <span class="project-type">
+            AI APPOINTMENT SETTING
+        </span>
+
+        <h3>
+            AI Appointment Setter for a Dental Clinic
+        </h3>
+
+        <p>
+            A patient chats with the AI assistant, which checks real availability in Calendly, books or reschedules, saves everything to a Data Table, emails the patient, sends automatic reminders, and reports to the team in Slack.
+        </p>
+
+
+        <div class="tools">
+
+            <span>n8n</span>
+            <span>AI Agent</span>
+            <span>Calendly</span>
+            <span>Slack</span>
+
+        </div>
+
+    </div>
+
+</article>
 
             <!-- n8n HOT PROJECT: AI Customer Request Triage -->
 
@@ -1301,15 +1617,25 @@
 
 <script>
     (function () {
-        var btn = document.querySelector(".case-toggle");
-        var panel = document.getElementById("ghl-details");
-        if (!btn || !panel) return;
-        var label = btn.querySelector(".toggle-text");
-        btn.addEventListener("click", function () {
-            var open = panel.classList.toggle("open");
-            btn.setAttribute("aria-expanded", open);
-            label.textContent = open ? "Hide details" : "View what I built (7 parts)";
+        document.querySelectorAll(".case-toggle").forEach(function (btn) {
+            var panel = document.getElementById(btn.getAttribute("aria-controls"));
+            if (!panel) return;
+            var label = btn.querySelector(".toggle-text");
+            var closedText = label.textContent;
+            btn.addEventListener("click", function () {
+                var open = panel.classList.toggle("open");
+                btn.setAttribute("aria-expanded", open);
+                label.textContent = open ? "Hide details" : closedText;
+            });
         });
+        // deep link (project.html#clientpilot) must also expand its section
+        var h = (location.hash || "").slice(1), t = h && document.getElementById(h);
+        var p = t && t.closest && t.closest(".case-collapse");
+        if (p && !p.classList.contains("open")) {
+            p.classList.add("open");
+            var b = document.querySelector('[aria-controls="' + p.id + '"]');
+            if (b) b.setAttribute("aria-expanded", "true");
+        }
     })();
 </script>
 
@@ -1331,6 +1657,7 @@
                 <div id="pm-blocks"></div>
                 <div class="pm-block" id="pm-goal-wrap" hidden><h4>The goal</h4><p id="pm-goal"></p></div>
                 <div class="pm-block" id="pm-purpose-wrap" hidden><h4>The purpose</h4><p id="pm-purpose"></p></div>
+                <a class="pm-link" id="pm-link" href="#" target="_blank" rel="noopener" hidden></a>
             </div>
             <div class="pm-sec" id="pm-built-wrap" hidden><h4 id="pm-built-title">What I built</h4><ul class="pm-checks" id="pm-built"></ul></div>
             <div class="pm-sec" id="pm-features-wrap" hidden><h4>Key features</h4><ul class="pm-checks" id="pm-features"></ul></div>
@@ -1412,6 +1739,12 @@
         setText("pm-solution-wrap", "pm-solution", card.dataset.solution);
         setText("pm-goal-wrap", "pm-goal", card.dataset.goal);
         setText("pm-purpose-wrap", "pm-purpose", card.dataset.purpose);
+        var lk = el("pm-link");
+        if (card.dataset.link && /^https?:\/\//.test(card.dataset.link)) {
+            lk.href = card.dataset.link;
+            lk.textContent = (card.dataset.linkText || "Open link") + " \u2197";
+            lk.hidden = false;
+        } else { lk.hidden = true; }
 
         // Extra text blocks: data-blocks='[{"t":"Title","p":"Text"}]'
         var blocks = el("pm-blocks");

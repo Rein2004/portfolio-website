@@ -3850,3 +3850,23 @@ html, body { overflow-x: clip; }
     .reel-card figcaption span { font-size: .68rem; line-height: 1.4; }
     .showcase-cta { margin-top: 8px !important; }
 }
+
+
+/* =====================================================
+   SHOWCASE REEL: every card exactly the same size
+===================================================== */
+.reel-track { align-items: stretch !important; }
+.reel-card { display: flex !important; flex-direction: column; }
+.reel-frame { flex: 0 0 auto; }
+.reel-card figcaption { flex: 1 1 auto; }
+.reel-card figcaption strong {
+    display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; min-height: 2.6em; line-height: 1.3;
+}
+.reel-card figcaption span {
+    display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical;
+    overflow: hidden; min-height: 4.5em;
+}
+@media (max-width: 600px) {
+    .reel-card figcaption span { -webkit-line-clamp: 3; line-clamp: 3; min-height: 4.2em; }
+}
