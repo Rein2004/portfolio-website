@@ -424,6 +424,10 @@
     ========================= */
     .case-toggle { margin-top: 24px; display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; background: rgba(0,229,255,.08); color: #00e5ff; border: 1px solid rgba(0,229,255,.4); border-radius: 10px; font: 600 .85rem "Manrope", sans-serif; cursor: pointer; transition: background .25s, box-shadow .25s; }
     .case-toggle:hover { background: rgba(0,229,255,.16); box-shadow: 0 0 20px rgba(0,229,255,.2); }
+    .case-actions { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .case-actions .case-toggle { margin-top: 0; }
+    .case-link { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: linear-gradient(90deg, #00e5ff, #4d7cff); color: #04101f; border-radius: 10px; font: 700 .85rem "Manrope", sans-serif; text-decoration: none; transition: box-shadow .25s, transform .25s; }
+    .case-link:hover { box-shadow: 0 0 22px rgba(0,229,255,.45); transform: translateY(-1px); }
     .toggle-icon { display: inline-block; transition: transform .35s ease; }
     .case-toggle[aria-expanded="true"] .toggle-icon { transform: rotate(180deg); }
     .case-collapse { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
@@ -438,7 +442,7 @@
     .hot-card { border-color: rgba(255,140,0,.55); box-shadow: 0 0 24px rgba(255,120,0,.10); }
     .hot-card:hover { border-color: rgba(255,160,40,.85); }
     .hot-card .project-image { position: relative; }
-    .hot-card .project-image a { display: block; width: 100%; height: 100%; }
+    .hot-card .project-image a, .hot-card .project-image .project-photo { display: block; width: 100%; height: 100%; }
     .hot-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 4px 10px; border-radius: 999px; font-size: .58rem; font-weight: 800; letter-spacing: 1.3px; color: #1a0f00; background: linear-gradient(90deg, #ff9d00, #ff5e2b); box-shadow: 0 0 14px rgba(255,120,0,.5); animation: hotPulse 2.2s ease-in-out infinite; }
     @keyframes hotPulse { 50% { box-shadow: 0 0 24px rgba(255,120,0,.85); } }
     .hot-card .project-type { color: #ffa63d; }
@@ -465,7 +469,6 @@
     .pm-video iframe, .pm-video video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .pm-shot { display: block; background: #090d1d; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 8px; }
     .pm-shot img { display: block; width: 100%; max-height: 260px; object-fit: contain; border-radius: 6px; }
-    .pm-shot-hint { font-size: .62rem; color: #64748b; text-align: center; }
 
     .pm-main { min-width: 0; padding-top: 4px; }
     .pm-type { display: block; font-size: .62rem; font-weight: 700; letter-spacing: 1.5px; color: #00e5ff; margin-bottom: 9px; }
@@ -485,8 +488,8 @@
     .pm-checks li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: #00ff88; font-weight: 800; }
     .pm-value li::before { content: "\2192"; color: #00e5ff; }
     .pm-overlay.is-hot .pm-value li::before { color: #ffa63d; }
-    .pm-how ol { list-style: none; counter-reset: pmstep; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; }
-    .pm-how li { counter-increment: pmstep; position: relative; padding-left: 34px; color: #94a3b8; font-size: .78rem; line-height: 1.6; }
+    .pm-how ol { list-style: none; counter-reset: pmstep; display: block; column-count: 2; column-gap: 22px; }
+    .pm-how li { counter-increment: pmstep; position: relative; break-inside: avoid; margin-bottom: 10px; padding-left: 34px; color: #94a3b8; font-size: .78rem; line-height: 1.6; }
     .pm-how li::before { content: counter(pmstep); position: absolute; left: 0; top: 0; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: .65rem; font-weight: 700; color: #00e5ff; background: rgba(0,229,255,.08); border: 1px solid rgba(0,229,255,.25); border-radius: 6px; }
     .pm-overlay.is-hot .pm-how li::before { color: #ffa63d; background: rgba(255,140,0,.08); border-color: rgba(255,140,0,.3); }
 
@@ -498,6 +501,7 @@
         .pm-overlay { padding: 12px; }
         .pm-body { grid-template-columns: 1fr; gap: 20px; padding: 20px 18px 24px; }
         .pm-how ol, .pm-checks { grid-template-columns: 1fr; }
+        .pm-how ol { column-count: 1; }
     }
 </style>
 
@@ -671,10 +675,13 @@
 
         <p>A complete course system built in one GoHighLevel account. A free blueprint brings in leads, a four-page funnel sells the paid blueprint, and workflows enroll students, send the right emails, and update the CRM pipeline, with an AI agent answering questions along the way.</p>
 
-        <button type="button" class="case-toggle" aria-expanded="false" aria-controls="ghl-details">
-            <span class="toggle-text">View what I built (7 parts)</span>
-            <span class="toggle-icon" aria-hidden="true">&#9662;</span>
-        </button>
+        <div class="case-actions">
+            <button type="button" class="case-toggle" aria-expanded="false" aria-controls="ghl-details">
+                <span class="toggle-text">View what I built (7 parts)</span>
+                <span class="toggle-icon" aria-hidden="true">&#9662;</span>
+            </button>
+            <a class="case-link" href="https://sites.leadconnectorhq.com/preview/N8R3WtOpt5oJJ7d6lzh4" target="_blank" rel="noopener">Live Preview &#8599;</a>
+        </div>
 
         <div class="case-collapse" id="ghl-details">
         <div class="case-collapse-inner">
@@ -684,9 +691,9 @@
         <div class="build-grid">
 
             <article class="build-card">
-                <a class="build-image" href="CourseFunnel.png" target="_blank" rel="noopener" title="Open full size">
+                <div class="build-image">
                     <img src="CourseFunnel.png" alt="GoHighLevel funnel system from opt-in page to thank you page" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">1 &middot; SALES FUNNEL</span>
                     <h4>Course Sales Funnel: Landing, Checkout, Upsell &amp; Thank-You Pages</h4>
@@ -695,9 +702,9 @@
             </article>
 
             <article class="build-card">
-                <a class="build-image" href="Lead Magnet.png" target="_blank" rel="noopener" title="Open full size">
+                <div class="build-image">
                     <img src="Lead Magnet.png" alt="GoHighLevel free blueprint lead magnet workflow" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">2 &middot; LEAD WORKFLOW</span>
                     <h4>Free Blueprint Lead Workflow</h4>
@@ -706,9 +713,9 @@
             </article>
 
             <article class="build-card">
-                <a class="build-image" href="CourseUpsell.png" target="_blank" rel="noopener" title="Open full size">
+                <div class="build-image">
                     <img src="CourseUpsell.png" alt="GoHighLevel paid blueprint upsell workflow" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">3 &middot; UPSELL WORKFLOW</span>
                     <h4>Paid Blueprint Upsell Workflow</h4>
@@ -717,9 +724,9 @@
             </article>
 
             <article class="build-card">
-                <a class="build-image" href="Main Course.png" target="_blank" rel="noopener" title="Open full size">
+                <div class="build-image">
                     <img src="Main Course.png" alt="GoHighLevel course enrollment automation workflow" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">4 &middot; ENROLLMENT WORKFLOW</span>
                     <h4>Starter Blueprint Enrollment Workflow</h4>
@@ -728,9 +735,9 @@
             </article>
 
             <article class="build-card">
-                <a class="build-image" href="crm-pipeline-merged.png" target="_blank" rel="noopener" title="Open full size">
+                <div class="build-image">
                     <img src="crm-pipeline-merged.png" alt="GoHighLevel CRM lead nurturing pipeline" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">5 &middot; CRM PIPELINE</span>
                     <h4>Lead Nurturing CRM Pipeline</h4>
@@ -739,9 +746,9 @@
             </article>
 
             <article class="build-card">
-                <a class="build-image" href="Aiagent.png" target="_blank" rel="noopener" title="Open full size">
+                <div class="build-image">
                     <img src="Aiagent.png" alt="GoHighLevel AI support agent" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">6 &middot; AI AGENT</span>
                     <h4>AI Support Agent</h4>
@@ -750,9 +757,9 @@
             </article>
 
             <article class="build-card">
-                <a class="build-image" href="1st%20email%20Maarketing.png" target="_blank" rel="noopener" title="Open full size">
+                <div class="build-image">
                     <img src="1st%20email%20Maarketing.png" alt="GoHighLevel email marketing automation" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">7 &middot; EMAIL MARKETING</span>
                     <h4>Email Marketing &amp; Lead Nurturing Sequences</h4>
@@ -780,10 +787,13 @@
 
         <p>A complete SaaS system for a mock client. The funnel landing page brings visitors in, and the product side handles sign-up, login (Supabase authentication), onboarding, and the dashboard. Behind it, GoHighLevel runs the whole customer lifecycle: a customer pipeline, a free trial nurture workflow, and a post-trial win-back workflow.</p>
 
-        <button type="button" class="case-toggle" aria-expanded="false" aria-controls="clientpilot-details">
-            <span class="toggle-text">View what I built (5 parts)</span>
-            <span class="toggle-icon" aria-hidden="true">&#9662;</span>
-        </button>
+        <div class="case-actions">
+            <button type="button" class="case-toggle" aria-expanded="false" aria-controls="clientpilot-details">
+                <span class="toggle-text">View what I built (5 parts)</span>
+                <span class="toggle-icon" aria-hidden="true">&#9662;</span>
+            </button>
+            <a class="case-link" href="https://sites.leadconnectorhq.com/preview/4El5yV2NxvV3AQbOEn3L" target="_blank" rel="noopener">Live Preview &#8599;</a>
+        </div>
 
         <div class="case-collapse" id="clientpilot-details">
         <div class="case-collapse-inner">
@@ -792,19 +802,10 @@
 
         <div class="build-grid">
 
-            <article class="build-card" id="clientpilot"
-                data-title="ClientPilot: SaaS Funnel Landing Page"
-                data-summary="A SaaS concept I built for a mock client: a landing page funnel for a simple CRM and automation platform for small businesses. It is a concept project, so there are no real customers yet."
-                data-problem="Leads get lost because they are scattered across different tools, and follow-ups get forgotten."
-                data-solution="A landing page that explains how ClientPilot keeps leads in one place, follows up automatically, and helps turn more inquiries into booked appointments."
-                data-goal="Turn visitors into free trial sign-ups with a clear, modern SaaS landing page."
-                data-purpose="Show how I design a conversion-focused SaaS funnel page in GoHighLevel: a strong message, clear features, simple pricing, and a clear call to action."
-                data-built-title="What I built"
-                data-built="Landing page: a headline, supporting message, and call to action that explain what ClientPilot does.|Features section: capabilities and how the platform works, presented in clean sections.|Pricing section: simple plans that guide visitors toward starting a free trial.|Call-to-action sections: repeated prompts to start the 14-day free trial."
-                data-tools="GoHighLevel|Funnel Builder|Landing Page Design">
-                <a class="build-image" href="clientPliotFunnel.png" target="_blank" rel="noopener" title="Open full size">
+            <article class="build-card" id="clientpilot">
+                <div class="build-image">
                     <img src="clientPliotFunnel.png" alt="ClientPilot SaaS funnel landing page: hero, features, and pricing" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">1 &middot; SAAS LANDING PAGE</span>
                     <h4>Landing page, features, and pricing</h4>
@@ -812,21 +813,10 @@
                 </div>
             </article>
 
-            <article class="build-card" id="cp-app"
-                data-title="ClientPilot: Sign-up, Login, Onboarding &amp; Dashboard"
-                data-summary="The product side of the ClientPilot concept: a visitor creates a free trial account, logs in, goes through a 5-step setup wizard, and reaches a dashboard. Account authentication is handled by Supabase."
-                data-problem="A landing page only gets the click. Visitors also need a smooth path from sign-up to a workspace that feels set up for their business."
-                data-solution="A complete user journey built around the funnel: sign up, log in, onboarding, and dashboard, with Supabase handling authentication so each user has their own secure account."
-                data-goal="Take a visitor from the first click to inside the product with as little friction as possible."
-                data-purpose="Show that I can build the whole journey, not just a landing page: the pages people use after they say yes."
-                data-built-title="The four screens"
-                data-built="Sign up: a create-account page with personal and business information and a 14-day free trial, no credit card required.|Log in: a secure portal login with remember me and a link to start a free trial.|Onboarding: a 5-step setup wizard (Business, Lead Source, Pipeline, Automation, Connect) that starts by asking about the business.|Dashboard: a workspace with CRM, Pipeline, Meetings, Automation, Conversations, Reports, and Settings, opening with a personal greeting and a pipeline summary."
-                data-how="A visitor lands on the funnel and starts a 14-day free trial.|They create an account on the sign-up page.|Supabase handles the account authentication.|They log in to their workspace.|The onboarding wizard guides them through setup.|They reach the dashboard."
-                data-blocks="[{&quot;t&quot;: &quot;Authentication&quot;, &quot;p&quot;: &quot;Account authentication is handled by Supabase.&quot;}, {&quot;t&quot;: &quot;Status: in progress&quot;, &quot;p&quot;: &quot;The dashboard is not complete yet and shows demo content for now. The onboarding wizard is designed and working on the front end, but making it production-ready needs a more advanced backend: saving each customer's answers, connecting their tools, and generating their workflow. That is the next major build. This is a concept project, so there are no real customers yet.&quot;}]"
-                data-tools="Supabase|Authentication|Sign-up &amp; Login|Onboarding Wizard|Dashboard|GoHighLevel">
-                <a class="build-image" href="ClientPilotLast.png" target="_blank" rel="noopener" title="Open full size">
+            <article class="build-card" id="cp-app">
+                <div class="build-image">
                     <img src="ClientPilotLast.png" alt="ClientPilot user journey: sign up, log in, onboarding, and dashboard" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">2 &middot; USER JOURNEY</span>
                     <h4>Sign up, login, onboarding, and dashboard</h4>
@@ -834,18 +824,10 @@
                 </div>
             </article>
 
-            <article class="build-card" id="cp-winback"
-                data-title="ClientPilot: Post-Trial Win-back Workflow"
-                data-summary="A GoHighLevel workflow for the ClientPilot concept that follows up with people whose free trial has ended, to win them back as paying customers."
-                data-problem="When a free trial ends, many people simply disappear and are never followed up with."
-                data-solution="A win-back workflow that tags the contact, updates their opportunity, sends follow-up emails with waits in between, and checks their tags to see whether they have already become a paying customer."
-                data-built-title="What I built"
-                data-built="Contact tag and added tag to mark the contact as trial-ended|Create or update opportunity to keep the pipeline accurate|Email follow-ups spaced out with Wait steps|Condition checks on tags (paid-customer: custom, paid-customer: sovereign suite)|Branches that add the right tag for each paying plan|A path for contacts who have not paid, which gets another email and an opportunity update"
-                data-how="The workflow starts when a contact is tagged.|A tag is added and the opportunity is created or updated.|An email goes out, followed by a wait.|A condition checks the contact's tags.|Paying customers are tagged for their plan.|Everyone else gets the next email and an updated opportunity, then the cycle repeats."
-                data-tools="GoHighLevel|Workflows|Tags|Opportunities|Email Automation|Conditions">
-                <a class="build-image" href="PostTrial.png" target="_blank" rel="noopener" title="Open full size">
+            <article class="build-card" id="cp-winback">
+                <div class="build-image">
                     <img src="PostTrial.png" alt="ClientPilot Post-Trial Win-back workflow in GoHighLevel" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">3 &middot; WORKFLOW</span>
                     <h4>Post-Trial Win-back Workflow</h4>
@@ -853,18 +835,10 @@
                 </div>
             </article>
 
-            <article class="build-card" id="cp-nurture"
-                data-title="ClientPilot: Free Trial Nurture Workflow"
-                data-summary="A GoHighLevel workflow for the ClientPilot concept that nurtures people during their free trial and stops automatically when they upgrade to a paid plan."
-                data-problem="People who start a free trial can forget about it, and sending them emails after they already paid is a bad experience."
-                data-solution="A nurture workflow that starts from the sign-up form, checks for paid-plan tags, sends emails, and ends the trial cleanly: it waits, expires the free trial in the external system, stops on a paid-plan tag, and updates the tags and opportunity."
-                data-built-title="What I built"
-                data-built="Form Submitted trigger that starts the workflow|Check for paid-plan tags, with a Paid plan path and a default path|Email and Add Tag steps for people still on the trial|Create or update opportunity to track the contact in the pipeline|Wait step before the trial ends|Expire free trial in the external system|Stop on paid-plan tag so paying customers stop receiving trial emails|Remove Tag, Add Tag, and an opportunity update to move the contact to the right stage"
-                data-how="A visitor submits the free trial form.|The workflow checks whether they already have a paid-plan tag.|If not, they get an email, a tag, and an opportunity.|The workflow waits through the trial.|The free trial is expired in the external system.|If a paid-plan tag appears, the workflow stops.|The tags and opportunity are updated."
-                data-tools="GoHighLevel|Workflows|Forms|Tags|Opportunities|Email Automation|Conditions">
-                <a class="build-image" href="TrialNurturing.png" target="_blank" rel="noopener" title="Open full size">
+            <article class="build-card" id="cp-nurture">
+                <div class="build-image">
                     <img src="TrialNurturing.png" alt="ClientPilot Free Trial Nurture workflow in GoHighLevel" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">4 &middot; WORKFLOW</span>
                     <h4>Free Trial Nurture Workflow</h4>
@@ -872,18 +846,10 @@
                 </div>
             </article>
 
-            <article class="build-card" id="cp-pipeline"
-                data-title="ClientPilot: Customer Pipeline"
-                data-summary="A GoHighLevel CRM pipeline for the ClientPilot concept that shows every sign-up and where they are in the customer lifecycle."
-                data-problem="Without a pipeline, it is hard to see who is on a free trial, who has expired, and who has upgraded."
-                data-solution="A pipeline called ClientPilot Customers with a stage for each step of the lifecycle. Sign-ups enter as opportunities and are moved by the workflows as they upgrade or expire."
-                data-built-title="How it is set up"
-                data-built="Pipeline named ClientPilot Customers|Stages for Free Trial, Expired, Sovereign Suite, and Custom|Each sign-up becomes an opportunity with its source (for example, Sign up) and value|Opportunities are created and updated by the nurture and win-back workflows"
-                data-how="A person signs up and enters the pipeline at Free Trial.|The nurture workflow keeps their opportunity up to date.|If they upgrade, they move to their paid plan stage.|If the trial ends without a purchase, they move to Expired and the win-back workflow starts."
-                data-tools="GoHighLevel|CRM Pipeline|Opportunities|Tags|Workflows">
-                <a class="build-image" href="SaasPipeline.png" target="_blank" rel="noopener" title="Open full size">
+            <article class="build-card" id="cp-pipeline">
+                <div class="build-image">
                     <img src="SaasPipeline.png" alt="ClientPilot Customers pipeline in GoHighLevel" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">5 &middot; CRM PIPELINE</span>
                     <h4>Customer Pipeline</h4>
@@ -910,10 +876,13 @@
 
         <p>A complete booking system for a spa concept. The front end is four pages: landing, booking, inquiry, and thank-you. The back end is a set of GoHighLevel workflows and an appointments pipeline that tag and track every appointment by status, plus an AI agent that answers inquiries and can book.</p>
 
-        <button type="button" class="case-toggle" aria-expanded="false" aria-controls="serenity-details">
-            <span class="toggle-text">View what I built (5 parts)</span>
-            <span class="toggle-icon" aria-hidden="true">&#9662;</span>
-        </button>
+        <div class="case-actions">
+            <button type="button" class="case-toggle" aria-expanded="false" aria-controls="serenity-details">
+                <span class="toggle-text">View what I built (5 parts)</span>
+                <span class="toggle-icon" aria-hidden="true">&#9662;</span>
+            </button>
+            <a class="case-link" href="https://sites.leadconnectorhq.com/preview/YJPLQ9lIIpVyFeAzm3hn" target="_blank" rel="noopener">Live Preview &#8599;</a>
+        </div>
 
         <div class="case-collapse" id="serenity-details">
         <div class="case-collapse-inner">
@@ -922,22 +891,10 @@
 
         <div class="build-grid">
 
-            <article class="build-card" id="serenity"
-                data-title="Serenity Haven Spa: Booking Funnel"
-                data-summary="A calm, premium booking experience for a spa, designed and built in GoHighLevel as a concept project, made of four pages: landing page, booking page, inquiry page, and thank-you page."
-                data-problem="Spa websites often list services but make booking feel like work, and visitors who are not ready to book have nowhere to ask a question."
-                data-solution="A four-page funnel that sells the experience, makes booking simple, offers a second path for visitors with questions, and confirms the booking with clear next steps."
-                data-goal="Make booking effortless and give every visitor a clear next step, whether they are ready to book or still have questions."
-                data-purpose="Show how I design a calm, premium booking funnel in GoHighLevel where every page matches the feel of the business."
-                data-built-title="The four pages"
-                data-built="Landing page: sells the experience, not just the services, with 4 signature treatments from $100 to $220 (facial, massage, body scrub, and a 2-hour Spa Reset Package).|Booking page: choose a treatment, optional add-ons (8 add-ons from $10), therapist, date, and time. Free to book, pay at the spa.|Inquiry page: a second path for visitors who are not ready to book yet, &quot;Have a Question First?&quot;|Thank-you page: the &quot;You&rsquo;re All Set&quot; confirmation with prep tips and what happens next."
-                data-blocks="[{&quot;t&quot;: &quot;Status&quot;, &quot;p&quot;: &quot;This is a concept project, so there are no real customers yet. It is a desktop design for now, and the mobile version is next.&quot;}]"
-                data-link="https://sites.leadconnectorhq.com/preview/YJPLQ9lIIpVyFeAzm3hn"
-                data-link-text="View the live preview"
-                data-tools="GoHighLevel|Funnel Builder|Website Design|Booking Page">
-                <a class="build-image" href="SerenityFunnel.png" target="_blank" rel="noopener" title="Open full size">
+            <article class="build-card" id="serenity">
+                <div class="build-image">
                     <img src="SerenityFunnel.png" alt="Serenity Haven Spa funnel: landing page, booking page, inquiry page and thank-you page" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">1 &middot; BOOKING FUNNEL</span>
                     <h4>Landing, booking, inquiry, and thank-you pages</h4>
@@ -945,18 +902,10 @@
                 </div>
             </article>
 
-            <article class="build-card" id="sv-confirmed"
-                data-title="Serenity Haven Spa: ST-Confirmed (Staff Only) Workflow"
-                data-summary="A staff-side GoHighLevel workflow for the Serenity Haven Spa concept that runs whenever an appointment is confirmed."
-                data-problem="When appointments are confirmed, rescheduled, or cancelled, the records can get out of date and the team has to fix tags and pipeline stages by hand."
-                data-solution="A workflow triggered by the confirmed appointment status. It checks whether the appointment was rescheduled or previously cancelled, adds the right tags, and keeps the opportunity in the right pipeline stage."
-                data-built-title="What I built"
-                data-built="Trigger: confirmed appointment status|Condition: was the appointment rescheduled?|Branch for rescheduled appointments: add a tag and update the opportunity|Branch for previously cancelled appointments: add a tag and update the opportunity|Default path: add the Confirmed tag and remove the Cancelled and Rescheduled tags|Create or update the Confirmed opportunity|Wait and condition steps that check the workflow trigger before the final opportunity update"
-                data-how="An appointment is marked as confirmed.|The workflow checks if it was a reschedule.|It checks if the contact has a cancelled tag.|The right tags are added and old ones removed.|The opportunity is created or updated as Confirmed."
-                data-tools="GoHighLevel|Workflows|Appointment Status|Tags|Opportunities|Conditions">
-                <a class="build-image" href="SpaConfirmed.png" target="_blank" rel="noopener" title="Open full size">
+            <article class="build-card" id="sv-confirmed">
+                <div class="build-image">
                     <img src="SpaConfirmed.png" alt="Serenity Haven Spa ST-Confirmed staff workflow in GoHighLevel" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">2 &middot; WORKFLOW</span>
                     <h4>ST-Confirmed (Staff Only) Workflow</h4>
@@ -964,18 +913,10 @@
                 </div>
             </article>
 
-            <article class="build-card" id="sv-unconfirmed"
-                data-title="Serenity Haven Spa: Unconfirmed (Staff Only) Workflow"
-                data-summary="A staff-side GoHighLevel workflow for the Serenity Haven Spa concept that handles appointments that are not confirmed yet."
-                data-problem="Appointments that stay unconfirmed, get rescheduled, or turn into no-shows are easy to lose track of."
-                data-solution="A workflow that checks the appointment status, tags rescheduled and cancelled appointments, then waits and checks whether the workflow trigger is the No Show appointment status."
-                data-built-title="What I built"
-                data-built="Trigger: appointment status|Condition: was the appointment rescheduled?|Branch for rescheduled appointments that adds a tag|Branch for cancelled contacts that adds a tag|Default path with a Wait step and a condition|Branch that checks for the No Show appointment status"
-                data-how="An appointment status changes.|The workflow checks if it was rescheduled or cancelled and tags the contact.|Otherwise it waits.|A condition checks whether the status is No Show."
-                data-tools="GoHighLevel|Workflows|Appointment Status|Tags|Conditions|Wait Steps">
-                <a class="build-image" href="SpaUnconfirmed.png" target="_blank" rel="noopener" title="Open full size">
+            <article class="build-card" id="sv-unconfirmed">
+                <div class="build-image">
                     <img src="SpaUnconfirmed.png" alt="Serenity Haven Spa Unconfirmed staff workflow in GoHighLevel" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">3 &middot; WORKFLOW</span>
                     <h4>Unconfirmed (Staff Only) Workflow</h4>
@@ -983,18 +924,10 @@
                 </div>
             </article>
 
-            <article class="build-card" id="sv-inquiry"
-                data-title="Serenity Haven Spa: Inquiry Workflow"
-                data-summary="A GoHighLevel workflow for the Serenity Haven Spa concept that follows up with visitors who send an inquiry instead of booking right away."
-                data-problem="Visitors who are not ready to book still have questions, and without a follow-up they never come back."
-                data-solution="A workflow that starts from the inquiry form, tags the contact, creates an opportunity, and hands the conversation to an AI agent that can answer questions and book. Timed emails follow up and keep the opportunity updated."
-                data-built-title="What I built"
-                data-built="Form Submitted trigger from the inquiry page|Add Tag and Create or update opportunity|AI Agent with three tools: Knowledge base search, Book appointment, and Update contact field|Follow-up emails with Wait steps in between|Opportunity updates after each follow-up"
-                data-how="A visitor sends the inquiry form.|The contact is tagged and an opportunity is created.|The AI agent answers questions using the knowledge base and can book an appointment.|An email goes out, followed by a wait.|More follow-up emails go out and the opportunity is updated each time."
-                data-tools="GoHighLevel|AI Agent|Knowledge Base|Forms|Workflows|Email Automation|Opportunities">
-                <a class="build-image" href="SpaInquiry.png" target="_blank" rel="noopener" title="Open full size">
+            <article class="build-card" id="sv-inquiry">
+                <div class="build-image">
                     <img src="SpaInquiry.png" alt="Serenity Haven Spa inquiry workflow with AI agent in GoHighLevel" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">4 &middot; WORKFLOW</span>
                     <h4>Inquiry Workflow with AI Agent</h4>
@@ -1002,18 +935,10 @@
                 </div>
             </article>
 
-            <article class="build-card" id="sv-pipeline"
-                data-title="Serenity Haven Spa: Appointments Pipeline"
-                data-summary="A GoHighLevel CRM pipeline for the Serenity Haven Spa concept that shows every appointment and its status."
-                data-problem="Without a clear view of appointment status, the team cannot see what needs attention."
-                data-solution="A pipeline called Serenity Haven Appointments with a stage for each appointment status. The workflows create and update opportunities so each appointment sits in the right stage."
-                data-built-title="How it is set up"
-                data-built="Pipeline named Serenity Haven Appointments|Stages for Unconfirmed, Confirmed, Reschedule, and the cancelled and no-show statuses|Opportunities created and moved by the confirmed, unconfirmed, and inquiry workflows"
-                data-how="An appointment is booked and enters as Unconfirmed.|When it is confirmed, the workflow moves it to Confirmed.|Reschedules and cancellations move it to their own stages.|The team sees every appointment and its status at a glance."
-                data-tools="GoHighLevel|CRM Pipeline|Opportunities|Workflows">
-                <a class="build-image" href="SpaPipeline.png" target="_blank" rel="noopener" title="Open full size">
+            <article class="build-card" id="sv-pipeline">
+                <div class="build-image">
                     <img src="SpaPipeline.png" alt="Serenity Haven Appointments pipeline in GoHighLevel" loading="lazy">
-                </a>
+                </div>
                 <div class="build-info">
                     <span class="project-type">5 &middot; CRM PIPELINE</span>
                     <h4>Appointments Pipeline</h4>
@@ -1065,12 +990,12 @@
         <!-- FUNNELISH PROJECT 01 -->
 
         <article id="vitacore" class="project-card"
+    data-goal="Guide a customer from first seeing the product to a confirmed order, with a checkout option for each package length."
+    data-purpose="Show that I can build a complete e-commerce funnel in Funnelish, from landing page to checkout and thank-you page, and set it up to connect to a store. The Shopify connection is still pending, so the automation is not live yet."
+    data-how="A customer lands on the product-focused VitaCore page.|They choose a package: 1-month, 3-month, or 6-month.|The matching checkout page collects the order.|The offer structure supports different packages and helps increase order value.|A thank-you page confirms the order and shows customer support information.|Next step, once Shopify is connected: orders sync to Shopify and the automation runs the post-purchase steps."
     data-title="E-commerce Funnel Build: VitaCore"
     data-video=""
     data-summary="I built a complete e-commerce sales funnel for VitaCore using Funnelish, designed to guide customers from product discovery all the way through purchase confirmation."
-    data-built-title="What I built"
-    data-built="Landing Page: a product-focused page designed to introduce VitaCore and encourage customers to take action.|3 Checkout Pages: checkout experiences for the 1-Month, 3-Month, and 6-Month product options.|Upsell/Offer Structure: the funnel flow supports different product packages and increases order value.|Thank You Page: a confirmation page with order details and customer support information.|Automation Workflow: started building the automation system to manage customer and order-related processes.|Shopify Integration: set up the Shopify integration inside Funnelish."
-    data-blocks="[{&quot;t&quot;: &quot;Current status&quot;, &quot;p&quot;: &quot;The Shopify connection is currently pending because I don’t yet have a business Shopify account/domain available for the live connection. Because of this, I paused the final stage of the automation rather than pretending the integration was fully live.&quot;}, {&quot;t&quot;: &quot;Once Shopify is connected&quot;, &quot;p&quot;: &quot;The completed integration can be used to sync Funnelish orders with Shopify, allowing orders and customer purchase information to flow into Shopify. From there, the automation can be completed to trigger actions such as order processing, customer notifications, tagging, follow-ups, and other post-purchase workflows.&quot;}, {&quot;t&quot;: &quot;What I gained&quot;, &quot;p&quot;: &quot;Hands-on experience building an e-commerce funnel, checkout flow, thank-you page, automation workflow, and Shopify integration setup in Funnelish.&quot;}]"
     data-tools="Funnelish|Shopify|Automation Workflows">
 
             <div class="project-image">
@@ -1114,12 +1039,12 @@
         <!-- Funnelish Project 02 -->
 
 <article id="zenbodi" class="project-card"
+    data-goal="Guide visitors from the advertorial to the checkout page with a clear flow that also works on a phone."
+    data-purpose="Deliver a paid funnel for a real business brief: follow the client’s specific requirements and build the funnel from start to finish."
+    data-how="A visitor arrives on the advertorial-style landing page.|Product-focused sections explain the offer and repeat the call to action.|The call to action leads to the product checkout page.|The layout adapts to mobile screens, so the same flow works on a phone."
     data-title="Funnelish E-commerce Funnel: Paid Task for Zenbodi"
     data-video="ZenbodiCoffee1.mp4|ZenbodiCoffee2.mp4"
-    data-summary="Completed a paid funnel-building task for Zenbodi, focused on creating an e-commerce sales funnel in Funnelish."
-    data-built-title="What the project included"
-    data-built="Advertorial / landing page|Product checkout page|Mobile-responsive layout|Product-focused sections and CTA flow|Funnel structure designed to guide visitors toward checkout"
-    data-blocks="[{&quot;t&quot;: &quot;What it showed&quot;, &quot;p&quot;: &quot;A great opportunity to work from a real business brief, follow specific requirements, and build the funnel from start to finish.&quot;}]">
+    data-summary="Completed a paid funnel-building task for Zenbodi, focused on creating an e-commerce sales funnel in Funnelish.">
 
     <div class="project-image">
 
@@ -1201,22 +1126,19 @@
     data-summary="An AI appointment setter for a dental clinic, built in n8n. A patient chats with the assistant, and it checks real availability in Calendly, books or reschedules the appointment, saves everything to a database, emails the patient, and reports to the team in Slack. No receptionist is needed for scheduling."
     data-goal="Handle the whole scheduling conversation without a human, and make sure every booking is accurate, with no double bookings and no bad data."
     data-purpose="Take scheduling off the receptionist, reduce no-shows with automatic reminders, and make the system reusable for another clinic by changing one settings box."
-    data-built-title="The four parts of the workflow"
-    data-built="Load Clinic Settings: one place to edit the clinic name, address, phone, hours, arrival instructions, cancellation policy, the AI's instructions, email templates, and the Calendly event. To reuse it for another clinic, change this one box and nothing else.|Chat with Patient: the AI Scheduling Assistant acts as the front desk. It remembers the conversation, asks one question at a time, collects name, phone, email, service, and preferred date and time, checks Calendly for open slots, and never books without a clear yes.|Handle Booking Requests: the engine. It validates email, phone, and date, checks for duplicates and taken slots, books or reschedules in Calendly, saves the record, sends the confirmation email, and posts a Slack report.|Reminders: every 30 minutes it checks the table for upcoming appointments, sends reminder emails (for example 24 hours and 2 hours before), and marks them as sent so none go out twice."
-    data-how="A patient chats with the Scheduling Assistant.|The AI collects the details and checks real availability in Calendly.|It confirms the details and waits for a clear yes before booking.|The booking engine validates the data and checks for duplicates and taken slots.|The appointment is booked or rescheduled in Calendly.|The record is saved to the Appointments Data Table.|A confirmation email goes to the patient and a report goes to Slack.|Reminder emails go out automatically before the visit."
-    data-blocks="[{&quot;t&quot;: &quot;Error handling&quot;, &quot;p&quot;: &quot;If something fails, the failure is logged, the team is alerted in Slack, and the patient gets a clear message instead of the chat freezing.&quot;}, {&quot;t&quot;: &quot;The Data Table (the system's memory)&quot;, &quot;p&quot;: &quot;Every appointment is saved in an n8n Data Table called Appointments. It stores the appointment ID, patient name, phone and email, service, date and time, status (Pending, Confirmed, Rescheduled, Cancelled), notes, whether the confirmation and reminder emails were sent, created and updated timestamps, and an error log.&quot;}]"
+    data-how="Clinic settings (name, hours, policies, the AI's instructions, email templates, and the Calendly event) are loaded from one place.|A patient chats with the AI Scheduling Assistant, which asks one question at a time and collects name, phone, email, service, and preferred date and time.|The AI checks real availability in Calendly and confirms the details before booking, never without a clear yes.|The booking engine validates the details and checks for duplicates and taken slots.|The appointment is booked or rescheduled in Calendly and saved to the Appointments Data Table, which also tracks status, notes, and email history.|A confirmation email goes to the patient and a report goes to the team in Slack.|Every 30 minutes, reminder emails go out (for example 24 hours and 2 hours before) and are marked as sent so none go out twice.|If something fails, the error is logged, the team is alerted in Slack, and the patient gets a clear message instead of the chat freezing."
     data-tools="n8n|AI Agent|Calendly|Data Tables|Email|Slack|Reminder Automation">
 
     <div class="project-image">
 
         <span class="hot-badge">🔥 HOT PROJECT</span>
 
-        <a href="AppointmentSetter.png" target="_blank" rel="noopener" title="Open full size">
+        <div class="project-photo">
             <img
                 src="AppointmentSetter.png"
                 alt="AI Appointment Setter for a dental clinic built in n8n"
             >
-        </a>
+        </div>
 
     </div>
 
@@ -1254,6 +1176,8 @@
 <!-- Popup content for this project. Paste your video link in data-video
          (YouTube, Vimeo, Loom, Google Drive or a .mp4 file). Leave it empty to hide the video. -->
 <article id="triage" class="project-card hot-card"
+    data-title="AI Customer Request Triage"
+    data-summary="An n8n workflow that detects incoming customer emails, classifies each request with AI, drafts a reply, saves everything in a Data Table, flags duplicates, refunds and low-confidence cases for human review, and alerts the team if the AI fails."
     data-video="CustomerRequestTriageVid.mp4"
     data-goal="Reduce repetitive email work so support teams can focus on the customers who really need a human."
     data-purpose="Built for businesses that receive many customer emails every day. Every request is sorted, logged and answered faster, and nothing slips through."
@@ -1263,12 +1187,12 @@
 
         <span class="hot-badge">🔥 HOT PROJECT</span>
 
-        <a href="CustomerRequestTriage.png" target="_blank" rel="noopener" title="Open full size">
+        <div class="project-photo">
             <img
                 src="CustomerRequestTriage.png"
                 alt="AI Customer Request Triage workflow built in n8n"
             >
-        </a>
+        </div>
 
     </div>
 
@@ -1307,10 +1231,10 @@
             <!-- n8n PROJECT 01 -->
 
 <article id="content" class="project-card"
+    data-title="AI Content Automation"
+    data-purpose="Turn a short content request into a finished, Instagram-ready post with its image, so publishing regularly takes far less manual work."
     data-video="AiContentAutomation.mp4"
     data-summary="Built an AI Content Automation System to streamline the process of turning a simple content request into ready-to-publish social media content."
-    data-built-title="What it does"
-    data-built="Captures content requests through Tally|Uses an AI Content Strategist to generate the hook, message, CTA, hashtags, and visual concept|Uses an AI Creative Agent to create the image prompt and alt text|Generates the visual automatically|Prepares the content for Instagram publishing"
     data-how="A content request is submitted through Tally.|n8n receives the request and starts the workflow.|The AI Content Strategist writes the hook, message, CTA, hashtags, and visual concept.|The AI Creative Agent creates the image prompt and alt text.|The visual is generated automatically.|The content is prepared for Instagram publishing."
     data-goal="Reduce repetitive manual work while keeping the content creation process structured and consistent."
     data-tools="n8n|AI Agents|Tally|Image Generation">
@@ -1357,12 +1281,12 @@
             <!-- n8n PROJECT 02 -->
 
             <article id="followup" class="project-card"
+    data-summary="An n8n workflow that captures incoming leads, processes them with an AI Agent, logs them in Google Sheets, emails the lead, notifies the team on Telegram, then sends a reminder only if the lead still needs one."
+    data-goal="Make sure every lead gets a quick first reply and a timely reminder, without nudging people who have already been contacted."
+    data-purpose="Replace manual follow-ups, which cause missed opportunities and inconsistent communication, with a consistent and organized process."
     data-title="Automated Lead Follow-Up &amp; Reminder Workflow"
     data-video="automatedFollowUp.mp4"
-    data-problem="Following up with leads manually can result in missed opportunities, inconsistent communication, and unnecessary reminders being sent to people who have already responded."
-    data-solution="Built an automated workflow in n8n that captures incoming leads, processes them with an AI Agent, stores lead information in Google Sheets, sends an initial email, notifies through Telegram, and waits before triggering a follow-up reminder. The workflow checks the lead’s latest status before sending the reminder, helping prevent unnecessary follow-ups when the lead has already been contacted."
     data-how="A webhook captures each incoming lead.|An AI Agent processes the lead.|Lead information is stored in Google Sheets.|An initial email is sent to the lead.|A Telegram notification alerts the team.|The workflow waits before following up.|It checks the lead’s latest status.|A reminder is sent only if the lead hasn’t already been contacted."
-    data-blocks="[{&quot;t&quot;: &quot;The result&quot;, &quot;p&quot;: &quot;This system helps make lead follow-ups more consistent, organized, and automated while reducing repetitive manual work.&quot;}]"
     data-tools="n8n|AI Agent|Google Sheets|Email|Telegram|Wait &amp; Follow-Up Automation">
 
                 <div class="project-image">
@@ -1407,12 +1331,12 @@
             <!-- n8n PROJECT 03 -->
 
             <article id="weekly" class="project-card"
+    data-summary="An n8n workflow that automatically collects sales information, organizes orders, and creates the weekly report, so a business can see its sales activity without spending hours on it."
+    data-goal="Deliver an accurate weekly sales report on schedule, with no manual data collection."
+    data-purpose="Replace slow, error-prone manual reporting with an automatic process, so the team sees sales activity quickly and can follow up on orders that are still processing."
+    data-how="A scheduled trigger starts the workflow every week.|It pulls the order data from the warehouse API.|Each order is checked by status: Processing or Booked.|The booked sales total is calculated.|Orders still in Processing are saved to a Data Table for follow-up.|The sales update is sent to the team on Discord."
                 data-title="Weekly Sales Reporting & Order Management Automation"
                 data-video=""
-                data-problem="Sales reporting was a repetitive and error-prone process that required manually retrieving order data, calculating booked sales totals, and tracking orders that were still in processing. This consumed valuable time, delayed reporting, and increased the risk of human error in weekly sales updates."
-                data-solution="Designed and implemented an automated workflow in n8n that retrieves sales data from a warehouse API, processes order statuses, calculates booked sales totals, and automatically distributes reports to the appropriate teams. The workflow runs on a scheduled basis, eliminating manual data collection and ensuring that sales information is delivered consistently and accurately."
-                data-features="Automated weekly reporting using scheduled triggers|API integration with the data warehouse|Conditional logic for Processing and Booked orders|Automated calculation of booked sales totals|Storage of processing orders in Data Tables for follow-up|Discord notifications for sales updates|Reduced manual reporting effort and improved accuracy"
-                data-value="Eliminates repetitive manual reporting tasks|Improves reporting accuracy and consistency|Provides real-time visibility into sales performance|Centralizes order tracking for follow-up actions|Enables teams to focus on higher-value work instead of administrative tasks"
                 data-tools="n8n|REST API|Data Tables|Discord|Workflow Automation">
 
                 <div class="project-image">
@@ -1491,12 +1415,12 @@
             <!-- ZAPIER PROJECT 01 -->
 
 <article id="onboarding" class="project-card"
+    data-summary="A Zapier workflow that, whenever a new client submits the onboarding form, creates the project folder, Trello card and CRM record, sends a welcome email, and notifies the team, with no manual setup."
+    data-goal="Have everything ready for a new client the moment they submit the onboarding form, with no manual setup."
+    data-purpose="Give every new client the same fast, consistent kickoff, and remove the repetitive admin of creating folders, cards and records by hand."
+    data-how="A new client submits the onboarding form (Google Forms).|The Zap starts automatically.|A project folder is created in Google Drive.|A Trello card is created with the standard onboarding checklist.|A personalized welcome email goes out through Gmail.|A client record is added to the CRM in Google Sheets.|The internal team is notified about the new project."
     data-title="Automated Client Onboarding &amp; Project Setup System"
     data-video=""
-    data-problem="Service providers often spend valuable time manually setting up new client projects. Creating project folders, organizing tasks, sending welcome emails, updating client records, and assigning onboarding activities can be repetitive and time-consuming. This manual process slows project kickoffs, creates inconsistencies, and increases the risk of missed steps during onboarding."
-    data-solution="Designed and implemented an automated client onboarding workflow in Zapier that instantly prepares project resources whenever a new client submits an onboarding form. The system automatically creates project folders, generates project tasks, sends onboarding communications, updates CRM records, and notifies the internal team, ensuring a consistent and efficient onboarding experience."
-    data-features="Automated client onboarding through Google Forms submissions|Automatic project folder creation in Google Drive|Trello card generation for project management and tracking|Personalized welcome email delivery through Gmail|Automated client record creation in CRM (Google Sheets)|Internal team notifications for new client projects|Standardized onboarding checklist assignment|Reduced manual administrative work and onboarding delays"
-    data-value="Standardizes the client onboarding process|Reduces repetitive administrative tasks|Accelerates project setup and kickoff timelines|Improves team organization and project visibility|Enhances the client onboarding experience|Minimizes human error through automation|Allows teams to focus on client delivery instead of manual setup"
     data-tools="Zapier|Google Forms|Google Sheets|Google Drive|Trello|Gmail|Workflow Automation">
 
     <div class="project-image">
@@ -1836,21 +1760,13 @@
             });
         }
         if (img && !vid) {
-            var a = document.createElement("a");
+            var a = document.createElement("div");
             a.className = "pm-shot";
-            a.href = img.getAttribute("src");
-            a.target = "_blank";
-            a.rel = "noopener";
-            a.title = "Open full size";
             var im = document.createElement("img");
             im.src = img.getAttribute("src");
             im.alt = img.getAttribute("alt") || "";
             a.appendChild(im);
             media.appendChild(a);
-            var hint = document.createElement("span");
-            hint.className = "pm-shot-hint";
-            hint.textContent = "Click the image to open it full size";
-            media.appendChild(hint);
         }
 
         lastFocus = document.activeElement;
