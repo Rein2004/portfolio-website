@@ -19,12 +19,16 @@ let isDeleting = false;
 function typeEffect() {
     const currentRole = roles[roleIndex];
 
+    // cursor shows only while typing/deleting
+    typingElement.classList.remove("done");
+
     if (!isDeleting) {
         typingElement.textContent = currentRole.substring(0, charIndex + 1);
         charIndex++;
 
         if (charIndex === currentRole.length) {
             isDeleting = true;
+            typingElement.classList.add("done"); // fully typed: hide the cursor
             setTimeout(typeEffect, 1500);
             return;
         }
@@ -289,5 +293,57 @@ if (menuToggle && navMenu) {
         // if the file is missing, the screenshot simply stays visible
         v.addEventListener("error", () => v.classList.remove("is-playing"));
         io.observe(v);
+    });
+})();
+
+
+/* =====================================================
+   LOGO LOOP: endless, seamless, fills any screen width
+   Adds enough copies of each row so there is never an
+   empty gap, and the loop restarts with no visible jump.
+===================================================== */
+
+(function () {
+    const tracks = document.querySelectorAll("#tech .logo-track");
+    if (!tracks.length) return;
+
+    function build() {
+        const vw = Math.max(window.innerWidth, document.documentElement.clientWidth);
+
+        tracks.forEach((track) => {
+            // back to one original set, so we can measure it
+            track.querySelectorAll("[data-clone]").forEach((n) => n.remove());
+            track.style.animationDuration = "";
+
+            const originals = Array.from(track.children);
+            const baseDuration = parseFloat(getComputedStyle(track).animationDuration) || 34;
+            const setWidth = track.scrollWidth; // includes the trailing gap (padding-right)
+            if (!setWidth) return;
+
+            // k sets always cover the screen; 2k sets make the -50% loop seamless
+            const k = Math.ceil(vw / setWidth) + 1;
+
+            for (let i = 1; i < 2 * k; i++) {
+                originals.forEach((n) => {
+                    const c = n.cloneNode(true);
+                    c.setAttribute("data-clone", "1");
+                    c.setAttribute("aria-hidden", "true");
+                    const im = c.querySelector("img");
+                    if (im) im.alt = "";
+                    track.appendChild(c);
+                });
+            }
+
+            // keep the same scrolling speed no matter how many copies there are
+            track.style.animationDuration = (baseDuration * 2 * k) + "s";
+        });
+    }
+
+    build();
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(build, 250);
     });
 })();

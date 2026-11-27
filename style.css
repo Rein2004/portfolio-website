@@ -196,6 +196,10 @@ footer {
     color: #00e5ff;
 }
 
+#typing.done::after {
+    content: none;
+}
+
 @keyframes blink {
     50% {
         opacity: 0;
@@ -3870,3 +3874,40 @@ html, body { overflow-x: clip; }
 @media (max-width: 600px) {
     .reel-card figcaption span { -webkit-line-clamp: 3; line-clamp: 3; min-height: 4.2em; }
 }
+
+
+/* =====================================================
+   LOGO LOOP FIX: seamless endless loop, softer edges,
+   headroom at the top so nothing looks cut (desktop + mobile)
+===================================================== */
+#tech .logo-track {
+    --logo-gap: 28px;
+    gap: var(--logo-gap);
+    padding-right: var(--logo-gap); /* makes one full set an exact -50% loop step */
+}
+#tech .tech-orbit { height: 160px !important; }
+#tech .logo-track-1 { top: 18px !important; }
+#tech .logo-track-2 { top: 92px !important; }
+
+/* same size/tilt for every logo (no special first/last), small hover lift */
+#tech .logo-track .tech-logo:nth-child(n) { transform: rotate(-3deg); }
+#tech .logo-track .tech-logo:hover { transform: translateY(-6px) rotate(0deg) scale(1.06); }
+
+/* lighter edge fade, so more logos stay visible */
+#tech .tech-orbit::before, #tech .tech-orbit::after { width: 8%; }
+
+@media (max-width: 600px) {
+    #tech .logo-track { --logo-gap: 18px; }
+    #tech .tech-orbit { height: 124px !important; }
+    #tech .logo-track-1 { top: 16px !important; }
+    #tech .logo-track-2 { top: 68px !important; }
+    #tech .tech-orbit::before, #tech .tech-orbit::after { width: 5%; }
+}
+
+/* touch screens: no hover lift (it gets stuck after a tap and gets cut off at the top) */
+@media (hover: none) {
+    #tech .logo-track .tech-logo:hover { transform: rotate(-3deg); }
+}
+
+/* "25+" : the plus sits outside the animated number */
+.stat-plus::after { content: "+"; }
