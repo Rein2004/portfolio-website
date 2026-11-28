@@ -3911,3 +3911,34 @@ html, body { overflow-x: clip; }
 
 /* "25+" : the plus sits outside the animated number */
 .stat-plus::after { content: "+"; }
+
+/* =====================================================
+   WATCH IT WORK: 5 cards (centered rows, never a lonely orphan)
+   5 across on desktop, 3 on tablet, 2 on small tablet,
+   swipeable row on phones.
+===================================================== */
+.demo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap);
+}
+
+.demo-card { flex: 0 0 calc((100% - 4 * var(--gap)) / 5); }
+
+@media (max-width: 1099px) {
+    .demo-card { flex: 0 0 calc((100% - 2 * var(--gap)) / 3); }
+}
+
+@media (max-width: 760px) {
+    .demo-card { flex: 0 0 calc((100% - var(--gap)) / 2); }
+}
+
+@media (max-width: 600px) {
+    .demo-grid {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 14px;
+    }
+    .demo-card { flex: 0 0 78%; }
+}
